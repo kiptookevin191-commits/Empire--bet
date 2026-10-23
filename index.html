@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Empire Bet</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Supabase Library -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
     <style>
         :root {
             --primary: #00e676;
@@ -37,11 +40,8 @@
         .input-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-sub); margin-bottom: 8px; }
         .input-wrapper { display: flex; align-items: center; background: var(--bg-input); border: 1px solid var(--border); border-radius: 12px; padding: 15px; }
         .input-wrapper span { font-size: 20px; color: var(--text-sub); margin-right: 10px;}
-        
-        /* Country Selector */
         .country-selector { background: transparent; border: none; color: #fff; font-size: 15px; outline: none; margin-right: 10px; border-right: 1px solid var(--border); padding-right: 10px; cursor: pointer;}
         .country-selector option { background: var(--bg-card); color: #fff; }
-
         .input-wrapper input { background: transparent; border: none; outline: none; color: #fff; font-size: 15px; width: 100%;}
         .btn-login-submit { width: 100%; padding: 18px; background: var(--primary); color: #000; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; margin-top: 10px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,230,118,0.3);}
 
@@ -58,7 +58,7 @@
         .view.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* SPORTS / HOME (Exact Match) */
+        /* SPORTS / HOME */
         .category-scroll { display: flex; gap: 10px; padding: 15px 15px 10px 15px; overflow-x: auto; scrollbar-width: none; }
         .category-scroll::-webkit-scrollbar { display: none; }
         .cat-btn { background: var(--bg-card); border: 1px solid var(--border); padding: 8px 18px; border-radius: 20px; color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: 0.2s;}
@@ -184,7 +184,7 @@
         .pay-box { background: var(--bg-card); padding: 25px; border-radius: 20px; border: 1px dashed var(--primary); text-align: center; margin-bottom: 15px; cursor: pointer;}
         .upload-box { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 20px; text-align: center; margin-bottom: 20px;}
         .admin-panel { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); padding: 20px; border-radius: 20px; margin-top: 20px; display: none;}
-        .admin-item { background: var(--bg-card); padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
+        .admin-item { background: var(--bg-card); padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;}
         
         .popup-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 5000; display: none; flex-direction: column; justify-content: center; align-items: center; }
         .popup-box { background: var(--bg-card); width: 90%; max-width: 360px; border-radius: 24px; padding: 30px; text-align: center; border: 1px solid var(--border);}
@@ -272,7 +272,7 @@
         </div>
     </div>
 
-    <!-- LINK ACCOUNT MODAL (PREFERRED METHOD) -->
+    <!-- LINK ACCOUNT MODAL -->
     <div id="link-modal" class="popup-modal">
         <div class="popup-box">
             <h3 style="color:#fff; margin-bottom: 5px;">Link Account</h3>
@@ -312,7 +312,7 @@
             <button class="btn-action" style="background: transparent; border: 1px solid #fff; margin-top: 10px;" onclick="closeCamera()">Cancel</button>
         </div>
     </div>
-    <!-- SPORTS VIEW (EXACT MATCH) -->
+    <!-- SPORTS VIEW -->
 <div id="view-sports" class="view active">
     <div class="category-scroll">
         <button class="cat-btn active" onclick="switchLeague('Bundesliga', this)">Bundesliga</button>
@@ -320,7 +320,6 @@
         <button class="cat-btn" onclick="switchLeague('La Liga', this)">La Liga</button>
     </div>
 
-    <!-- Horizontal Games Scroll -->
     <div class="game-scroll">
         <div class="game-scroll-item" onclick="checkMinBalance() && showToast('Aviator loading...', 'success')">
             <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=150&q=80" alt="Aviator">
@@ -350,9 +349,7 @@
         <div class="market-tab" style="margin-left: auto;">⊞ More ⌄</div>
     </div>
 
-    <div class="matches-container" id="matches-list">
-        <!-- Loaded via JS API -->
-    </div>
+    <div class="matches-container" id="matches-list"></div>
 </div>
 
 <!-- PREMIUM CASINO VIEW -->
@@ -366,8 +363,6 @@
             <button class="casino-cat-btn">Live Casino</button>
         </div>
     </div>
-
-    <!-- Container for 30 Games generated by JS -->
     <div class="casino-grid" id="casino-grid"></div>
 </div>
 
@@ -469,7 +464,6 @@
         <button onclick="logoutUser()" style="width: 100%; padding: 15px; background: transparent; border: 1px solid var(--border); color: #fff; border-radius: 15px; font-weight: 600; font-size: 15px; cursor: pointer;">🚪 Sign Out</button>
     </div>
 
-    <!-- Copyable Info Boxes -->
     <div class="info-boxes">
         <div class="info-box pay" onclick="copyToClipboard('714777', 'Paybill copied!')">
             <div class="info-label">PAY WITH (TAP TO COPY)</div>
@@ -497,7 +491,6 @@
 <div id="view-deposit" class="view">
     <div class="page-header"><span onclick="switchView('view-sports')">‹</span> Deposit Funds</div>
     <div class="deposit-container">
-        <!-- Clickable to copy -->
         <div class="pay-box" onclick="copyToClipboard('714777', 'Paybill 714777 copied!')">
             <p>Send <strong>130 KES ($1.00)</strong> to M-Pesa:</p>
             <h2 style="color: var(--primary); margin: 10px 0; font-size: 24px;">Paybill: 714777 📋</h2>
@@ -509,17 +502,16 @@
         
         <div class="input-group" style="margin: 15px;">
             <label>Amount to Deposit (USD)</label>
-            <input type="number" id="deposit-amount" placeholder="e.g. 1.00" style="width:100%; padding: 15px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); color: #fff; font-size: 16px;">
-            <p style="font-size: 11px; color: var(--text-sub); margin-top: 5px;">Minimum deposit is $1.00 (130 KES)</p>
+            <input type="number" id="deposit-amount" placeholder="1.00" value="1" readonly style="width:100%; padding: 15px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); color: #fff; font-size: 16px;">
+            <p style="font-size: 11px; color: var(--text-sub); margin-top: 5px;">Locked to $1.00 (130 KES) for verification</p>
         </div>
 
-        <div class="upload-box">
-            <p style="margin-bottom: 15px; font-size: 13px; color: var(--text-sub);">After making payment, send screenshot for confirmation.</p>
-            <input type="file" id="file-upload" accept="image/*" style="display: none;" onchange="document.getElementById('file-name').innerText = '✅ ' + event.target.files[0].name">
-            <label for="file-upload" style="display: block; padding: 20px; border: 2px dashed #ccc; border-radius: 10px; cursor: pointer;">📸 Tap to select image</label>
-            <p id="file-name" style="margin-top: 10px; font-size: 12px; color: var(--primary);"></p>
+        <div class="input-group" style="margin: 15px;">
+            <label>M-Pesa Transaction Code</label>
+            <input type="text" id="mpesa-transaction-code" placeholder="e.g. QGH7XYZ123" style="width:100%; padding: 15px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); color: #fff; font-size: 16px; text-transform: uppercase;">
         </div>
-        <button class="btn-action" onclick="submitDepositProof()">Submit Proof</button>
+
+        <button class="btn-action" onclick="submitDepositProof()" style="margin-top: 10px;">Submit Proof</button>
     </div>
 </div>
 
@@ -533,11 +525,21 @@
     <div class="nav-item" onclick="switchView('view-promos')"><span class="nav-icon">🎁</span> Promos</div>
     <div class="nav-item" onclick="switchView('view-profile')"><span class="nav-icon">👤</span> Profile</div>
 </div>
-<script>
-    // --- INITIALIZE SUPABASE WITH YOUR KEYS ---
-    const supabaseUrl = 'https://lroitdasakrxwyudlytn.supabase.co';
-    const supabaseKey = 'sb_publishable_zDhPLRENJLAOlEzdDBhpug_tFi2RtqD';
-    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+    <script>
+    // --- INITIALIZE FIREBASE ---
+    const firebaseConfig = {
+        apiKey: "AIzaSyDSvvOuSIahbt-pVhHMS-xPfgMWNdxHJcY",
+        authDomain: "empire-bet-world.firebaseapp.com",
+        projectId: "empire-bet-world",
+        storageBucket: "empire-bet-world.firebasestorage.app",
+        messagingSenderId: "877672098158",
+        appId: "1:877672098158:web:407963a29c666f58f4397f",
+        measurementId: "G-LBC423XJXQ"
+    };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
     // --- LOCAL STORAGE DATA ---
     let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
@@ -588,7 +590,7 @@
             document.getElementById('admin-panel').style.display = 'none';
         }
         if(viewId === 'view-profile' && isLoggedIn) {
-            syncBalanceFromSupabase(); 
+            syncBalanceFromFirebase(); 
         }
     }
 
@@ -605,14 +607,13 @@
         }
     }
 
-    // --- $10 MINIMUM PLAY RULE ---
     function checkMinBalance() {
         if (!isLoggedIn) { showToast("Please sign up first.", "error"); return false; }
         if (userBalance < 10.00) { showToast("❌ Minimum balance to play is $10.00", "error"); return false; }
         return true;
     }
 
-    // --- AUTHENTICATION LOGIC ---
+    // --- AUTHENTICATION ---
     function processLogin() {
         let phone = document.getElementById('login-phone').value;
         let pass = document.getElementById('login-pass').value;
@@ -640,7 +641,7 @@
         
         switchView('view-sports');
         updateBalanceUI();
-        syncBalanceFromSupabase(); 
+        syncBalanceFromFirebase(); 
     }
 
     function logoutUser() {
@@ -654,7 +655,6 @@
         switchView('view-sports');
     }
 
-    // Auto-login
     if (isLoggedIn) {
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('top-green-banner').style.display = 'flex';
@@ -663,10 +663,10 @@
         document.getElementById('logged-in-header').style.display = 'flex';
         document.getElementById('prof-phone-display').innerText = "+254 " + userPhone.slice(-9);
         updateBalanceUI();
-        syncBalanceFromSupabase();
+        syncBalanceFromFirebase();
     }
 
-    // --- PROMOS LOGIC ---
+    // --- PROMOS TASKS ---
     function startOTP() {
         if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
         if(task2) return;
@@ -682,7 +682,6 @@
             task2 = true; localStorage.setItem('task2', 'true'); checkTasks();
         } else { showToast("Incorrect OTP", "error"); }
     }
-
     function openLinkModal() {
         if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
         if(task1) return;
@@ -692,14 +691,11 @@
         let b = document.getElementById('link-bank').value;
         let m = document.getElementById('link-mpesa').value;
         let a = document.getElementById('link-airtel').value;
-        // ONLY NEED ONE TO BE FILLED
         if(!b && !m && !a) { showToast("Fill at least 1 preferred method!", "error"); return; }
-        
         document.getElementById('link-modal').style.display = 'none';
         document.getElementById('task1-btn').innerText = "Done"; document.getElementById('task1-btn').className = "task-btn done";
         task1 = true; localStorage.setItem('task1', 'true'); checkTasks();
     }
-
     function openCountryModal() {
         if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
         if(task4) return;
@@ -710,7 +706,6 @@
         document.getElementById('task4-btn').innerText = "Done"; document.getElementById('task4-btn').className = "task-btn done";
         task4 = true; localStorage.setItem('task4', 'true'); checkTasks();
     }
-
     function startCameraCheck() {
         if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
         if(task3) return;
@@ -739,7 +734,6 @@
     }
     function closeCamera() { if(videoStream) videoStream.getTracks().forEach(track => track.stop()); document.getElementById('camera-modal').style.display = 'none'; }
 
-    // Restore tasks
     if(task1) { document.getElementById('task1-btn').innerText = "Done"; document.getElementById('task1-btn').className = "task-btn done"; }
     if(task2) { document.getElementById('task2-btn').innerText = "Done"; document.getElementById('task2-btn').className = "task-btn done"; }
     if(task3) { document.getElementById('task3-btn').innerText = "Done"; document.getElementById('task3-btn').className = "task-btn done"; }
@@ -762,86 +756,108 @@
     if(bonusClaimed) {
         document.getElementById('promo-amount').innerText = "$0.00"; document.getElementById('main-claim-btn').innerText = "Claimed Successfully"; document.getElementById('main-claim-btn').style.background = "#334155";
     }
-            // --- DEPOSIT & SUPABASE LOGIC ---
+                // --- FIREBASE DEPOSIT REQUESTS ---
         async function submitDepositProof() {
-            let amount = parseFloat(document.getElementById('deposit-amount').value);
-            if(isNaN(amount) || amount < 1.00) { showToast("❌ Minimum deposit is $1.00 (130 KES)", "error"); return; }
-            
-            showToast("Sending to Admin...", "default");
-            
-            let currentPhone = localStorage.getItem('userPhone') || "Unknown";
+            const amountInput = document.getElementById("deposit-amount");
+            const amount = Number(amountInput?.value);
+            const currentPhone = localStorage.getItem("userPhone");
 
-            // Save to Supabase
-            const { data, error } = await supabaseClient
-                .from('deposits')
-                .insert([{ amount: amount, status: 'pending', user_id: currentPhone }]);
+            if (!currentPhone || currentPhone === "Unknown") {
+                showToast("Please enter your registered phone number.", "error"); return;
+            }
+            if (amount !== 1) {
+                showToast("Minimum deposit is $1.00 (KSh 130).", "error"); return;
+            }
 
-            if (error) {
-                console.error(error);
-                showToast("Failed to connect to database.", "error");
-            } else {
-                document.getElementById('file-name').innerText = "⏳ Pending Admin Approval";
-                showToast("Deposit request sent successfully!", "success");
+            const transactionInput = document.getElementById("mpesa-transaction-code");
+            const transactionCode = transactionInput?.value?.trim()?.toUpperCase();
+
+            if (!transactionCode) {
+                showToast("Enter your M-Pesa transaction code.", "error"); return;
+            }
+
+            try {
+                showToast("Sending deposit request...", "default");
+
+                await db.collection("deposits").add({
+                    phone: currentPhone,
+                    amountKES: 130,
+                    creditUSD: 1,
+                    transactionCode: transactionCode,
+                    status: "pending",
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                document.getElementById('mpesa-transaction-code').value = "";
+                showToast("Deposit request submitted! Pending Admin.", "success");
+            } catch (error) {
+                console.error("Deposit submission failed:", error);
+                showToast("Could not submit. Check connection.", "error");
             }
         }
 
-        async function syncBalanceFromSupabase() {
+        async function syncBalanceFromFirebase() {
             if(!userPhone) return;
-            // Look for approved deposits for this user
-            const { data, error } = await supabaseClient
-                .from('deposits')
-                .select('*')
-                .eq('user_id', userPhone)
-                .eq('status', 'approved');
+            try {
+                const snapshot = await db.collection("deposits")
+                    .where("phone", "==", userPhone)
+                    .where("status", "==", "approved")
+                    .get();
 
-            if(data && data.length > 0) {
-                let total = 0;
-                for(let dep of data) {
-                    total += parseFloat(dep.amount);
-                    // Mark as completed so it doesn't get added again
-                    await supabaseClient.from('deposits').update({ status: 'completed' }).eq('id', dep.id);
+                if (!snapshot.empty) {
+                    let total = 0;
+                    let batch = db.batch();
+                    
+                    snapshot.forEach((doc) => {
+                        total += doc.data().creditUSD;
+                        batch.update(doc.ref, { status: "completed" });
+                    });
+                    
+                    await batch.commit();
+                    userBalance += total;
+                    updateBalanceUI();
+                    showToast(`Deposit of $${total.toFixed(2)} confirmed by Admin!`, "success");
                 }
-                userBalance += total;
-                updateBalanceUI();
-                showToast(`Deposit of $${total.toFixed(2)} confirmed by Admin!`, "success");
-            }
+            } catch (error) { console.log("Sync error:", error); }
         }
 
         async function renderPendingDeposits() {
             let list = document.getElementById('pending-deposits-list');
             list.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">Loading deposits...</p>`;
 
-            const { data: deposits, error } = await supabaseClient
-                .from('deposits')
-                .select('*')
-                .eq('status', 'pending');
+            try {
+                const snapshot = await db.collection("deposits").where("status", "==", "pending").get();
+                
+                if (snapshot.empty) {
+                    list.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">No pending deposits.</p>`;
+                    return;
+                }
 
-            if (error || !deposits || deposits.length === 0) {
-                list.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">No pending deposits.</p>`;
-                return;
+                list.innerHTML = '';
+                snapshot.forEach((doc) => {
+                    const dep = doc.data();
+                    list.innerHTML += `
+                        <div class="admin-item">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 700; color: #fff;">$${dep.creditUSD.toFixed(2)}</div>
+                                <div style="font-size: 11px; color: var(--text-sub);">Phone: ${dep.phone}</div>
+                                <div style="font-size: 11px; color: var(--gold);">Code: ${dep.transactionCode}</div>
+                            </div>
+                            <button class="btn-header" onclick="approveDeposit('${doc.id}')">Approve</button>
+                        </div>`;
+                });
+            } catch (error) {
+                list.innerHTML = `<p style="color: var(--danger); font-size: 13px;">Failed to load.</p>`;
             }
-
-            list.innerHTML = '';
-            deposits.forEach((dep) => {
-                list.innerHTML += `
-                    <div class="admin-item">
-                        <div><div style="font-weight: 700; color: #fff;">$${parseFloat(dep.amount).toFixed(2)}</div><div style="font-size: 11px; color: var(--text-sub);">From: ${dep.user_id}</div></div>
-                        <button class="btn-header" onclick="approveDeposit(${dep.id})">Approve</button>
-                    </div>`;
-            });
         }
 
         async function approveDeposit(id) {
-            const { error } = await supabaseClient
-                .from('deposits')
-                .update({ status: 'approved' })
-                .eq('id', id);
-
-            if (error) {
-                showToast("Failed to approve.", "error");
-            } else {
+            try {
+                await db.collection("deposits").doc(id).update({ status: "approved" });
                 showToast(`Deposit Approved!`, "success");
                 renderPendingDeposits(); 
+            } catch (error) {
+                showToast("Failed to approve.", "error");
             }
         }
 
@@ -879,9 +895,9 @@
                                 <div class="match-header"><span>Bundesliga</span><span>${dayText} at ${timeString}</span></div>
                                 <div class="match-teams"><div>${team1}</div><div>${team2}</div></div>
                                 <div class="odds-row">
-                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>1</span> ${odd1}</button>
-                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>X</span> ${oddX}</button>
-                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>2</span> ${odd2}</button>
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>1</span> ${odd1}</button>
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>X</span> ${oddX}</button>
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>2</span> ${odd2}</button>
                                 </div>
                             </div>`;
                     });
@@ -902,9 +918,9 @@
                                 <div class="match-header"><span>${leagueName}</span><span>Today at 20:${index}0</span></div>
                                 <div class="match-teams"><div>${teams[0]}</div><div>${teams[1]}</div></div>
                                 <div class="odds-row">
-                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>1</span> ${odd1}</button>
-                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>X</span> ${oddX}</button>
-                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>2</span> ${odd2}</button>
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>1</span> ${odd1}</button>
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>X</span> ${oddX}</button>
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>2</span> ${odd2}</button>
                                 </div>
                             </div>`;
                     });
