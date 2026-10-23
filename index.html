@@ -10,6 +10,7 @@
             --primary: #00e676;
             --bg-dark: #0b1120;
             --bg-card: #1e293b;
+            --bg-input: #151b2b;
             --text-main: #ffffff;
             --text-sub: #94a3b8;
             --danger: #ef4444;
@@ -20,144 +21,162 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); padding-bottom: 80px; overflow-x: hidden; }
         
-        header { background: var(--bg-dark); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border);}
+        /* LOGIN SCREEN */
+        #login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-dark); z-index: 9999; display: flex; flex-direction: column; padding: 20px; overflow-y: auto; }
+        .login-top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .back-btn { width: 40px; height: 40px; background: var(--bg-card); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 20px; color: #fff; cursor: pointer;}
+        .login-logo-area { text-align: center; margin-bottom: 30px; }
+        .login-logo-circle { width: 100px; height: 100px; background: var(--bg-card); border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 50px; border: 2px solid var(--primary);}
+        .login-welcome { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 5px;}
+        .login-welcome span { color: var(--primary); }
+        .login-sub { font-size: 14px; color: var(--text-sub); }
+        
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-sub); margin-bottom: 8px; }
+        .input-wrapper { display: flex; align-items: center; background: var(--bg-input); border: 1px solid var(--border); border-radius: 12px; padding: 15px; }
+        .input-wrapper span { font-size: 20px; color: var(--text-sub); margin-right: 10px;}
+        .country-selector { background: transparent; border: none; color: #fff; font-size: 15px; outline: none; margin-right: 10px; border-right: 1px solid var(--border); padding-right: 10px; cursor: pointer;}
+        .country-selector option { background: var(--bg-card); color: #fff; }
+        .input-wrapper input { background: transparent; border: none; outline: none; color: #fff; font-size: 15px; width: 100%;}
+        .btn-login-submit { width: 100%; padding: 18px; background: var(--primary); color: #000; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; margin-top: 10px; cursor: pointer;}
+
+        /* MAIN APP HEADER */
+        .top-green-banner { background: #00e676; color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 700; }
+        header { background: var(--bg-dark); padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border);}
         .logo { font-size: 22px; font-weight: 900; color: #fff; display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none;}
         .logo span { color: var(--primary); }
-        .btn-header { background: var(--primary); color: #000; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 14px; border: none; cursor: pointer;}
-        .balance-bar { background: rgba(0, 230, 118, 0.1); color: var(--primary); padding: 10px 20px; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between; align-items: center;}
+        .btn-header { background: var(--primary); color: #000; padding: 8px 15px; border-radius: 20px; font-weight: 700; font-size: 13px; border: none; cursor: pointer;}
+        .header-icon { width: 35px; height: 35px; background: var(--bg-card); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 16px; border: 1px solid var(--border); cursor: pointer;}
         
         .view { display: none; }
         .view.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Page Headers */
-        .page-header { padding: 20px; background: var(--bg-card); display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 18px; border-bottom: 1px solid var(--border);}
-        .page-header span { cursor: pointer; font-size: 24px; color: var(--text-sub);}
-
-        /* Casino Lobby */
-        .casino-header { padding: 15px 20px 10px 20px; }
-        .search-bar { width: 100%; padding: 15px; border-radius: 15px; background: var(--bg-card); border: 1px solid var(--border); color: #fff; font-size: 14px; outline: none;}
-        .casino-categories { display: flex; gap: 10px; padding: 10px 20px; overflow-x: auto; scrollbar-width: none; }
-        .casino-categories::-webkit-scrollbar { display: none; }
-        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); padding: 8px 18px; border-radius: 20px; color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: 0.2s;}
+        /* SPORTS / HOME */
+        .category-scroll { display: flex; gap: 10px; padding: 15px 15px 10px 15px; overflow-x: auto; scrollbar-width: none; }
+        .category-scroll::-webkit-scrollbar { display: none; }
+        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); padding: 8px 18px; border-radius: 20px; color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;}
         .cat-btn.active { background: rgba(0, 230, 118, 0.15); color: var(--primary); border-color: var(--primary);}
-        .casino-section-title { font-size: 16px; font-weight: 800; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;}
-        .casino-section-title span { font-size: 12px; color: var(--primary); font-weight: 600; cursor: pointer;}
-        .horizontal-scroll { display: flex; gap: 15px; padding: 0 20px 20px 20px; overflow-x: auto; scrollbar-width: none; }
-        .horizontal-scroll::-webkit-scrollbar { display: none; }
-        .h-game-card { min-width: 90px; display: flex; flex-direction: column; align-items: center; cursor: pointer;}
-        .h-game-img { width: 80px; height: 80px; border-radius: 20px; display: flex; justify-content: center; align-items: center; font-size: 35px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-bottom: 8px; transition: transform 0.2s;}
-        .h-game-card:active .h-game-img { transform: scale(0.9); }
-        .h-game-title { font-size: 12px; font-weight: 600; color: #fff; text-align: center;}
-        .game-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 20px 30px 20px; }
-        .casino-game-card { background: var(--bg-card); border-radius: 18px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); position: relative; transition: transform 0.2s;}
-        .casino-game-card:active { transform: scale(0.95); }
-        .game-img { width: 100%; height: 130px; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 24px; text-align: center; position: relative; overflow: hidden; text-shadow: 0 2px 4px rgba(0,0,0,0.5);}
-        .game-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent); pointer-events: none;}
-        .img-aviator { background: linear-gradient(135deg, #b91c1c, #7f1d1d); }
-        .img-sweet { background: linear-gradient(135deg, #7e22ce, #c084fc); }
-        .img-dice { background: linear-gradient(135deg, #0f766e, #14b8a6); }
-        .img-mines { background: linear-gradient(135deg, #d97706, #f59e0b); }
-        .img-roulette { background: linear-gradient(135deg, #be123c, #f43f5e); }
-        .img-jetx { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
-        .game-badge { position: absolute; top: 10px; right: 10px; background: var(--danger); color: #fff; font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 10px; letter-spacing: 1px; z-index: 2;}
-        .game-title { padding: 12px; font-size: 14px; font-weight: 700; text-align: center; background: var(--bg-card); z-index: 2; position: relative;}
-
-        /* Deposit View */
-        .deposit-container { padding: 20px; }
-        .pay-box { background: var(--bg-card); padding: 25px; border-radius: 20px; border: 1px dashed var(--primary); text-align: center; margin-bottom: 20px;}
-        .pay-box h2 { color: var(--primary); font-size: 28px; margin: 10px 0; letter-spacing: 2px;}
-        .pay-box p { font-size: 13px; color: var(--text-sub); }
-        .upload-box { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 20px; text-align: center; margin-bottom: 20px;}
-        .upload-box input[type="file"] { display: none; }
-        .upload-label { display: block; padding: 30px; border: 2px dashed var(--text-sub); border-radius: 15px; cursor: pointer; color: var(--text-sub); font-size: 14px;}
-        .upload-label:hover { border-color: var(--primary); color: var(--primary); }
-        .pending-box { background: rgba(245, 158, 11, 0.1); border: 1px solid var(--gold); padding: 20px; border-radius: 20px; text-align: center; display: none; }
-        .pending-box h3 { color: var(--gold); margin-bottom: 10px; }
-        
-        /* Hidden Admin Panel */
-        .admin-panel { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); padding: 20px; border-radius: 20px; margin-top: 20px; display: none;}
-        .admin-panel h3 { color: var(--danger); margin-bottom: 15px; font-size: 16px;}
-        .admin-item { background: var(--bg-card); padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
-        .btn-approve { background: var(--primary); color: #000; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; cursor: pointer;}
-
-        /* Sports Betting */
-        .market-tabs { display: flex; gap: 10px; padding: 15px 20px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--border);}
+        .game-scroll { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none; }
+        .game-scroll::-webkit-scrollbar { display: none; }
+        .game-scroll-item { min-width: 70px; height: 70px; border-radius: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 24px; cursor: pointer; border: 1px solid var(--border); background: var(--bg-card);}
+        .game-scroll-item span { font-size: 10px; font-weight: 600; margin-top: 5px; color: #fff;}
+        .bg-aviator { background: linear-gradient(135deg, #b91c1c, #7f1d1d); border: none;}
+        .bg-jetx { background: linear-gradient(135deg, #1e3a8a, #3b82f6); border: none;}
+        .market-tabs { display: flex; gap: 10px; padding: 15px 15px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--border); align-items: center;}
         .market-tabs::-webkit-scrollbar { display: none; }
-        .market-tab { background: var(--bg-card); padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; cursor: pointer; border: 1px solid var(--border);}
-        .market-tab.active { background: rgba(0,230,118,0.1); color: var(--primary); border-color: var(--primary);}
-        .matches-container { padding: 10px 15px; }
-        .match-card { background: var(--bg-card); border-radius: 15px; padding: 15px; margin-bottom: 12px; border: 1px solid var(--border); }
+        .market-tab { font-size: 14px; font-weight: 600; color: var(--text-sub); cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 5px;}
+        .market-tab.active { color: var(--primary); }
+        .market-nav-arrow { width: 30px; height: 30px; background: var(--primary); color: #000; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; cursor: pointer;}
+        .matches-container { padding: 10px 15px; background: #0d131f;}
+        .match-card { background: transparent; border-bottom: 1px solid var(--border); padding: 15px 0; }
         .match-header { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-sub); margin-bottom: 10px; }
-        .match-teams { font-weight: 700; font-size: 15px; margin-bottom: 15px; }
-        .odds-row { display: flex; gap: 10px; }
-        .odd-btn { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 12px 0; border-radius: 10px; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; flex-direction: column; align-items: center;}
-        .odd-btn span { font-size: 10px; color: var(--text-sub); margin-bottom: 3px;}
+        .match-teams { font-weight: 700; font-size: 14px; margin-bottom: 15px; color: #fff; display: flex; flex-direction: column; gap: 5px;}
+        .odds-row { display: flex; gap: 10px; align-items: center; }
+        .odd-btn { flex: 1; background: transparent; border: 1px solid #2d3748; padding: 10px 0; border-radius: 8px; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s;}
         .odd-btn.selected { background: var(--primary); color: #000; border-color: var(--primary); }
+
+        /* PREMIUM CASINO LOBBY */
+        .casino-header-area { padding: 15px; }
+        .casino-search { width: 100%; padding: 15px; border-radius: 15px; background: var(--bg-card); border: 1px solid var(--border); color: #fff; font-size: 14px; outline: none; margin-bottom: 10px;}
+        .casino-categories { display: flex; gap: 10px; padding: 5px 0 15px 0; overflow-x: auto; scrollbar-width: none;}
+        .casino-categories::-webkit-scrollbar { display: none; }
+        .casino-cat-btn { background: var(--bg-card); border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;}
+        .casino-cat-btn.active { background: rgba(0,230,118,0.1); color: var(--primary); border-color: var(--primary);}
         
-        /* Bet Slip */
-        .bet-slip-bar { position: fixed; bottom: 75px; left: 10px; width: calc(100% - 20px); background: var(--bg-card); border: 1px solid var(--primary); border-radius: 15px; padding: 12px 20px; display: none; justify-content: space-between; align-items: center; z-index: 90; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        .bet-slip-bar.show { display: flex; }
-        .slip-info { font-size: 12px; color: var(--text-sub); }
-        .slip-info strong { color: #fff; font-size: 14px;}
-        .slip-odds { color: var(--primary); font-weight: 800; font-size: 16px;}
-        .btn-place-bet { background: var(--primary); color: #000; padding: 10px 20px; border-radius: 10px; font-weight: 800; border: none; cursor: pointer;}
+        .casino-section-title { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; margin-bottom: 10px; font-weight: 700; font-size: 16px;}
+        .casino-section-title span { font-size: 12px; color: var(--primary); cursor: pointer;}
+        
+        .casino-horizontal-scroll { display: flex; gap: 15px; padding: 0 15px 20px 15px; overflow-x: auto; scrollbar-width: none;}
+        .casino-horizontal-scroll::-webkit-scrollbar { display: none; }
+        .casino-h-card { min-width: 90px; display: flex; flex-direction: column; align-items: center; cursor: pointer;}
+        .casino-h-img { width: 80px; height: 80px; border-radius: 20px; display: flex; justify-content: center; align-items: center; font-size: 35px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-bottom: 8px; position: relative; overflow: hidden;}
+        .casino-h-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent); }
+        .casino-h-title { font-size: 12px; font-weight: 600; color: #fff; text-align: center;}
+        
+        .casino-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 15px 20px 15px; }
+        .casino-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); position: relative; transition: transform 0.2s;}
+        .casino-card:active { transform: scale(0.95); }
+        .casino-card-img { width: 100%; height: 130px; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 24px; position: relative; overflow: hidden;}
+        .casino-card-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent); }
+        .casino-card-title { padding: 12px; font-size: 14px; font-weight: 700; text-align: center; background: var(--bg-card); position: relative; z-index: 2;}
+        .casino-badge { position: absolute; top: 10px; right: 10px; color: #fff; font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 10px; letter-spacing: 1px; z-index: 2;}
+        .bg-hot { background: var(--danger); }
+        .bg-new { background: var(--primary); color: #000; }
 
-        /* Game Shared Areas */
-        .game-header { padding: 15px; display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 18px; background: var(--bg-card);}
-        .game-header span { cursor: pointer; font-size: 24px;}
-        .game-controls { background: var(--bg-card); padding: 25px; border-radius: 24px 24px 0 0; text-align: center;}
-        .game-input { width: 100%; padding: 15px; border-radius: 15px; background: #0f172a; border: 1px solid #334155; color: #fff; font-size: 20px; font-weight: 800; text-align: center; margin-bottom: 15px;}
-        .btn-action { width: 100%; padding: 20px; border-radius: 15px; font-size: 20px; font-weight: 900; border: none; cursor: pointer; transition: 0.2s;}
-        .btn-start { background: var(--primary); color: #000; }
-        .btn-cashout { background: var(--gold); color: #000; animation: pulse 1s infinite;}
-        .btn-disabled { background: #334155; color: #64748b; cursor: not-allowed;}
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        .bg-aviator { background: linear-gradient(135deg, #b91c1c, #7f1d1d); }
+        .bg-sweet { background: linear-gradient(135deg, #7e22ce, #c084fc); }
+        .bg-dice { background: linear-gradient(135deg, #0f766e, #14b8a6); }
+        .bg-mines { background: linear-gradient(135deg, #d97706, #f59e0b); }
+        .bg-roulette { background: linear-gradient(135deg, #be123c, #f43f5e); }
 
-        /* Specific Game Layouts */
-        #view-crash { background: #000; height: 100vh; display: flex; flex-direction: column; }
-        .crash-display { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden;}
-        .crash-multiplier { font-size: 80px; font-weight: 900; color: #fff; z-index: 10; }
-        .crash-multiplier.crashed { color: var(--danger); }
-        .plane { position: absolute; bottom: 10%; left: 10%; font-size: 50px; transition: all 0.1s linear; z-index: 5;}
-        #view-slots { background: #1e1b4b; height: 100vh; display: flex; flex-direction: column; }
-        .slot-machine { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;}
-        .reels-container { display: flex; gap: 10px; background: #000; padding: 20px; border-radius: 20px; border: 4px solid var(--gold); margin-bottom: 30px;}
-        .reel { width: 80px; height: 100px; background: #fff; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 50px; color: #000;}
-        #view-dice { background: #0f172a; height: 100vh; display: flex; flex-direction: column; }
-        .dice-area { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;}
-        .dice-box { font-size: 100px; margin-bottom: 20px; color: #fff;}
-        #view-mines { background: #1a202c; height: 100vh; display: flex; flex-direction: column; }
-        .mines-area { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 20px; }
-        .mines-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-        .mine-btn { background: var(--bg-card); border: 1px solid var(--border); height: 60px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 24px; cursor: pointer;}
-        .mine-btn.safe { background: var(--primary); color: #000; }
-        .mine-btn.bomb { background: var(--danger); color: #fff; }
-        #view-roulette { background: #1e293b; height: 100vh; display: flex; flex-direction: column; }
-        .roulette-area { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;}
-        .roulette-wheel { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(red 0deg 180deg, black 180deg 360deg); border: 5px solid var(--gold); display: flex; justify-content: center; align-items: center; font-size: 40px; font-weight: 900; margin-bottom: 20px; transition: transform 2s cubic-bezier(0.1, 0.7, 0.1, 1);}
-        .bet-buttons { display: flex; gap: 15px; }
-        .bet-btn { flex: 1; padding: 15px; border-radius: 10px; font-weight: 900; font-size: 18px; border: none; cursor: pointer;}
-
-        /* Promos */
+        /* PROMOS */
         .promo-container { padding: 15px; }
-        .top-gift-card { background: linear-gradient(135deg, #1e293b, #0f172a); border-radius: 24px; padding: 30px 20px; text-align: center; margin-bottom: 20px; border: 1px solid var(--primary);}
-        .top-gift-card .amount { font-size: 40px; font-weight: 900; color: var(--primary); margin-bottom: 15px;}
-        .top-gift-card .claim-btn { background: var(--primary); color: #000; border: none; padding: 15px; width: 100%; border-radius: 25px; font-size: 16px; font-weight: 700; cursor: pointer;}
+        .top-gift-card { background: var(--bg-card); border-radius: 20px; padding: 20px; text-align: center; border: 1px solid var(--primary); margin-bottom: 15px;}
         .task-item { display: flex; align-items: center; padding: 15px; background: var(--bg-card); border-radius: 15px; margin-bottom: 10px; border: 1px solid var(--border);}
         .task-icon { font-size: 24px; margin-right: 15px;}
         .task-info { flex: 1; }
         .task-name { font-weight: 700; font-size: 14px; color: #fff;}
         .task-btn { background: var(--primary); color: #000; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; font-weight: 700; cursor: pointer;}
         .task-btn.done { background: rgba(0,230,118,0.1); color: var(--primary); border: 1px solid var(--primary);}
+        .btn-action { width: 100%; padding: 18px; border-radius: 15px; font-size: 18px; font-weight: 800; border: none; cursor: pointer; background: var(--primary); color: #000; }
 
-        /* Profile */
-        .profile-card { background: var(--bg-card); margin: 20px; border-radius: 24px; padding: 30px 20px; text-align: center; border: 1px solid var(--border);}
-        .profile-avatar { width: 80px; height: 80px; background: rgba(255,255,255,0.05); border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 40px; border: 2px solid var(--primary);}
-        .profile-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 5px;}
-        .profile-phone { font-size: 14px; color: var(--text-sub); margin-bottom: 20px;}
-        .support-btn { display: block; width: 100%; padding: 15px; background: rgba(0,230,118,0.1); color: var(--primary); text-align: center; border-radius: 15px; text-decoration: none; font-weight: 700; border: 1px solid var(--primary); margin-bottom: 10px;}
-        .logout-btn { display: block; width: 100%; padding: 15px; background: transparent; color: var(--danger); text-align: center; border-radius: 15px; font-weight: 700; border: 1px solid var(--danger); cursor: pointer;}
+        /* NEW MY ACCOUNT PROFILE */
+        .account-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: var(--bg-dark); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
+        .account-header h2 { font-size: 18px; font-weight: 700; color: #fff; }
+        .bell-icon { position: relative; font-size: 20px; cursor: pointer;}
+        .bell-badge { position: absolute; top: -5px; right: -5px; background: var(--primary); color: #000; font-size: 9px; font-weight: 800; width: 15px; height: 15px; display: flex; justify-content: center; align-items: center; border-radius: 50%;}
+        
+        .profile-top-card { background: var(--bg-card); margin: 15px; border-radius: 15px; padding: 20px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;}
+        .prof-info { display: flex; align-items: center; gap: 15px;}
+        .prof-avatar { width: 50px; height: 50px; background: #4ade80; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #000; position: relative;}
+        .verified-badge { position: absolute; bottom: -2px; right: -2px; background: var(--primary); color: #000; width: 18px; height: 18px; display: flex; justify-content: center; align-items: center; border-radius: 50%; font-size: 10px; border: 2px solid var(--bg-card);}
+        .prof-text h3 { font-size: 16px; font-weight: 700; color: #fff;}
+        .prof-text p { font-size: 13px; color: var(--text-sub);}
+        .verified-tag { background: rgba(0,230,118,0.1); color: var(--primary); padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 5px;}
+
+        .balance-card { background: var(--bg-card); margin: 15px; border-radius: 15px; padding: 20px; border: 1px solid var(--border); }
+        .bal-row { display: flex; gap: 15px; margin-bottom: 20px; }
+        .bal-box { flex: 1; background: var(--bg-dark); padding: 15px; border-radius: 12px; }
+        .bal-box p { font-size: 12px; color: var(--text-sub); margin-bottom: 5px;}
+        .bal-box h2 { font-size: 24px; color: var(--primary); font-weight: 800;}
+        .bal-box.bonus h2 { color: var(--gold); }
+        .btn-row { display: flex; gap: 15px; }
+        .btn-dep { flex: 1; background: var(--primary); color: #000; padding: 12px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer; font-size: 15px;}
+        .btn-wit { flex: 1; background: var(--gold); color: #000; padding: 12px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer; font-size: 15px;}
+
+        .my-account-list { background: var(--bg-card); margin: 15px; border-radius: 15px; border: 1px solid var(--border); overflow: hidden; }
+        .acc-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid var(--border); cursor: pointer; }
+        .acc-item:last-child { border-bottom: none; }
+        .acc-icon { width: 40px; height: 40px; background: var(--bg-dark); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; margin-right: 15px; }
+        .acc-text { flex: 1; }
+        .acc-title { font-size: 15px; font-weight: 700; color: #fff; }
+        .acc-sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+        .acc-arrow { color: var(--text-sub); font-size: 18px; }
+        .section-label { font-size: 12px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; margin: 20px 20px 10px 20px; letter-spacing: 1px;}
+        .accordion { background: var(--bg-card); margin: 0 15px 10px 15px; border-radius: 15px; border: 1px solid var(--border); overflow: hidden; }
+        .accordion summary { padding: 18px; font-weight: 600; font-size: 15px; color: #fff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none;}
+        .accordion summary::-webkit-details-marker { display: none; }
+        .accordion summary::after { content: '▼'; font-size: 10px; color: var(--text-sub); }
+        .accordion[open] summary::after { content: '▲'; }
+        .accordion p { padding: 0 18px 18px 18px; font-size: 13px; color: var(--text-sub); line-height: 1.5; }
+        
+        .social-row { display: flex; justify-content: space-between; margin: 20px 15px; }
+        .social-icon { width: 50px; height: 50px; background: var(--bg-card); border-radius: 15px; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #fff; border: 1px solid var(--border); }
+        
+        .info-boxes { display: flex; gap: 15px; margin: 20px 15px; }
+        .info-box { flex: 1; background: var(--bg-card); border-radius: 15px; padding: 15px; border: 1px solid var(--border); }
+        .info-box.pay { border-color: var(--primary); flex: 1.5; }
+        .info-box.age { border-color: var(--danger); }
+        .info-label { font-size: 10px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; margin-bottom: 10px;}
+        .info-value { display: flex; align-items: center; justify-content: space-between; font-weight: 800; font-size: 16px;}
+        .pay .info-value { color: var(--primary); flex-direction: column; align-items: flex-start; gap: 5px;}
+        .age .info-value { color: var(--danger); }
+
+        .license-section { text-align: center; margin: 20px 20px 100px 20px; font-size: 12px; color: var(--text-sub); line-height: 1.6; }
+        .license-section h4 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px;}
+        
+        .floating-chat { position: fixed; bottom: 90px; right: 20px; width: 60px; height: 60px; background: #4ade80; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; color: #000; box-shadow: 0 5px 15px rgba(74, 222, 128, 0.4); z-index: 99; cursor: pointer;}
 
         /* Bottom Nav */
         .bottom-nav { position: fixed; bottom: 0; width: 100%; background: var(--bg-dark); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 10px 0 20px 0; z-index: 100; }
@@ -165,239 +184,399 @@
         .nav-item.active { color: var(--primary); }
         .nav-icon { font-size: 22px; display: block; margin-bottom: 4px; }
 
-        /* Modals & Toast */
-        .popup-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 5000; display: none; flex-direction: column; justify-content: center; align-items: center; }
-        .popup-box { background: var(--bg-card); width: 90%; max-width: 360px; border-radius: 24px; padding: 30px; text-align: center; border: 1px solid var(--border);}
-        .popup-box h3 { margin-bottom: 15px; font-size: 20px; color: #fff; }
-        .popup-box input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: #0f172a; color: #fff; margin-bottom: 15px; font-size: 16px; text-align: center;}
-        .popup-btn { background: var(--primary); color: #000; border: none; padding: 15px; width: 100%; border-radius: 25px; font-size: 16px; font-weight: 700; cursor: pointer; }
-        .popup-btn.cancel { background: transparent; color: var(--text-sub); border: 1px solid var(--border); margin-top: 10px;}
-        
-        #camera-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 5000; display: none; flex-direction: column; justify-content: center; align-items: center; }
-        .camera-box { background: var(--bg-card); width: 90%; max-width: 400px; border-radius: 20px; padding: 20px; text-align: center;}
-        .video-container { width: 100%; height: 300px; background: #000; border-radius: 15px; margin: 15px 0; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center;}
-        video { width: 100%; height: 100%; object-fit: cover; display: none; }
-        .camera-placeholder { color: var(--text-sub); font-size: 60px; }
-        
+        /* Toast */
         #toast { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; padding: 14px 28px; border-radius: 30px; font-size: 14px; font-weight: 700; z-index: 10000; transition: top 0.4s ease; text-align: center; width: max-content; max-width: 90%; }
         #toast.show { top: 25px; }
         #toast.error { background: var(--danger); color: white;}
         #toast.success { background: var(--primary); color: black;}
+
+        /* Deposit / Admin */
+        .page-header { padding: 20px; background: var(--bg-card); display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 18px; border-bottom: 1px solid var(--border);}
+        .deposit-container { padding: 20px; }
+        .pay-box { background: var(--bg-card); padding: 25px; border-radius: 20px; border: 1px dashed var(--primary); text-align: center; margin-bottom: 20px;}
+        .upload-box { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 20px; text-align: center; margin-bottom: 20px;}
+        .admin-panel { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); padding: 20px; border-radius: 20px; margin-top: 20px; display: none;}
+        .admin-item { background: var(--bg-card); padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
+        .popup-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 5000; display: none; flex-direction: column; justify-content: center; align-items: center; }
+        .popup-box { background: var(--bg-card); width: 90%; max-width: 360px; border-radius: 24px; padding: 30px; text-align: center; border: 1px solid var(--border);}
     </style>
 </head>
 <body>
 
     <div id="toast">Message</div>
 
+    <!-- FULL SCREEN LOGIN -->
+    <div id="login-screen">
+        <div class="login-top-bar">
+            <div class="back-btn">‹</div>
+            <div style="color: var(--primary); font-weight: 600; font-size: 14px; cursor: pointer;" onclick="processLogin()">Create Account →</div>
+        </div>
+        
+        <div class="login-logo-area">
+            <div class="login-logo-circle">👑</div>
+            <div class="login-welcome">Welcome to <span>Empire Bet</span></div>
+            <div class="login-sub">Sign in to continue betting</div>
+        </div>
+
+        <div class="input-group">
+            <label>Phone Number</label>
+            <div class="input-wrapper">
+                <span>📞</span>
+                <select id="country-code" class="country-selector">
+                    <option value="+254">🇰🇪 +254</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+234">🇳🇬 +234</option>
+                    <option value="+27">🇿🇦 +27</option>
+                    <option value="+255">🇹🇿 +255</option>
+                    <option value="+256">🇺🇬 +256</option>
+                    <option value="+250">🇷🇼 +250</option>
+                    <option value="+91">🇮🇳 +91</option>
+                    <option value="+61">🇦🇺 +61</option>
+                </select>
+                <input type="tel" id="login-phone" placeholder="712345678">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Password <a href="#" style="color: var(--primary);">Forgot?</a></label>
+            <div class="input-wrapper">
+                <span>🔒</span>
+                <input type="password" id="login-pass" placeholder="Enter password">
+            </div>
+        </div>
+
+        <button class="btn-login-submit" onclick="processLogin()">Sign In / Sign Up →</button>
+    </div>
+
+    <!-- MAIN APP HEADER -->
+    <div class="top-green-banner" id="top-green-banner" style="display: none;">
+        <div>Deposit via M-PESA paybill 714777</div>
+        <span onclick="switchView('view-deposit')">Login to deposit</span>
+    </div>
+
     <header>
-        <!-- SECRET TAP ADDED TO LOGO -->
         <div class="logo" onclick="trackLogoTaps()">
             <span class="logo-icon">👑</span> Empire<span>Bet</span>
         </div>
-        <div id="header-buttons">
-            <button class="btn-header" onclick="openAuthModal('signup')">Sign Up</button>
+        <div class="header-actions" id="header-actions">
+            <div id="logged-out-header" style="display: flex; gap: 10px;">
+                <button class="btn-header" style="background: transparent; color: #fff; border: 1px solid #fff;" onclick="document.getElementById('login-screen').style.display='flex'">Login</button>
+                <button class="btn-header" onclick="document.getElementById('login-screen').style.display='flex'">Join Now</button>
+            </div>
+            <div id="logged-in-header" style="display: none; gap: 10px;">
+                <div class="header-icon">🔍</div>
+                <div class="header-icon">☀️</div>
+                <button class="btn-header" onclick="switchView('view-deposit')">Deposit</button>
+            </div>
         </div>
     </header>
 
-    <div class="balance-bar" id="balance-bar" style="display: none;">
+    <div class="balance-bar" id="balance-bar" style="display: none; background: rgba(0, 230, 118, 0.1); color: var(--primary); padding: 10px 20px; font-size: 14px; font-weight: 600; justify-content: space-between; align-items: center;">
         <span>Balance: <span id="header-balance">$0.00</span></span>
         <span style="font-size: 11px; color: #fff;">VIP Level 1</span>
     </div>
 
-    <!-- SPORTS VIEW (Home) -->
-    <div id="view-sports" class="view active">
-        <div class="market-tabs">
-            <div class="market-tab active">🔥 Markets</div>
-            <div class="market-tab">Total</div>
-            <div class="market-tab">Both Teams</div>
-        </div>
-        <div class="matches-container" id="matches-list"></div>
-    </div>
-
-    <!-- CASINO VIEW -->
-    <div id="view-casino" class="view">
-        <div class="casino-header">
-            <input type="text" id="game-search" class="search-bar" placeholder="🔍 Search games..." onkeyup="filterGames()">
-        </div>
-        <div class="casino-categories">
-            <button class="cat-btn active">Lobby</button>
-            <button class="cat-btn">Crash</button>
-            <button class="cat-btn">Slots</button>
-            <button class="cat-btn">Live Casino</button>
-        </div>
-        <div class="casino-section-title">🔥 Top Games <span>View All ></span></div>
-        <div class="horizontal-scroll">
-            <div class="h-game-card" onclick="openCrashGame()"><div class="h-game-img img-aviator">✈️</div><div class="h-game-title">Aviator</div></div>
-            <div class="h-game-card" onclick="openCrashGame()"><div class="h-game-img img-jetx">🚀</div><div class="h-game-title">JetX</div></div>
-            <div class="h-game-card" onclick="openSlotGame()"><div class="h-game-img img-sweet">🍭</div><div class="h-game-title">Sweet</div></div>
-            <div class="h-game-card" onclick="openMinesGame()"><div class="h-game-img img-mines">💣</div><div class="h-game-title">Mines</div></div>
-        </div>
-        <div class="casino-section-title">🎮 All Games <span>View All ></span></div>
-        <div class="game-grid">
-            <div class="casino-game-card" data-name="Aviator Crash" onclick="openCrashGame()"><div class="game-badge">HOT</div><div class="game-img img-aviator">✈️</div><div class="game-title">Aviator</div></div>
-            <div class="casino-game-card" data-name="Sweet Bonanza Slots" onclick="openSlotGame()"><div class="game-badge">NEW</div><div class="game-img img-sweet">🍭</div><div class="game-title">Sweet Bonanza</div></div>
-            <div class="casino-game-card" data-name="Dice Roll" onclick="openDiceGame()"><div class="game-img img-dice">🎲</div><div class="game-title">Dice Roll</div></div>
-             <div class="casino-game-card" data-name="Mines" onclick="openMinesGame()"><div class="game-img img-mines">💣</div><div class="game-title">Mines</div></div>
-            <div class="casino-game-card" data-name="Roulette" onclick="openRouletteGame()"><div class="game-img img-roulette">🎡</div><div class="game-title">Roulette</div></div>
-        </div>
-    </div>
-
-    <!-- DEPOSIT VIEW -->
-    <div id="view-deposit" class="view">
-        <div class="page-header"><span onclick="switchView('view-sports')">‹</span> Deposit Funds</div>
-        <div class="deposit-container">
-            <div class="pay-box" id="pay-box">
-                <p>Send <strong>$1.00 (KES 130)</strong> to M-Pesa:</p>
-                <h2>0708520095</h2>
-                <p>Account Name: Empire Bet</p>
-            </div>
-            <div class="upload-box" id="upload-box">
-                <p style="margin-bottom: 15px; font-size: 13px; color: var(--text-sub);">Upload screenshot of the M-Pesa receipt:</p>
-                <label for="file-upload" class="upload-label">📸 Tap to select image</label>
-                <input type="file" id="file-upload" accept="image/*" onchange="fileSelected(event)">
-                <p id="file-name" style="margin-top: 10px; font-size: 12px; color: var(--primary);"></p>
-            </div>
-            <button class="btn-action btn-start" id="submit-deposit-btn" onclick="submitDepositProof()" disabled style="background: #334155; color: #64748b;">Submit Proof</button>
-            <div class="pending-box" id="pending-box">
-                <h3>⏳ Pending Approval</h3>
-                <p style="font-size: 13px; color: var(--text-sub);">Your screenshot has been sent to the Admin. Your balance will update once confirmed.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- PROMOS VIEW -->
-    <div id="view-promos" class="view">
-        <div class="promo-container">
-            <div class="top-gift-card">
-                <h3 style="color: #fff; margin-bottom: 5px;">Newcomer Gift</h3>
-                <div class="amount" id="promo-amount">$9.00</div>
-                <button class="claim-btn" id="main-claim-btn" onclick="claimPromo()">Complete Tasks to Claim</button>
-            </div>
-            <div class="task-item"><div class="task-icon">💳</div><div class="task-info"><div class="task-name">Link Account</div></div><button class="task-btn" id="task1-btn" onclick="openLinkModal()">Link</button></div>
-            <div class="task-item"><div class="task-icon">📱</div><div class="task-info"><div class="task-name">Verify Phone</div></div><button class="task-btn" id="task2-btn" onclick="startOTP()">Verify</button></div>
-            <div class="task-item"><div class="task-icon">🤖</div><div class="task-info"><div class="task-name">Anti-Bot Check</div></div><button class="task-btn" id="task3-btn" onclick="startCameraCheck()">Verify</button></div>
-        </div>
-    </div>
-
-    <!-- PROFILE VIEW -->
-    <div id="view-profile" class="view">
-        <div class="profile-card">
-            <div class="profile-avatar">👤</div>
-            <div class="profile-name" id="prof-name">Guest User</div>
-            <div class="profile-phone" id="prof-phone">+254 --- --- ---</div>
-            <a href="tel:0781617031" class="support-btn">📞 Customer Care: 0781 617031</a>
-            <button class="logout-btn" onclick="logoutUser()">Log Out</button>
-        </div>
-
-        <!-- HIDDEN ADMIN SIMULATION PANEL -->
-        <div class="admin-panel" id="admin-panel" style="margin: 20px;">
-            <h3>👑 Admin Panel (Secret)</h3>
-            <p style="font-size: 12px; color: var(--text-sub); margin-bottom: 15px;">Approve pending user deposits here.</p>
-            <div id="pending-deposits-list"></div>
-        </div>
-    </div>
-
-    <!-- CRASH GAME VIEW -->
-    <div id="view-crash" class="view">
-        <div class="game-header"><span onclick="switchView('view-casino')">‹</span> Aviator / Crash</div>
-        <div class="crash-display"><div class="crash-multiplier" id="crash-multiplier">1.00x</div><div class="plane" id="plane">✈️</div></div>
-        <div class="game-controls"><input type="number" id="crash-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="crash-btn" onclick="handleCrashAction()">Place Bet</button></div>
-    </div>
-
-    <!-- SLOT GAME VIEW -->
-    <div id="view-slots" class="view">
-        <div class="game-header" style="background: #1e1b4b;"><span onclick="switchView('view-casino')">‹</span> Sweet Bonanza</div>
-        <div class="slot-machine"><div class="reels-container"><div class="reel" id="reel1">🍒</div><div class="reel" id="reel2">🍋</div><div class="reel" id="reel3">🔔</div></div></div>
-        <div class="game-controls"><input type="number" id="slot-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="slot-btn" onclick="spinSlots()">Spin!</button></div>
-    </div>
-
-    <!-- DICE GAME VIEW -->
-    <div id="view-dice" class="view">
-        <div class="game-header" style="background: #0f172a;"><span onclick="switchView('view-casino')">‹</span> Dice Roll</div>
-        <div class="dice-area">
-            <div class="dice-box" id="dice-display">🎲</div>
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <button class="market-tab" onclick="setDicePick(1)">1</button><button class="market-tab" onclick="setDicePick(2)">2</button><button class="market-tab" onclick="setDicePick(3)">3</button>
-                <button class="market-tab" onclick="setDicePick(4)">4</button><button class="market-tab" onclick="setDicePick(5)">5</button><button class="market-tab" onclick="setDicePick(6)">6</button>
-            </div>
-        </div>
-        <div class="game-controls"><input type="number" id="dice-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="dice-btn" onclick="rollDice()">Roll Dice</button></div>
-    </div>
-
-    <!-- MINES GAME VIEW -->
-    <div id="view-mines" class="view">
-        <div class="game-header" style="background: #1a202c;"><span onclick="switchView('view-casino')">‹</span> Mines</div>
-        <div class="mines-area"><div class="mines-grid" id="mines-grid"></div></div>
-        <div class="game-controls"><input type="number" id="mines-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="mines-btn" onclick="handleMinesAction()">Start Game</button></div>
-    </div>
-
-    <!-- ROULETTE GAME VIEW -->
-    <div id="view-roulette" class="view">
-        <div class="game-header" style="background: #1e293b;"><span onclick="switchView('view-casino')">‹</span> Roulette</div>
-        <div class="roulette-area"><div class="roulette-wheel" id="roulette-wheel">?</div></div>
-        <div class="game-controls">
-            <input type="number" id="roulette-bet" class="game-input" value="1.00">
-            <div class="bet-buttons"><button class="bet-btn" style="background: var(--danger); color: white;" onclick="spinRoulette('red')">Bet RED</button><button class="bet-btn" style="background: #000; color: white; border: 1px solid #555;" onclick="spinRoulette('black')">Bet BLACK</button></div>
-        </div>
-    </div>
-
-    <!-- STICKY BET SLIP BAR -->
-    <div class="bet-slip-bar" id="bet-slip">
-        <div><div class="slip-info"><strong id="slip-count">0</strong> picks</div><div class="slip-info">Odds: <span class="slip-odds" id="slip-odds">0.00</span></div></div>
-        <button class="btn-place-bet" onclick="placeSportsBet()">Place Bet</button>
-    </div>
-
-    <!-- BOTTOM NAV -->
-    <div class="bottom-nav">
-        <div class="nav-item active" onclick="switchView('view-sports')"><span class="nav-icon">⚽</span> Sports</div>
-        <div class="nav-item" onclick="switchView('view-casino')"><span class="nav-icon">🎰</span> Casino</div>
-        <div class="nav-item" onclick="switchView('view-promos')"><span class="nav-icon">🎁</span> Promos</div>
-        <div class="nav-item" onclick="switchView('view-profile')"><span class="nav-icon">👤</span> Profile</div>
-    </div>
-
-    <!-- AUTH MODAL -->
-    <div id="auth-modal" class="popup-modal">
-        <div class="popup-box">
-            <h3>Sign Up / Login</h3>
-            <input type="tel" id="auth-phone" placeholder="Enter Phone (e.g. 0712345678)">
-            <input type="password" id="auth-pass" placeholder="Create Password">
-            <button class="popup-btn" onclick="processSignUp()">Register</button>
-            <button class="popup-btn cancel" onclick="document.getElementById('auth-modal').style.display='none'">Cancel</button>
-        </div>
-    </div>
-
-    <!-- OTP MODAL -->
+    <!-- MODALS -->
     <div id="otp-modal" class="popup-modal">
         <div class="popup-box">
-            <h3>Verify Phone</h3>
-            <input type="text" id="otp-input" placeholder="------" maxlength="6" style="letter-spacing: 5px; font-size: 24px;">
-            <button class="popup-btn" onclick="verifyOTP()">Verify</button>
+            <h3 style="color:#fff; margin-bottom: 15px;">Verify Phone</h3>
+            <input type="text" id="otp-input" placeholder="------" maxlength="6" style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: #0f172a; color: #fff; text-align: center; font-size: 24px; letter-spacing: 5px; margin-bottom: 15px;">
+            <button class="btn-action" onclick="verifyOTP()">Verify Code</button>
         </div>
     </div>
 
-    <!-- LINK ACCOUNT MODAL -->
     <div id="link-modal" class="popup-modal">
         <div class="popup-box">
-            <h3>Link M-Pesa</h3>
-            <input type="tel" id="link-phone" placeholder="M-Pesa Number">
-            <button class="popup-btn" onclick="saveLinkAccount()">Save</button>
+            <h3 style="color:#fff; margin-bottom: 15px;">Link M-Pesa</h3>
+            <input type="tel" id="link-phone" placeholder="M-Pesa Number" style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: #0f172a; color: #fff; text-align: center; margin-bottom: 15px;">
+            <button class="btn-action" onclick="saveLinkAccount()">Save</button>
+        </div>
+    </div>
+    <!-- SPORTS VIEW -->
+<div id="view-sports" class="view active">
+    <div class="category-scroll">
+        <button class="cat-btn active">Crash 48</button>
+        <button class="cat-btn">New 49</button>
+        <button class="cat-btn">Virtuals 61</button>
+        <button class="cat-btn">Slots 1623</button>
+        <button class="cat-btn">Live Casino</button>
+    </div>
+
+    <div class="game-scroll">
+        <div class="game-scroll-item bg-aviator" onclick="checkMinBalance() && alert('Aviator Game')">✈️<span>Aviator</span></div>
+        <div class="game-scroll-item" onclick="checkMinBalance() && alert('Avionix Game')">🍭<span>Avionix</span></div>
+        <div class="game-scroll-item" onclick="checkMinBalance() && alert('Bazooka Game')">🎰<span>Bazooka</span></div>
+        <div class="game-scroll-item bg-jetx" onclick="checkMinBalance() && alert('JetX Game')">🚀<span>JetX</span></div>
+    </div>
+
+    <div class="market-tabs">
+        <div class="market-tab active">🔥 Markets</div>
+        <div style="color: #2d3748;">|</div>
+        <div class="market-nav-arrow">‹</div>
+        <div class="market-tab">Total</div>
+        <div class="market-tab">Both Teams</div>
+        <div class="market-nav-arrow">›</div>
+        <div class="market-tab" style="margin-left: auto;">⊞ More ⌄</div>
+    </div>
+
+    <div class="matches-container" id="matches-list">
+        <!-- Generated by JS -->
+    </div>
+</div>
+
+<!-- CASINO VIEW -->
+<div id="view-casino" class="view">
+    <div class="casino-header-area">
+        <input type="text" class="casino-search" placeholder="🔍 Search games...">
+        <div class="casino-categories">
+            <button class="casino-cat-btn active">Lobby</button>
+            <button class="casino-cat-btn">Crash</button>
+            <button class="casino-cat-btn">Slots</button>
+            <button class="casino-cat-btn">Live Casino</button>
         </div>
     </div>
 
-    <!-- CAMERA MODAL -->
-    <div id="camera-modal">
-        <div class="camera-box">
-            <h3 style="color: #fff;">Anti-Bot Check</h3>
-            <div class="video-container">
-                <video id="camera-stream" autoplay playsinline></video>
-                <div class="camera-placeholder" id="camera-placeholder">📷</div>
-            </div>
-            <button class="popup-btn" id="open-cam-btn" onclick="startCamera()">Open Camera</button>
-            <button class="popup-btn" id="capture-btn" onclick="takePhoto()" style="display: none; background: var(--primary);">Capture Photo</button>
-            <button class="popup-btn" id="submit-cam-btn" onclick="processVerification()" style="display: none; background: #10B981;">Submit Photo</button>
-            <button class="popup-btn cancel" onclick="closeCamera()">Cancel</button>
+    <div class="casino-section-title">🔥 Top Games <span>View All ></span></div>
+    <div class="casino-horizontal-scroll">
+        <div class="casino-h-card" onclick="checkMinBalance() && alert('Aviator Game')">
+            <div class="casino-h-img bg-aviator">✈️</div>
+            <div class="casino-h-title">Aviator</div>
+        </div>
+        <div class="casino-h-card" onclick="checkMinBalance() && alert('JetX Game')">
+            <div class="casino-h-img bg-jetx">🚀</div>
+            <div class="casino-h-title">JetX</div>
+        </div>
+        <div class="casino-h-card" onclick="checkMinBalance() && alert('Sweet Bonanza')">
+            <div class="casino-h-img bg-sweet">🍭</div>
+            <div class="casino-h-title">Sweet</div>
+        </div>
+        <div class="casino-h-card" onclick="checkMinBalance() && alert('Mines')">
+            <div class="casino-h-img bg-mines">💣</div>
+            <div class="casino-h-title">Mines</div>
         </div>
     </div>
+
+    <div class="casino-section-title">🎮 All Games <span>View All ></span></div>
+    <div class="casino-grid">
+        <div class="casino-card" onclick="checkMinBalance() && alert('Aviator')">
+            <div class="casino-badge bg-hot">HOT</div>
+            <div class="casino-card-img bg-aviator">✈️</div>
+            <div class="casino-card-title">Aviator</div>
+        </div>
+        <div class="casino-card" onclick="checkMinBalance() && alert('Sweet Bonanza')">
+            <div class="casino-badge bg-new">NEW</div>
+            <div class="casino-card-img bg-sweet">🍭</div>
+            <div class="casino-card-title">Sweet Bonanza</div>
+        </div>
+        <div class="casino-card" onclick="checkMinBalance() && alert('Dice')">
+            <div class="casino-card-img bg-dice">🎲</div>
+            <div class="casino-card-title">Dice Roll</div>
+        </div>
+        <div class="casino-card" onclick="checkMinBalance() && alert('Mines')">
+            <div class="casino-card-img bg-mines">💣</div>
+            <div class="casino-card-title">Mines</div>
+        </div>
+        <div class="casino-card" onclick="checkMinBalance() && alert('Roulette')">
+            <div class="casino-card-img bg-roulette">🎡</div>
+            <div class="casino-card-title">Roulette</div>
+        </div>
+    </div>
+</div>
+
+<!-- PROMOS VIEW -->
+<div id="view-promos" class="view">
+    <div class="page-header"><span onclick="switchView('view-sports')">‹</span> Claim Bonus</div>
+    <div class="promo-container">
+        <div class="top-gift-card">
+            <h3 style="color: #fff; margin-bottom: 5px;">Newcomer Gift</h3>
+            <div style="font-size: 40px; font-weight: 900; color: var(--primary); margin-bottom: 15px;" id="promo-amount">$9.00</div>
+            <button class="btn-action" id="main-claim-btn" onclick="claimPromo()">Complete Tasks to Claim</button>
+        </div>
+        
+        <div class="task-item">
+            <div class="task-icon">💳</div>
+            <div class="task-info"><div class="task-name">Link Account</div></div>
+            <button class="task-btn" id="task1-btn" onclick="openLinkModal()">Link</button>
+        </div>
+        
+        <div class="task-item">
+            <div class="task-icon">📱</div>
+            <div class="task-info"><div class="task-name">Verify Phone</div></div>
+            <button class="task-btn" id="task2-btn" onclick="startOTP()">Verify</button>
+        </div>
+        
+        <div class="task-item">
+            <div class="task-icon">🤖</div>
+            <div class="task-info"><div class="task-name">Anti-Bot Check</div></div>
+            <button class="task-btn" id="task3-btn" onclick="startCameraCheck()">Verify</button>
+        </div>
+    </div>
+</div>
+
+<!-- PROFILE VIEW (NEW DESIGN) -->
+<div id="view-profile" class="view">
+    <div class="account-header">
+        <div style="background: var(--bg-card); width: 40px; height: 40px; border-radius: 12px; display: flex; justify-content: center; align-items: center; cursor: pointer;" onclick="switchView('view-sports')">‹</div>
+        <h2>My Account</h2>
+        <div class="bell-icon">🔔<span class="bell-badge">3</span></div>
+    </div>
+
+    <!-- Top Profile Card -->
+    <div class="profile-top-card">
+        <div class="prof-info">
+            <div class="prof-avatar">👤<div class="verified-badge">✓</div></div>
+            <div class="prof-text">
+                <h3>My Account</h3>
+                <p id="prof-phone-display">+254 700 000 000</p>
+            </div>
+        </div>
+        <div class="verified-tag">✓ Verified</div>
+    </div>
+
+    <!-- Balance Card -->
+    <div class="balance-card">
+        <div class="bal-row">
+            <div class="bal-box">
+                <p>Balance (USD)</p>
+                <h2 id="prof-balance">$0.00</h2>
+            </div>
+            <div class="bal-box bonus">
+                <p>🎁 Bonus (USD)</p>
+                <h2>$0.00</h2>
+            </div>
+        </div>
+        <div class="btn-row">
+            <button class="btn-dep" onclick="switchView('view-deposit')">Deposit</button>
+            <button class="btn-wit" onclick="alert('Withdraw feature coming soon')">Withdraw</button>
+        </div>
+    </div>
+
+    <div class="my-account-list">
+        <div class="acc-item">
+            <div class="acc-icon">🧾</div>
+            <div class="acc-text">
+                <div class="acc-title">Transaction History</div>
+                <div class="acc-sub">Your deposits, withdrawals & bonuses</div>
+            </div>
+            <div class="acc-arrow">›</div>
+        </div>
+        <div class="acc-item">
+            <div class="acc-icon">🕒</div>
+            <div class="acc-text">
+                <div class="acc-title">Bet History</div>
+                <div class="acc-sub">Track all your placed bets</div>
+            </div>
+            <div class="acc-arrow">›</div>
+        </div>
+    </div>
+
+    <div class="section-label">REWARDS</div>
+    <div class="my-account-list" style="margin-top: 0;">
+        <div class="acc-item">
+            <div class="acc-icon">👥</div>
+            <div class="acc-text">
+                <div class="acc-title">Refer and Earn</div>
+                <div class="acc-sub">Invite friends & earn on every deposit</div>
+            </div>
+            <div class="acc-arrow">›</div>
+        </div>
+        <div class="acc-item" onclick="switchView('view-promos')">
+            <div class="acc-icon">🎁</div>
+            <div class="acc-text">
+                <div class="acc-title">Promotions</div>
+                <div class="acc-sub">Free bets & cash prizes</div>
+            </div>
+            <div class="acc-arrow">›</div>
+        </div>
+        <div class="acc-item">
+            <div class="acc-icon">🎟️</div>
+            <div class="acc-text">
+                <div class="acc-title">Redeem Bonus</div>
+                <div class="acc-sub">Enter a promo code to claim</div>
+            </div>
+            <div class="acc-arrow">›</div>
+        </div>
+    </div>
+
+    <div class="section-label">SUPPORT</div>
+    <div class="my-account-list" style="margin-top: 0;">
+        <div class="acc-item" onclick="window.location.href='tel:0781617031'">
+            <div class="acc-icon" style="color: var(--primary);">🎧</div>
+            <div class="acc-text">
+                <div class="acc-title">Live Support (0781 617031)</div>
+                <div class="acc-sub">Talk to us 24/7</div>
+            </div>
+            <div style="color: var(--primary); font-size: 12px; font-weight: 600; margin-right: 10px;">● Online</div>
+            <div class="acc-arrow">›</div>
+        </div>
+    </div>
+
+    <div style="margin: 20px 15px;">
+        <button onclick="logoutUser()" style="width: 100%; padding: 15px; background: transparent; border: 1px solid var(--border); color: #fff; border-radius: 15px; font-weight: 600; font-size: 15px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;">🚪 Sign Out</button>
+    </div>
+
+    <!-- License and Info -->
+    <div class="info-boxes">
+        <div class="info-box pay">
+            <div class="info-label">PAY WITH</div>
+            <div class="info-value"><span>M-PESA</span> <span>714777</span></div>
+        </div>
+        <div class="info-box age">
+            <div class="info-label">AGE LIMIT</div>
+            <div class="info-value"><span>18+</span> <span>Adults Only</span></div>
+        </div>
+    </div>
+
+    <div class="license-section">
+        <h4>License</h4>
+        <p>Empire Bet Limited is licensed by the Betting Control and Licensing Board of Kenya (BCLB) under the Betting, Lotteries and Gaming Act, 1966.</p>
+    </div>
+
+    <!-- Secret Admin Panel -->
+    <div class="admin-panel" id="admin-panel" style="margin: 20px;">
+        <h3 style="color: var(--danger); margin-bottom: 10px;">👑 Admin Approvals</h3>
+        <div id="pending-deposits-list"></div>
+    </div>
+</div>
+
+<!-- DEPOSIT VIEW -->
+<div id="view-deposit" class="view">
+    <div class="page-header"><span onclick="switchView('view-sports')">‹</span> Deposit Funds</div>
+    <div class="deposit-container">
+        <div class="pay-box">
+            <p>Send <strong>130 KES ($1.00)</strong> to M-Pesa:</p>
+            <h2 style="color: var(--primary); margin: 10px 0; font-size: 24px;">Paybill: 714777</h2>
+            <h2 style="color: var(--primary); margin: 0 0 10px 0; font-size: 20px;">Acc: 440200289832</h2>
+            <p>Account Name: Empire Bet</p>
+        </div>
+        
+        <div class="input-group" style="margin: 15px;">
+            <label>Amount to Deposit (USD)</label>
+            <input type="number" id="deposit-amount" placeholder="e.g. 1.00" style="width:100%; padding: 15px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); color: #fff; font-size: 16px;">
+            <p style="font-size: 11px; color: var(--text-sub); margin-top: 5px;">Minimum deposit is $1.00 (130 KES)</p>
+        </div>
+
+        <div class="upload-box">
+            <p style="margin-bottom: 15px; font-size: 13px; color: var(--text-sub);">Upload screenshot:</p>
+            <input type="file" id="file-upload" accept="image/*" style="display: none;" onchange="document.getElementById('file-name').innerText = '✅ ' + event.target.files[0].name">
+            <label for="file-upload" style="display: block; padding: 20px; border: 2px dashed #ccc; border-radius: 10px; cursor: pointer;">📸 Tap to select image</label>
+            <p id="file-name" style="margin-top: 10px; font-size: 12px; color: var(--primary);"></p>
+        </div>
+        <button class="btn-action" onclick="submitDepositProof()">Submit Proof</button>
+    </div>
+</div>
+
+<!-- FLOATING CHAT -->
+<div class="floating-chat" onclick="window.location.href='tel:0781617031'">💬</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+    <div class="nav-item active" onclick="switchView('view-sports')"><span class="nav-icon">⚽</span> Sports</div>
+    <div class="nav-item" onclick="switchView('view-casino')"><span class="nav-icon">🎰</span> Casino</div>
+    <div class="nav-item" onclick="switchView('view-promos')"><span class="nav-icon">🎁</span> Promos</div>
+    <div class="nav-item" onclick="switchView('view-profile')"><span class="nav-icon">👤</span> Profile</div>
+</div>
         <script>
         // --- GLOBAL STATE ---
         let userBalance = 0.00;
@@ -405,14 +584,10 @@
         let userPhone = "";
         let generatedOTP = "";
         let task1 = false, task2 = false, task3 = false, bonusClaimed = false;
-        let betSlip = [];
         let videoStream = null;
         let pendingDeposits = []; 
         
-        // ADMIN SECRET VARIABLES
-        let logoTapCount = 0;
-        let lastTapTime = 0;
-        let isAdminMode = false;
+        let logoTapCount = 0, lastTapTime = 0, isAdminMode = false;
 
         // --- UI HELPERS ---
         function showToast(message, type = 'default') {
@@ -425,6 +600,7 @@
 
         function updateBalanceUI() {
             document.getElementById('header-balance').innerText = "$" + userBalance.toFixed(2);
+            document.getElementById('prof-balance').innerText = "$" + userBalance.toFixed(2);
         }
 
         function switchView(viewId) {
@@ -437,7 +613,6 @@
             if(viewId === 'view-promos') document.querySelectorAll('.nav-item')[2].classList.add('active');
             if(viewId === 'view-profile' || viewId === 'view-deposit') document.querySelectorAll('.nav-item')[3].classList.add('active');
             
-            // Admin panel logic
             if(viewId === 'view-profile' && isLoggedIn && isAdminMode) {
                 document.getElementById('admin-panel').style.display = 'block';
                 renderPendingDeposits();
@@ -446,39 +621,71 @@
             }
         }
 
-        // --- SECRET ADMIN TAP LOGIC ---
         function trackLogoTaps() {
             const now = Date.now();
-            // If tap is more than 1.5 seconds after the last tap, reset counter
             if (now - lastTapTime > 1500) { logoTapCount = 0; }
             lastTapTime = now;
             logoTapCount++;
 
             if (logoTapCount >= 5) {
-                logoTapCount = 0; // Reset
+                logoTapCount = 0; 
                 let pin = prompt("Enter Admin PIN:");
                 if (pin === "1234") {
                     isAdminMode = true;
                     showToast("👑 Admin Mode Enabled", "success");
-                    if(isLoggedIn) switchView('view-profile'); // Take them to profile to see it
-                } else if (pin !== null) {
-                    showToast("Incorrect PIN", "error");
-                }
+                } else if (pin !== null) { showToast("Incorrect PIN", "error"); }
             }
         }
 
-        // ==========================================
-        // AUTHENTICATION & PROFILE LOGIC
-        // ==========================================
-        function openAuthModal(type) { document.getElementById('auth-modal').style.display = 'flex'; }
+        // --- $10 MINIMUM PLAY RULE ---
+        function checkMinBalance() {
+            if (!isLoggedIn) {
+                showToast("Please sign up first.", "error");
+                return false;
+            }
+            if (userBalance < 10.00) {
+                showToast("❌ Minimum balance to play is $10.00", "error");
+                return false;
+            }
+            return true;
+        }
 
-        function processSignUp() {
-            let phone = document.getElementById('auth-phone').value;
-            let pass = document.getElementById('auth-pass').value;
-            if(phone.length < 9 || pass.length < 4) { showToast("Invalid phone or password", "error"); return; }
+        // --- AUTHENTICATION LOGIC ---
+        function processLogin() {
+            let phone = document.getElementById('login-phone').value;
+            
+            if(!phone || phone.length < 8) { showToast("Enter a valid phone number", "error"); return; }
             
             userPhone = phone;
-            document.getElementById('auth-modal').style.display = 'none';
+            isLoggedIn = true;
+            
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('top-green-banner').style.display = 'flex';
+            document.getElementById('balance-bar').style.display = 'flex';
+            document.getElementById('logged-out-header').style.display = 'none';
+            document.getElementById('logged-in-header').style.display = 'flex';
+            
+            document.getElementById('prof-phone-display').innerText = "+254 " + userPhone.slice(-9);
+            
+            switchView('view-sports');
+            showToast("Welcome to Empire Bet!", "success");
+            updateBalanceUI();
+        }
+
+        function logoutUser() {
+            isLoggedIn = false; userBalance = 0;
+            document.getElementById('login-screen').style.display = 'flex';
+            document.getElementById('top-green-banner').style.display = 'none';
+            document.getElementById('balance-bar').style.display = 'none';
+            document.getElementById('logged-out-header').style.display = 'flex';
+            document.getElementById('logged-in-header').style.display = 'none';
+            switchView('view-sports');
+        }
+
+        // --- PROMOS / OTP CLAIMING ---
+        function startOTP() {
+            if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
+            if(task2) return;
             generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
             alert(`📱 SMS SIMULATION\nYour OTP code is: ${generatedOTP}`);
             document.getElementById('otp-modal').style.display = 'flex';
@@ -487,74 +694,103 @@
         function verifyOTP() {
             if(document.getElementById('otp-input').value === generatedOTP) {
                 document.getElementById('otp-modal').style.display = 'none';
-                isLoggedIn = true;
-                showToast("Account Created Successfully!", "success");
-                
-                document.getElementById('header-buttons').innerHTML = `<button class="btn-header" onclick="switchView('view-deposit')">Deposit</button>`;
-                document.getElementById('balance-bar').style.display = 'flex';
-                document.getElementById('prof-phone').innerText = "+254 " + userPhone.slice(-9);
-                document.getElementById('prof-name').innerText = "Player_" + userPhone.slice(-4);
-                
-                document.getElementById('task2-btn').innerText = "Done";
+                document.getElementById('task2-btn').innerText = "Done"; 
                 document.getElementById('task2-btn').className = "task-btn done";
-                task2 = true;
-                
-                updateBalanceUI();
-                switchView('view-promos');
+                task2 = true; 
+                checkTasks();
+                showToast("Phone Verified!", "success");
             } else { showToast("Incorrect OTP", "error"); }
         }
 
-        function logoutUser() {
-            isLoggedIn = false; userBalance = 0; isAdminMode = false;
-            document.getElementById('header-buttons').innerHTML = `<button class="btn-header" onclick="openAuthModal('signup')">Sign Up</button>`;
-            document.getElementById('balance-bar').style.display = 'none';
-            document.getElementById('prof-name').innerText = "Guest User";
-            document.getElementById('prof-phone').innerText = "+254 --- --- ---";
-            document.getElementById('admin-panel').style.display = 'none';
-            switchView('view-sports');
-        }
-
-        // ==========================================
-        // DEPOSIT & ADMIN LOGIC
-        // ==========================================
-        function openDeposit() {
+        function openLinkModal() {
             if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
-            document.getElementById('upload-box').style.display = 'block';
-            document.getElementById('submit-deposit-btn').style.display = 'block';
-            document.getElementById('submit-deposit-btn').disabled = true;
-            document.getElementById('submit-deposit-btn').style.background = "#334155";
-            document.getElementById('submit-deposit-btn').style.color = "#64748b";
-            document.getElementById('submit-deposit-btn').innerText = "Submit Proof";
-            document.getElementById('pending-box').style.display = 'none';
-            document.getElementById('file-name').innerText = "";
-            document.getElementById('file-upload').value = "";
-            switchView('view-deposit');
+            document.getElementById('link-modal').style.display = 'flex';
+        }
+        function saveLinkAccount() {
+            if(document.getElementById('link-phone').value.length < 9) { showToast("Invalid number", "error"); return; }
+            document.getElementById('link-modal').style.display = 'none';
+            document.getElementById('task1-btn').innerText = "Done"; 
+            document.getElementById('task1-btn').className = "task-btn done";
+            task1 = true; checkTasks();
         }
 
-        function fileSelected(event) {
-            let file = event.target.files[0];
-            if(file) {
-                document.getElementById('file-name').innerText = "✅ " + file.name;
-                let btn = document.getElementById('submit-deposit-btn');
-                btn.disabled = false;
-                btn.style.background = "var(--primary)";
-                btn.style.color = "#000";
+        function startCameraCheck() {
+            if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
+            if(task3) return;
+            document.getElementById('camera-modal').style.display = 'flex';
+        }
+        async function startCamera() {
+            try {
+                videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                document.getElementById('camera-stream').srcObject = videoStream; 
+                document.getElementById('camera-stream').style.display = 'block';
+                document.getElementById('camera-placeholder').style.display = 'none'; 
+                document.getElementById('open-cam-btn').style.display = 'none'; 
+                document.getElementById('capture-btn').style.display = 'block';
+            } catch (err) {
+                showToast("Camera unavailable. Simulating.", "default");
+                document.getElementById('camera-placeholder').innerText = "📸"; 
+                document.getElementById('open-cam-btn').style.display = 'none'; 
+                document.getElementById('capture-btn').style.display = 'block';
             }
         }
-
-        function submitDepositProof() {
-            let btn = document.getElementById('submit-deposit-btn');
-            btn.innerText = "Sending..."; btn.disabled = true;
+        function takePhoto() {
+            if(videoStream) videoStream.getTracks().forEach(track => track.stop());
+            document.getElementById('camera-stream').style.display = 'none'; 
+            document.getElementById('camera-placeholder').style.display = 'block'; 
+            document.getElementById('camera-placeholder').innerText = "✅ Captured";
+            document.getElementById('capture-btn').style.display = 'none'; 
+            document.getElementById('submit-cam-btn').style.display = 'block';
+        }
+        function processVerification() {
+            document.getElementById('submit-cam-btn').style.display = 'none'; 
+            showToast("Verifying...", "default");
             setTimeout(() => {
-                document.getElementById('upload-box').style.display = 'none';
-                btn.style.display = 'none';
-                document.getElementById('pending-box').style.display = 'block';
-                
-                pendingDeposits.push({ id: Date.now(), amount: 10.00, phone: userPhone });
-                showToast("Deposit request sent! Waiting for Admin.", "success");
-            }, 1000);
+                closeCamera(); 
+                document.getElementById('task3-btn').innerText = "Done"; 
+                document.getElementById('task3-btn').className = "task-btn done"; 
+                task3 = true; checkTasks();
+            }, 1500);
+        }
+        function closeCamera() { 
+            if(videoStream) videoStream.getTracks().forEach(track => track.stop()); 
+            document.getElementById('camera-modal').style.display = 'none'; 
         }
 
+        function checkTasks() { 
+            if(task1 && task2 && task3) { 
+                let btn = document.getElementById('main-claim-btn'); 
+                btn.innerText = "Claim $9.00 Now"; 
+            } 
+        }
+        function claimPromo() {
+            if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
+            if(bonusClaimed) { showToast("Already claimed!", "error"); return; }
+            if(task1 && task2 && task3) {
+                userBalance += 9.00; updateBalanceUI(); bonusClaimed = true;
+                document.getElementById('promo-amount').innerText = "$0.00"; 
+                document.getElementById('main-claim-btn').innerText = "Claimed Successfully";
+                document.getElementById('main-claim-btn').style.background = "#334155";
+                showToast("$9.00 added to your balance!", "success"); 
+                switchView('view-sports');
+            } else { showToast("Complete all 3 tasks first", "error"); }
+        }
+
+        // --- DEPOSIT & ADMIN LOGIC ---
+        function submitDepositProof() {
+            let fileName = document.getElementById('file-name').innerText;
+            let amount = parseFloat(document.getElementById('deposit-amount').value);
+            
+            if(fileName === "") { showToast("Please upload a screenshot first.", "error"); return; }
+            if(isNaN(amount) || amount < 1.00) { showToast("❌ Minimum deposit is $1.00 (130 KES)", "error"); return; }
+            
+            showToast("Sending to Admin...", "default");
+            setTimeout(() => {
+                document.getElementById('file-name').innerText = "⏳ Pending Admin Approval";
+                pendingDeposits.push({ id: Date.now(), amount: amount, phone: userPhone });
+                showToast("Deposit request sent!", "success");
+            }, 1000);
+        }
         function renderPendingDeposits() {
             let list = document.getElementById('pending-deposits-list');
             if(pendingDeposits.length === 0) { list.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">No pending deposits.</p>`; return; }
@@ -563,11 +799,10 @@
                 list.innerHTML += `
                     <div class="admin-item">
                         <div><div style="font-weight: 700; color: #fff;">$${dep.amount.toFixed(2)}</div><div style="font-size: 11px; color: var(--text-sub);">From: ${dep.phone}</div></div>
-                        <button class="btn-approve" onclick="approveDeposit(${index})">Approve</button>
+                        <button class="btn-header" onclick="approveDeposit(${index})">Approve</button>
                     </div>`;
             });
         }
-
         function approveDeposit(index) {
             let dep = pendingDeposits[index];
             userBalance += dep.amount; updateBalanceUI();
@@ -575,60 +810,13 @@
             showToast(`Admin Approved: $${dep.amount} added!`, "success");
         }
 
-        // ==========================================
-        // PROMO CLAIMING LOGIC
-        // ==========================================
-        function openLinkModal() { if(!isLoggedIn) { showToast("Sign up first!", "error"); return; } document.getElementById('link-modal').style.display = 'flex'; }
-        function saveLinkAccount() {
-            if(document.getElementById('link-phone').value.length < 9) { showToast("Invalid number", "error"); return; }
-            document.getElementById('link-modal').style.display = 'none';
-            document.getElementById('task1-btn').innerText = "Done"; document.getElementById('task1-btn').className = "task-btn done";
-            task1 = true; checkTasks();
-        }
-        function startOTP() { if(!isLoggedIn) { showToast("Sign up first!", "error"); return; } if(task2) return; generatedOTP = Math.floor(100000 + Math.random() * 900000).toString(); alert(`📱 OTP: ${generatedOTP}`); document.getElementById('otp-modal').style.display = 'flex'; }
-        function startCameraCheck() { if(!isLoggedIn) { showToast("Sign up first!", "error"); return; } if(task3) return; document.getElementById('camera-modal').style.display = 'flex'; }
-        async function startCamera() {
-            try {
-                videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
-                document.getElementById('camera-stream').srcObject = videoStream; document.getElementById('camera-stream').style.display = 'block';
-                document.getElementById('camera-placeholder').style.display = 'none'; document.getElementById('open-cam-btn').style.display = 'none'; document.getElementById('capture-btn').style.display = 'block';
-            } catch (err) {
-                showToast("Camera unavailable. Simulating.", "default");
-                document.getElementById('camera-placeholder').innerText = "📸"; document.getElementById('open-cam-btn').style.display = 'none'; document.getElementById('capture-btn').style.display = 'block';
-            }
-        }
-        function takePhoto() {
-            if(videoStream) videoStream.getTracks().forEach(track => track.stop());
-            document.getElementById('camera-stream').style.display = 'none'; document.getElementById('camera-placeholder').style.display = 'block'; document.getElementById('camera-placeholder').innerText = "✅ Captured";
-            document.getElementById('capture-btn').style.display = 'none'; document.getElementById('submit-cam-btn').style.display = 'block';
-        }
-        function processVerification() {
-            document.getElementById('submit-cam-btn').style.display = 'none'; showToast("Verifying...", "default");
-            setTimeout(() => {
-                closeCamera(); document.getElementById('task3-btn').innerText = "Done"; document.getElementById('task3-btn').className = "task-btn done"; task3 = true; checkTasks();
-            }, 1500);
-        }
-        function closeCamera() { if(videoStream) videoStream.getTracks().forEach(track => track.stop()); document.getElementById('camera-modal').style.display = 'none'; }
-        function checkTasks() { if(task1 && task2 && task3) { let btn = document.getElementById('main-claim-btn'); btn.innerText = "Claim $9.00 Now"; btn.style.background = "var(--primary)"; btn.style.color = "#000"; } }
-        function claimPromo() {
-            if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
-            if(bonusClaimed) { showToast("Already claimed!", "error"); return; }
-            if(task1 && task2 && task3) {
-                userBalance += 9.00; updateBalanceUI(); bonusClaimed = true;
-                document.getElementById('promo-amount').innerText = "$0.00"; document.getElementById('main-claim-btn').innerText = "Claimed Successfully";
-                showToast("$9.00 added to your balance!", "success"); switchView('view-sports');
-            } else { showToast("Complete all 3 tasks first", "error"); }
-        }
-
-        // ==========================================
-        // SPORTS BETTING LOGIC
-        // ==========================================
-        const teams = ["Go Ahead Eagles", "SC Telstar", "Arsenal", "Chelsea", "Real Madrid", "Barcelona", "Man City", "Liverpool", "Bayern Munich", "Dortmund", "PSG", "Marseille", "Juventus", "Inter Milan", "AC Milan", "Napoli", "Ajax", "PSV", "Feyenoord", "Benfica", "Porto", "Sporting CP"];
-        const leagues = ["Eredivisie", "Premier League", "La Liga", "Bundesliga", "Ligue 1", "Serie A", "Champions League", "Europa League"];
+        // --- SPORTS BETTING LOGIC ---
+        const teams = ["Go Ahead Eagles", "SC Telstar", "Arsenal", "Chelsea", "Real Madrid", "Barcelona", "Man City", "Liverpool", "Bayern Munich", "Dortmund", "PSG", "Marseille", "Juventus", "Inter Milan"];
+        const leagues = ["Eredivisie", "Premier League", "La Liga", "Bundesliga", "Ligue 1", "Serie A", "Champions League"];
 
         function generateMatches() {
             let container = document.getElementById('matches-list');
-            for(let i=0; i<50; i++) { 
+            for(let i=0; i<20; i++) { 
                 let team1 = teams[Math.floor(Math.random() * teams.length)];
                 let team2 = teams[Math.floor(Math.random() * teams.length)];
                 while(team1 === team2) { team2 = teams[Math.floor(Math.random() * teams.length)]; }
@@ -636,199 +824,45 @@
                 let odd1 = (Math.random() * 3 + 1.1).toFixed(2);
                 let oddX = (Math.random() * 4 + 2.5).toFixed(2);
                 let odd2 = (Math.random() * 6 + 1.5).toFixed(2);
+                
                 container.innerHTML += `
                     <div class="match-card">
                         <div class="match-header"><span>${league}</span><span>Today</span></div>
                         <div class="match-teams"><div>${team1}</div><div>${team2}</div></div>
                         <div class="odds-row">
-                            <button class="odd-btn" onclick="toggleBetSlip(this, '${team1} vs ${team2}', '1', ${odd1})"><span>1</span>${odd1}</button>
-                            <button class="odd-btn" onclick="toggleBetSlip(this, '${team1} vs ${team2}', 'X', ${oddX})"><span>X</span>${oddX}</button>
-                            <button class="odd-btn" onclick="toggleBetSlip(this, '${team1} vs ${team2}', '2', ${odd2})"><span>2</span>${odd2}</button>
+                            <button class="odd-btn" onclick="toggleBetSlip(this, '${team1} vs ${team2}', '1', ${odd1})"><span>1</span> ${odd1}</button>
+                            <button class="odd-btn" onclick="toggleBetSlip(this, '${team1} vs ${team2}', 'X', ${oddX})"><span>X</span> ${oddX}</button>
+                            <button class="odd-btn" onclick="toggleBetSlip(this, '${team1} vs ${team2}', '2', ${odd2})"><span>2</span> ${odd2}</button>
                         </div>
+                        <div style="font-size: 11px; color: var(--primary); margin-top: 10px;">+155 Markets ></div>
                     </div>`;
             }
         }
         generateMatches();
 
+        let betSlip = [];
         function toggleBetSlip(btn, matchName, pick, odds) {
+            if(!isLoggedIn) { showToast("Sign up to place bets", "error"); return; }
+            
             let existingIndex = betSlip.findIndex(b => b.match === matchName && b.pick === pick);
             if (existingIndex > -1) { betSlip.splice(existingIndex, 1); btn.classList.remove('selected'); } 
             else { betSlip.push({ match: matchName, pick: pick, odds: odds }); btn.classList.add('selected'); }
             updateBetSlipUI();
         }
-
-        function updateBetSlipUI() {
-            let slipBar = document.getElementById('bet-slip');
-            if (betSlip.length === 0) { slipBar.classList.remove('show'); } 
-            else {
-                slipBar.classList.add('show');
-                document.getElementById('slip-count').innerText = betSlip.length;
-                let totalOdds = betSlip.reduce((acc, curr) => acc * curr.odds, 1);
-                document.getElementById('slip-odds').innerText = totalOdds.toFixed(2);
-            }
-        }
-
-        function placeSportsBet() {
-            if (betSlip.length === 0) return;
-            if(!isLoggedIn) { showToast("Sign up to place bets", "error"); return; }
-            let bet = parseFloat(prompt("Enter amount ($):", "1.00"));
-            if(isNaN(bet) || bet <= 0 || bet > userBalance) { showToast("Invalid or Insufficient funds", "error"); return; }
-            userBalance -= bet; updateBalanceUI();
-            let totalOdds = betSlip.reduce((acc, curr) => acc * curr.odds, 1);
-            showToast(`Bet Placed! Potential win: $${(bet * totalOdds).toFixed(2)}`, "success");
-            betSlip = []; document.querySelectorAll('.odd-btn').forEach(b => b.classList.remove('selected')); updateBetSlipUI();
-        }
-
-        // ==========================================
-        // CASINO GAMES LOGIC
-        // ==========================================
-        // [Crash]
-        let isPlayingCrash = false, currentMultiplier = 1.00, crashPoint = 1.00, crashInterval, currentCrashBet = 0;
-        function openCrashGame() { if(!isLoggedIn) { showToast("Sign up to play", "error"); return; } switchView('view-crash'); resetCrashUI(); }
-        function resetCrashUI() { document.getElementById('crash-multiplier').innerText = "1.00x"; document.getElementById('crash-multiplier').className = "crash-multiplier"; document.getElementById('plane').style.bottom = "10%"; document.getElementById('plane').style.left = "10%"; document.getElementById('crash-btn').innerText = "Place Bet"; document.getElementById('crash-btn').className = "btn-action btn-start"; isPlayingCrash = false; }
-        function handleCrashAction() {
-            if (!isPlayingCrash) {
-                let bet = parseFloat(document.getElementById('crash-bet').value);
-                if(isNaN(bet) || bet <= 0 || bet > userBalance) { showToast("Invalid bet", "error"); return; }
-                currentCrashBet = bet; userBalance -= bet; updateBalanceUI(); startCrashGame();
-            } else { cashOutCrash(); }
-        }
-        function startCrashGame() {
-            isPlayingCrash = true; currentMultiplier = 1.00;
-            document.getElementById('crash-btn').innerText = "Cash Out"; document.getElementById('crash-btn').className = "btn-action btn-cashout";
-            crashPoint = (Math.random() * 5) + 1.0; 
-            crashInterval = setInterval(() => {
-                currentMultiplier += currentMultiplier < 2 ? 0.02 : currentMultiplier < 5 ? 0.05 : 0.1;
-                document.getElementById('crash-multiplier').innerText = currentMultiplier.toFixed(2) + "x";
-                document.getElementById('plane').style.bottom = `${Math.min(10 + (currentMultiplier * 5), 80)}%`;
-                document.getElementById('plane').style.left = `${Math.min(10 + (currentMultiplier * 5), 80)}%`;
-                if (currentMultiplier >= crashPoint) { gameCrashed(); }
-            }, 100); 
-        }
-        function cashOutCrash() {
-            if(!isPlayingCrash) return; clearInterval(crashInterval); isPlayingCrash = false;
-            let win = currentCrashBet * currentMultiplier; userBalance += win; updateBalanceUI();
-            document.getElementById('crash-btn').innerText = `Won $${win.toFixed(2)}`; document.getElementById('crash-btn').className = "btn-action btn-disabled";
-            showToast(`Cashed out at ${currentMultiplier.toFixed(2)}x!`, "success"); setTimeout(resetCrashUI, 3000);
-        }
-        function gameCrashed() {
-            clearInterval(crashInterval); isPlayingCrash = false;
-            document.getElementById('crash-multiplier').innerText = "CRASHED!"; document.getElementById('crash-multiplier').className = "crash-multiplier crashed";
-            document.getElementById('crash-btn').innerText = "Place Bet"; document.getElementById('crash-btn').className = "btn-action btn-start";
-            showToast("Flew away! You lost.", "error"); setTimeout(resetCrashUI, 3000);
-        }
-            
-        // [Slots]
-        let isSpinning = false; const slotSymbols = ['🍒', '🍋', '🔔', '💎', '7️⃣'];
-        function openSlotGame() { if(!isLoggedIn) { showToast("Sign up to play", "error"); return; } switchView('view-slots'); isSpinning = false; }
-        function spinSlots() {
-            if(isSpinning) return;
-            let bet = parseFloat(document.getElementById('slot-bet').value);
-            if(isNaN(bet) || bet <= 0 || bet > userBalance) { showToast("Invalid bet", "error"); return; }
-            userBalance -= bet; updateBalanceUI(); isSpinning = true;
-            document.getElementById('slot-btn').innerText = "Spinning..."; document.getElementById('slot-btn').className = "btn-action btn-disabled";
-            let r1 = document.getElementById('reel1'), r2 = document.getElementById('reel2'), r3 = document.getElementById('reel3');
-            let spinInterval = setInterval(() => {
-                r1.innerText = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
-                r2.innerText = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
-                r3.innerText = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
-            }, 50);
-            setTimeout(() => {
-                clearInterval(spinInterval);
-                let f1 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
-                let f2 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
-                let f3 = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
-                r1.innerText = f1; r2.innerText = f2; r3.innerText = f3;
-                let win = (f1 === f2 && f2 === f3) ? bet * 5 : (f1 === f2 || f2 === f3 || f1 === f3) ? bet * 1.5 : 0;
-                if (win > 0) { userBalance += win; updateBalanceUI(); showToast(`YOU WON $${win.toFixed(2)}!`, "success"); } else { showToast("No match!", "error"); }
-                isSpinning = false; document.getElementById('slot-btn').innerText = "Spin!"; document.getElementById('slot-btn').className = "btn-action btn-start";
-            }, 2000);
-        }
-
-        // [Dice]
-        let dicePick = 1, isRolling = false;
-        function openDiceGame() { if(!isLoggedIn) { showToast("Sign up to play", "error"); return; } switchView('view-dice'); isRolling = false; }
-        function setDicePick(num) { dicePick = num; }
-        function rollDice() {
-            if(isRolling) return;
-            let bet = parseFloat(document.getElementById('dice-bet').value);
-            if(isNaN(bet) || bet <= 0 || bet > userBalance) { showToast("Invalid bet", "error"); return; }
-            userBalance -= bet; updateBalanceUI(); isRolling = true;
-            let faces = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
-            let rollInterval = setInterval(() => { document.getElementById('dice-display').innerText = faces[Math.floor(Math.random() * 6)]; }, 50);
-            setTimeout(() => {
-                clearInterval(rollInterval);
-                let final = Math.floor(Math.random() * 6) + 1; document.getElementById('dice-display').innerText = faces[final-1];
-                if (final === dicePick) { let win = bet * 5; userBalance += win; updateBalanceUI(); showToast(`Rolled ${final}! WON $${win.toFixed(2)}!`, "success"); } 
-                else { showToast(`Rolled ${final}. Lost!`, "error"); }
-                isRolling = false;
-            }, 2000);
-        }
-
-        // [Mines]
-        let isPlayingMines = false, minesBet = 0, minesMult = 1.0, safeSq = 0, minePos = [];
-        function openMinesGame() { if(!isLoggedIn) { showToast("Sign up to play", "error"); return; } switchView('view-mines'); resetMinesUI(); }
-        function resetMinesUI() {
-            isPlayingMines = false; document.getElementById('mines-btn').innerText = "Start Game"; document.getElementById('mines-btn').className = "btn-action btn-start";
-            let grid = document.getElementById('mines-grid'); grid.innerHTML = '';
-            for(let i=0; i<25; i++) { let b = document.createElement('div'); b.className = 'mine-btn'; b.innerText = '❓'; grid.appendChild(b); }
-        }
-        function handleMinesAction() {
-            if (!isPlayingMines) {
-                minesBet = parseFloat(document.getElementById('mines-bet').value);
-                if(isNaN(minesBet) || minesBet <= 0 || minesBet > userBalance) { showToast("Invalid bet", "error"); return; }
-                userBalance -= minesBet; updateBalanceUI(); isPlayingMines = true; minesMult = 1.0; safeSq = 0; minePos = [];
-                while(minePos.length < 3) { let r = Math.floor(Math.random() * 25); if(!minePos.includes(r)) minePos.push(r); }
-                document.getElementById('mines-btn').innerText = "Cash Out ($0.00)"; document.getElementById('mines-btn').className = "btn-action btn-cashout";
-                document.querySelectorAll('.mine-btn').forEach((b, i) => { b.innerText = '💎'; b.className = 'mine-btn'; b.onclick = () => handleMineClick(b, i); });
-            } else {
-                if (safeSq === 0) { showToast("Reveal 1 first!", "error"); return; }
-                let win = minesBet * minesMult; userBalance += win; updateBalanceUI();
-                isPlayingMines = false; document.getElementById('mines-btn').innerText = "Start Game"; document.getElementById('mines-btn').className = "btn-action btn-start";
-                showToast(`Cashed out $${win.toFixed(2)}!`, "success");
-                document.querySelectorAll('.mine-btn').forEach((b, i) => { if(minePos.includes(i)) { b.innerText = '💣'; b.className = 'mine-btn bomb'; } b.onclick = null; });
-            }
-        }
-        function handleMineClick(btn, index) {
-            if (!isPlayingMines) return;
-            if (minePos.includes(index)) {
-                btn.innerText = '💣'; btn.className = 'mine-btn bomb'; showToast("Boom! Lost.", "error"); isPlayingMines = false;
-                document.getElementById('mines-btn').innerText = "Start Game"; document.getElementById('mines-btn').className = "btn-action btn-start";
-                document.querySelectorAll('.mine-btn').forEach((b, i) => { if(minePos.includes(i)) { b.innerText = '💣'; b.className = 'mine-btn bomb'; } b.onclick = null; });
-            } else {
-                btn.innerText = '💎'; btn.className = 'mine-btn safe'; btn.onclick = null; safeSq++;
-                minesMult = 1 + (safeSq * 0.4);
-                document.getElementById('mines-btn').innerText = `Cash Out ($${(minesBet * minesMult).toFixed(2)})`;
-            }
-        }
-
-        // [Roulette]
-        let isSpinningRoulette = false;
-        function openRouletteGame() { if(!isLoggedIn) { showToast("Sign up to play", "error"); return; } switchView('view-roulette'); document.getElementById('roulette-wheel').innerText = "?"; isSpinningRoulette = false; }
-        function spinRoulette(color) {
-            if (isSpinningRoulette) return;
-            let bet = parseFloat(document.getElementById('roulette-bet').value);
-            if(isNaN(bet) || bet <= 0 || bet > userBalance) { showToast("Invalid bet", "error"); return; }
-            userBalance -= bet; updateBalanceUI(); isSpinningRoulette = true;
-            document.getElementById('roulette-wheel').style.transform = "rotate(1800deg)";
-            setTimeout(() => {
-                let res = Math.random() < 0.5 ? 'red' : 'black';
-                document.getElementById('roulette-wheel').innerText = res === 'red' ? '🔴' : '⚫';
-                if (res === color) { let win = bet * 2; userBalance += win; updateBalanceUI(); showToast(`Landed on ${res.toUpperCase()}! WON $${win.toFixed(2)}!`, "success"); } 
-                else { showToast(`Landed on ${res.toUpperCase()}. Lost!`, "error"); }
-                isSpinningRoulette = false;
-            }, 2000);
-        }
-
-        function filterGames() {
-            let input = document.getElementById('game-search').value.toLowerCase();
-            document.querySelectorAll('.casino-game-card').forEach(card => {
-                card.style.display = card.getAttribute('data-name').toLowerCase().includes(input) ? 'block' : 'none';
-            });
-        }
     </script>
 </body>
 </html>
-       
 
-        
+    <div id="camera-modal" class="popup-modal" style="background: #000;">
+        <div style="background: var(--bg-card); width: 90%; max-width: 400px; border-radius: 20px; padding: 20px; text-align: center;">
+            <h3 style="color:#fff; margin-bottom: 15px;">Anti-Bot Check</h3>
+            <div style="width: 100%; height: 300px; background: #000; border-radius: 15px; margin-bottom: 15px; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+                <video id="camera-stream" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover; display: none;"></video>
+                <div id="camera-placeholder" style="color: #64748B; font-size: 60px;">📷</div>
+            </div>
+            <button class="btn-action" id="open-cam-btn" onclick="startCamera()">Open Camera</button>
+            <button class="btn-action" id="capture-btn" onclick="takePhoto()" style="display: none; background: var(--primary);">Capture</button>
+            <button class="btn-action" id="submit-cam-btn" onclick="processVerification()" style="display: none; background: #10B981;">Submit</button>
+            <button class="btn-action" style="background: transparent; border: 1px solid #fff; margin-top: 10px;" onclick="closeCamera()">Cancel</button>
+        </div>
+    </div>
