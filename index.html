@@ -26,7 +26,7 @@
         .login-top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
         .back-btn { width: 40px; height: 40px; background: var(--bg-card); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 20px; color: #fff; cursor: pointer;}
         .login-logo-area { text-align: center; margin-bottom: 30px; }
-        .login-logo-circle { width: 100px; height: 100px; background: var(--bg-card); border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 50px; border: 2px solid var(--primary);}
+        .login-logo-circle { width: 100px; height: 100px; background: var(--bg-card); border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 50px; border: 2px solid var(--primary); box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);}
         .login-welcome { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 5px;}
         .login-welcome span { color: var(--primary); }
         .login-sub { font-size: 14px; color: var(--text-sub); }
@@ -35,18 +35,20 @@
         .input-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-sub); margin-bottom: 8px; }
         .input-wrapper { display: flex; align-items: center; background: var(--bg-input); border: 1px solid var(--border); border-radius: 12px; padding: 15px; }
         .input-wrapper span { font-size: 20px; color: var(--text-sub); margin-right: 10px;}
+        
+        /* Country Selector */
         .country-selector { background: transparent; border: none; color: #fff; font-size: 15px; outline: none; margin-right: 10px; border-right: 1px solid var(--border); padding-right: 10px; cursor: pointer;}
         .country-selector option { background: var(--bg-card); color: #fff; }
+
         .input-wrapper input { background: transparent; border: none; outline: none; color: #fff; font-size: 15px; width: 100%;}
-        .btn-login-submit { width: 100%; padding: 18px; background: var(--primary); color: #000; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; margin-top: 10px; cursor: pointer;}
+        .btn-login-submit { width: 100%; padding: 18px; background: var(--primary); color: #000; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; margin-top: 10px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,230,118,0.3);}
 
         /* MAIN APP HEADER */
         .top-green-banner { background: #00e676; color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 700; }
         header { background: var(--bg-dark); padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border);}
         .logo { font-size: 22px; font-weight: 900; color: #fff; display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none;}
         .logo span { color: var(--primary); }
-        .btn-header { background: var(--primary); color: #000; padding: 8px 15px; border-radius: 20px; font-weight: 700; font-size: 13px; border: none; cursor: pointer;}
-        .header-icon { width: 35px; height: 35px; background: var(--bg-card); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 16px; border: 1px solid var(--border); cursor: pointer;}
+        .btn-header { background: var(--primary); color: #000; padding: 8px 15px; border-radius: 20px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,230,118,0.2);}
         
         .view { display: none; }
         .view.active { display: block; animation: fadeIn 0.3s ease; }
@@ -57,17 +59,6 @@
         .category-scroll::-webkit-scrollbar { display: none; }
         .cat-btn { background: var(--bg-card); border: 1px solid var(--border); padding: 8px 18px; border-radius: 20px; color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;}
         .cat-btn.active { background: rgba(0, 230, 118, 0.15); color: var(--primary); border-color: var(--primary);}
-        .game-scroll { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none; }
-        .game-scroll::-webkit-scrollbar { display: none; }
-        .game-scroll-item { min-width: 70px; height: 70px; border-radius: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 24px; cursor: pointer; border: 1px solid var(--border); background: var(--bg-card);}
-        .game-scroll-item span { font-size: 10px; font-weight: 600; margin-top: 5px; color: #fff;}
-        .bg-aviator { background: linear-gradient(135deg, #b91c1c, #7f1d1d); border: none;}
-        .bg-jetx { background: linear-gradient(135deg, #1e3a8a, #3b82f6); border: none;}
-        .market-tabs { display: flex; gap: 10px; padding: 15px 15px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--border); align-items: center;}
-        .market-tabs::-webkit-scrollbar { display: none; }
-        .market-tab { font-size: 14px; font-weight: 600; color: var(--text-sub); cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 5px;}
-        .market-tab.active { color: var(--primary); }
-        .market-nav-arrow { width: 30px; height: 30px; background: var(--primary); color: #000; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; cursor: pointer;}
         .matches-container { padding: 10px 15px; background: #0d131f;}
         .match-card { background: transparent; border-bottom: 1px solid var(--border); padding: 15px 0; }
         .match-header { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-sub); margin-bottom: 10px; }
@@ -76,7 +67,7 @@
         .odd-btn { flex: 1; background: transparent; border: 1px solid #2d3748; padding: 10px 0; border-radius: 8px; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s;}
         .odd-btn.selected { background: var(--primary); color: #000; border-color: var(--primary); }
 
-        /* PREMIUM CASINO LOBBY */
+        /* PREMIUM CASINO UI */
         .casino-header-area { padding: 15px; }
         .casino-search { width: 100%; padding: 15px; border-radius: 15px; background: var(--bg-card); border: 1px solid var(--border); color: #fff; font-size: 14px; outline: none; margin-bottom: 10px;}
         .casino-categories { display: flex; gap: 10px; padding: 5px 0 15px 0; overflow-x: auto; scrollbar-width: none;}
@@ -84,35 +75,24 @@
         .casino-cat-btn { background: var(--bg-card); border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;}
         .casino-cat-btn.active { background: rgba(0,230,118,0.1); color: var(--primary); border-color: var(--primary);}
         
-        .casino-section-title { display: flex; justify-content: space-between; align-items: center; padding: 0 15px; margin-bottom: 10px; font-weight: 700; font-size: 16px;}
-        .casino-section-title span { font-size: 12px; color: var(--primary); cursor: pointer;}
-        
-        .casino-horizontal-scroll { display: flex; gap: 15px; padding: 0 15px 20px 15px; overflow-x: auto; scrollbar-width: none;}
-        .casino-horizontal-scroll::-webkit-scrollbar { display: none; }
-        .casino-h-card { min-width: 90px; display: flex; flex-direction: column; align-items: center; cursor: pointer;}
-        .casino-h-img { width: 80px; height: 80px; border-radius: 20px; display: flex; justify-content: center; align-items: center; font-size: 35px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-bottom: 8px; position: relative; overflow: hidden;}
-        .casino-h-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent); }
-        .casino-h-title { font-size: 12px; font-weight: 600; color: #fff; text-align: center;}
-        
         .casino-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 15px 20px 15px; }
         .casino-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); position: relative; transition: transform 0.2s;}
         .casino-card:active { transform: scale(0.95); }
-        .casino-card-img { width: 100%; height: 130px; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 24px; position: relative; overflow: hidden;}
-        .casino-card-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent); }
-        .casino-card-title { padding: 12px; font-size: 14px; font-weight: 700; text-align: center; background: var(--bg-card); position: relative; z-index: 2;}
+        
+        /* Glossy Game Icons */
+        .casino-card-img { width: 100%; height: 120px; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 45px; position: relative; overflow: hidden; text-shadow: 0 4px 10px rgba(0,0,0,0.5);}
+        .casino-card-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent); }
+        
+        .casino-card-title { padding: 12px; font-size: 13px; font-weight: 700; text-align: center; background: var(--bg-card); position: relative; z-index: 2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        
         .casino-badge { position: absolute; top: 10px; right: 10px; color: #fff; font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 10px; letter-spacing: 1px; z-index: 2;}
         .bg-hot { background: var(--danger); }
         .bg-new { background: var(--primary); color: #000; }
-
-        .bg-aviator { background: linear-gradient(135deg, #b91c1c, #7f1d1d); }
-        .bg-sweet { background: linear-gradient(135deg, #7e22ce, #c084fc); }
-        .bg-dice { background: linear-gradient(135deg, #0f766e, #14b8a6); }
-        .bg-mines { background: linear-gradient(135deg, #d97706, #f59e0b); }
-        .bg-roulette { background: linear-gradient(135deg, #be123c, #f43f5e); }
+        .bg-jackpot { background: var(--gold); color: #000; }
 
         /* PROMOS */
         .promo-container { padding: 15px; }
-        .top-gift-card { background: var(--bg-card); border-radius: 20px; padding: 20px; text-align: center; border: 1px solid var(--primary); margin-bottom: 15px;}
+        .top-gift-card { background: var(--bg-card); border-radius: 20px; padding: 20px; text-align: center; border: 1px solid var(--primary); margin-bottom: 15px; box-shadow: 0 0 20px rgba(0,230,118,0.1);}
         .task-item { display: flex; align-items: center; padding: 15px; background: var(--bg-card); border-radius: 15px; margin-bottom: 10px; border: 1px solid var(--border);}
         .task-icon { font-size: 24px; margin-right: 15px;}
         .task-info { flex: 1; }
@@ -166,7 +146,7 @@
         
         .info-boxes { display: flex; gap: 15px; margin: 20px 15px; }
         .info-box { flex: 1; background: var(--bg-card); border-radius: 15px; padding: 15px; border: 1px solid var(--border); }
-        .info-box.pay { border-color: var(--primary); flex: 1.5; }
+        .info-box.pay { border-color: var(--primary); flex: 1.5; cursor: pointer;}
         .info-box.age { border-color: var(--danger); }
         .info-label { font-size: 10px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; margin-bottom: 10px;}
         .info-value { display: flex; align-items: center; justify-content: space-between; font-weight: 800; font-size: 16px;}
@@ -193,10 +173,11 @@
         /* Deposit / Admin */
         .page-header { padding: 20px; background: var(--bg-card); display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 18px; border-bottom: 1px solid var(--border);}
         .deposit-container { padding: 20px; }
-        .pay-box { background: var(--bg-card); padding: 25px; border-radius: 20px; border: 1px dashed var(--primary); text-align: center; margin-bottom: 20px;}
+        .pay-box { background: var(--bg-card); padding: 25px; border-radius: 20px; border: 1px dashed var(--primary); text-align: center; margin-bottom: 20px; cursor: pointer;}
         .upload-box { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 20px; text-align: center; margin-bottom: 20px;}
         .admin-panel { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); padding: 20px; border-radius: 20px; margin-top: 20px; display: none;}
         .admin-item { background: var(--bg-card); padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
+        
         .popup-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 5000; display: none; flex-direction: column; justify-content: center; align-items: center; }
         .popup-box { background: var(--bg-card); width: 90%; max-width: 360px; border-radius: 24px; padding: 30px; text-align: center; border: 1px solid var(--border);}
     </style>
@@ -230,16 +211,13 @@
                     <option value="+27">🇿🇦 +27</option>
                     <option value="+255">🇹🇿 +255</option>
                     <option value="+256">🇺🇬 +256</option>
-                    <option value="+250">🇷🇼 +250</option>
-                    <option value="+91">🇮🇳 +91</option>
-                    <option value="+61">🇦🇺 +61</option>
                 </select>
                 <input type="tel" id="login-phone" placeholder="712345678">
             </div>
         </div>
 
         <div class="input-group">
-            <label>Password <a href="#" style="color: var(--primary);">Forgot?</a></label>
+            <label>Password</label>
             <div class="input-wrapper">
                 <span>🔒</span>
                 <input type="password" id="login-pass" placeholder="Enter password">
@@ -265,8 +243,6 @@
                 <button class="btn-header" onclick="document.getElementById('login-screen').style.display='flex'">Join Now</button>
             </div>
             <div id="logged-in-header" style="display: none; gap: 10px;">
-                <div class="header-icon">🔍</div>
-                <div class="header-icon">☀️</div>
                 <button class="btn-header" onclick="switchView('view-deposit')">Deposit</button>
             </div>
         </div>
@@ -286,46 +262,58 @@
         </div>
     </div>
 
+    <!-- LINK ACCOUNT MODAL (BANK, MPESA, AIRTEL) -->
     <div id="link-modal" class="popup-modal">
         <div class="popup-box">
-            <h3 style="color:#fff; margin-bottom: 15px;">Link M-Pesa</h3>
-            <input type="tel" id="link-phone" placeholder="M-Pesa Number" style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: #0f172a; color: #fff; text-align: center; margin-bottom: 15px;">
-            <button class="btn-action" onclick="saveLinkAccount()">Save</button>
+            <h3 style="color:#fff; margin-bottom: 15px;">Link Accounts</h3>
+            <input type="text" id="link-bank" placeholder="Bank Account Number" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #0f172a; color: #fff; margin-bottom: 10px;">
+            <input type="tel" id="link-mpesa" placeholder="M-Pesa Number" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #0f172a; color: #fff; margin-bottom: 10px;">
+            <input type="tel" id="link-airtel" placeholder="Airtel Money Number" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #0f172a; color: #fff; margin-bottom: 15px;">
+            <button class="btn-action" onclick="saveLinkAccount()">Save Details</button>
+        </div>
+    </div>
+
+    <!-- COUNTRY MODAL -->
+    <div id="country-modal" class="popup-modal">
+        <div class="popup-box">
+            <h3 style="color:#fff; margin-bottom: 15px;">Select Country</h3>
+            <select id="user-country" style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: #0f172a; color: #fff; margin-bottom: 15px;">
+                <option value="Kenya">Kenya</option>
+                <option value="Uganda">Uganda</option>
+                <option value="Tanzania">Tanzania</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="South Africa">South Africa</option>
+            </select>
+            <button class="btn-action" onclick="saveCountry()">Confirm</button>
+        </div>
+    </div>
+
+    <div id="camera-modal" class="popup-modal" style="background: #000;">
+        <div style="background: var(--bg-card); width: 90%; max-width: 400px; border-radius: 20px; padding: 20px; text-align: center;">
+            <h3 style="color:#fff; margin-bottom: 15px;">Anti-Bot Check</h3>
+            <div style="width: 100%; height: 300px; background: #000; border-radius: 15px; margin-bottom: 15px; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+                <video id="camera-stream" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover; display: none;"></video>
+                <div id="camera-placeholder" style="color: #64748B; font-size: 60px;">📷</div>
+            </div>
+            <button class="btn-action" id="open-cam-btn" onclick="startCamera()">Open Camera</button>
+            <button class="btn-action" id="capture-btn" onclick="takePhoto()" style="display: none; background: var(--primary);">Capture</button>
+            <button class="btn-action" id="submit-cam-btn" onclick="processVerification()" style="display: none; background: #10B981;">Submit</button>
+            <button class="btn-action" style="background: transparent; border: 1px solid #fff; margin-top: 10px;" onclick="closeCamera()">Cancel</button>
         </div>
     </div>
     <!-- SPORTS VIEW -->
 <div id="view-sports" class="view active">
     <div class="category-scroll">
-        <button class="cat-btn active">Crash 48</button>
-        <button class="cat-btn">New 49</button>
-        <button class="cat-btn">Virtuals 61</button>
-        <button class="cat-btn">Slots 1623</button>
-        <button class="cat-btn">Live Casino</button>
+        <button class="cat-btn active">Bundesliga</button>
+        <button class="cat-btn">Premier League</button>
+        <button class="cat-btn">La Liga</button>
     </div>
-
-    <div class="game-scroll">
-        <div class="game-scroll-item bg-aviator" onclick="checkMinBalance() && alert('Aviator Game')">✈️<span>Aviator</span></div>
-        <div class="game-scroll-item" onclick="checkMinBalance() && alert('Avionix Game')">🍭<span>Avionix</span></div>
-        <div class="game-scroll-item" onclick="checkMinBalance() && alert('Bazooka Game')">🎰<span>Bazooka</span></div>
-        <div class="game-scroll-item bg-jetx" onclick="checkMinBalance() && alert('JetX Game')">🚀<span>JetX</span></div>
-    </div>
-
-    <div class="market-tabs">
-        <div class="market-tab active">🔥 Markets</div>
-        <div style="color: #2d3748;">|</div>
-        <div class="market-nav-arrow">‹</div>
-        <div class="market-tab">Total</div>
-        <div class="market-tab">Both Teams</div>
-        <div class="market-nav-arrow">›</div>
-        <div class="market-tab" style="margin-left: auto;">⊞ More ⌄</div>
-    </div>
-
     <div class="matches-container" id="matches-list">
-        <!-- Generated by JS -->
+        <!-- Loaded via JS API -->
     </div>
 </div>
 
-<!-- CASINO VIEW -->
+<!-- PREMIUM CASINO VIEW -->
 <div id="view-casino" class="view">
     <div class="casino-header-area">
         <input type="text" class="casino-search" placeholder="🔍 Search games...">
@@ -337,51 +325,8 @@
         </div>
     </div>
 
-    <div class="casino-section-title">🔥 Top Games <span>View All ></span></div>
-    <div class="casino-horizontal-scroll">
-        <div class="casino-h-card" onclick="checkMinBalance() && alert('Aviator Game')">
-            <div class="casino-h-img bg-aviator">✈️</div>
-            <div class="casino-h-title">Aviator</div>
-        </div>
-        <div class="casino-h-card" onclick="checkMinBalance() && alert('JetX Game')">
-            <div class="casino-h-img bg-jetx">🚀</div>
-            <div class="casino-h-title">JetX</div>
-        </div>
-        <div class="casino-h-card" onclick="checkMinBalance() && alert('Sweet Bonanza')">
-            <div class="casino-h-img bg-sweet">🍭</div>
-            <div class="casino-h-title">Sweet</div>
-        </div>
-        <div class="casino-h-card" onclick="checkMinBalance() && alert('Mines')">
-            <div class="casino-h-img bg-mines">💣</div>
-            <div class="casino-h-title">Mines</div>
-        </div>
-    </div>
-
-    <div class="casino-section-title">🎮 All Games <span>View All ></span></div>
-    <div class="casino-grid">
-        <div class="casino-card" onclick="checkMinBalance() && alert('Aviator')">
-            <div class="casino-badge bg-hot">HOT</div>
-            <div class="casino-card-img bg-aviator">✈️</div>
-            <div class="casino-card-title">Aviator</div>
-        </div>
-        <div class="casino-card" onclick="checkMinBalance() && alert('Sweet Bonanza')">
-            <div class="casino-badge bg-new">NEW</div>
-            <div class="casino-card-img bg-sweet">🍭</div>
-            <div class="casino-card-title">Sweet Bonanza</div>
-        </div>
-        <div class="casino-card" onclick="checkMinBalance() && alert('Dice')">
-            <div class="casino-card-img bg-dice">🎲</div>
-            <div class="casino-card-title">Dice Roll</div>
-        </div>
-        <div class="casino-card" onclick="checkMinBalance() && alert('Mines')">
-            <div class="casino-card-img bg-mines">💣</div>
-            <div class="casino-card-title">Mines</div>
-        </div>
-        <div class="casino-card" onclick="checkMinBalance() && alert('Roulette')">
-            <div class="casino-card-img bg-roulette">🎡</div>
-            <div class="casino-card-title">Roulette</div>
-        </div>
-    </div>
+    <!-- Container for 30 Games generated by JS -->
+    <div class="casino-grid" id="casino-grid"></div>
 </div>
 
 <!-- PROMOS VIEW -->
@@ -396,7 +341,7 @@
         
         <div class="task-item">
             <div class="task-icon">💳</div>
-            <div class="task-info"><div class="task-name">Link Account</div></div>
+            <div class="task-info"><div class="task-name">Link Account (Bank, M-Pesa, Airtel)</div></div>
             <button class="task-btn" id="task1-btn" onclick="openLinkModal()">Link</button>
         </div>
         
@@ -411,10 +356,16 @@
             <div class="task-info"><div class="task-name">Anti-Bot Check</div></div>
             <button class="task-btn" id="task3-btn" onclick="startCameraCheck()">Verify</button>
         </div>
+
+        <div class="task-item">
+            <div class="task-icon">🌍</div>
+            <div class="task-info"><div class="task-name">Select Country</div></div>
+            <button class="task-btn" id="task4-btn" onclick="openCountryModal()">Select</button>
+        </div>
     </div>
 </div>
 
-<!-- PROFILE VIEW (NEW DESIGN) -->
+<!-- PROFILE VIEW -->
 <div id="view-profile" class="view">
     <div class="account-header">
         <div style="background: var(--bg-card); width: 40px; height: 40px; border-radius: 12px; display: flex; justify-content: center; align-items: center; cursor: pointer;" onclick="switchView('view-sports')">‹</div>
@@ -422,7 +373,6 @@
         <div class="bell-icon">🔔<span class="bell-badge">3</span></div>
     </div>
 
-    <!-- Top Profile Card -->
     <div class="profile-top-card">
         <div class="prof-info">
             <div class="prof-avatar">👤<div class="verified-badge">✓</div></div>
@@ -434,7 +384,6 @@
         <div class="verified-tag">✓ Verified</div>
     </div>
 
-    <!-- Balance Card -->
     <div class="balance-card">
         <div class="bal-row">
             <div class="bal-box">
@@ -448,53 +397,19 @@
         </div>
         <div class="btn-row">
             <button class="btn-dep" onclick="switchView('view-deposit')">Deposit</button>
-            <button class="btn-wit" onclick="alert('Withdraw feature coming soon')">Withdraw</button>
+            <button class="btn-wit" onclick="showToast('Minimum withdraw is $10 (1296 KSH)', 'default')">Withdraw</button>
         </div>
     </div>
 
     <div class="my-account-list">
         <div class="acc-item">
             <div class="acc-icon">🧾</div>
-            <div class="acc-text">
-                <div class="acc-title">Transaction History</div>
-                <div class="acc-sub">Your deposits, withdrawals & bonuses</div>
-            </div>
+            <div class="acc-text"><div class="acc-title">Transaction History</div><div class="acc-sub">Your deposits, withdrawals & bonuses</div></div>
             <div class="acc-arrow">›</div>
         </div>
         <div class="acc-item">
             <div class="acc-icon">🕒</div>
-            <div class="acc-text">
-                <div class="acc-title">Bet History</div>
-                <div class="acc-sub">Track all your placed bets</div>
-            </div>
-            <div class="acc-arrow">›</div>
-        </div>
-    </div>
-
-    <div class="section-label">REWARDS</div>
-    <div class="my-account-list" style="margin-top: 0;">
-        <div class="acc-item">
-            <div class="acc-icon">👥</div>
-            <div class="acc-text">
-                <div class="acc-title">Refer and Earn</div>
-                <div class="acc-sub">Invite friends & earn on every deposit</div>
-            </div>
-            <div class="acc-arrow">›</div>
-        </div>
-        <div class="acc-item" onclick="switchView('view-promos')">
-            <div class="acc-icon">🎁</div>
-            <div class="acc-text">
-                <div class="acc-title">Promotions</div>
-                <div class="acc-sub">Free bets & cash prizes</div>
-            </div>
-            <div class="acc-arrow">›</div>
-        </div>
-        <div class="acc-item">
-            <div class="acc-icon">🎟️</div>
-            <div class="acc-text">
-                <div class="acc-title">Redeem Bonus</div>
-                <div class="acc-sub">Enter a promo code to claim</div>
-            </div>
+            <div class="acc-text"><div class="acc-title">Bet History</div><div class="acc-sub">Track all your placed bets</div></div>
             <div class="acc-arrow">›</div>
         </div>
     </div>
@@ -503,23 +418,19 @@
     <div class="my-account-list" style="margin-top: 0;">
         <div class="acc-item" onclick="window.location.href='tel:0781617031'">
             <div class="acc-icon" style="color: var(--primary);">🎧</div>
-            <div class="acc-text">
-                <div class="acc-title">Live Support (0781 617031)</div>
-                <div class="acc-sub">Talk to us 24/7</div>
-            </div>
+            <div class="acc-text"><div class="acc-title">Live Support (0781 617031)</div><div class="acc-sub">Talk to us 24/7</div></div>
             <div style="color: var(--primary); font-size: 12px; font-weight: 600; margin-right: 10px;">● Online</div>
-            <div class="acc-arrow">›</div>
         </div>
     </div>
 
     <div style="margin: 20px 15px;">
-        <button onclick="logoutUser()" style="width: 100%; padding: 15px; background: transparent; border: 1px solid var(--border); color: #fff; border-radius: 15px; font-weight: 600; font-size: 15px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;">🚪 Sign Out</button>
+        <button onclick="logoutUser()" style="width: 100%; padding: 15px; background: transparent; border: 1px solid var(--border); color: #fff; border-radius: 15px; font-weight: 600; font-size: 15px; cursor: pointer;">🚪 Sign Out</button>
     </div>
 
-    <!-- License and Info -->
+    <!-- Copyable Info Boxes -->
     <div class="info-boxes">
-        <div class="info-box pay">
-            <div class="info-label">PAY WITH</div>
+        <div class="info-box pay" onclick="copyToClipboard('714777', 'Paybill copied!')">
+            <div class="info-label">PAY WITH (TAP TO COPY)</div>
             <div class="info-value"><span>M-PESA</span> <span>714777</span></div>
         </div>
         <div class="info-box age">
@@ -530,7 +441,7 @@
 
     <div class="license-section">
         <h4>License</h4>
-        <p>Empire Bet Limited is licensed by the Betting Control and Licensing Board of Kenya (BCLB) under the Betting, Lotteries and Gaming Act, 1966.</p>
+        <p>Empire Bet Limited is licensed by the Betting Control and Licensing Board of Kenya (BCLB).</p>
     </div>
 
     <!-- Secret Admin Panel -->
@@ -544,11 +455,14 @@
 <div id="view-deposit" class="view">
     <div class="page-header"><span onclick="switchView('view-sports')">‹</span> Deposit Funds</div>
     <div class="deposit-container">
-        <div class="pay-box">
+        <!-- Clickable to copy -->
+        <div class="pay-box" onclick="copyToClipboard('714777', 'Paybill 714777 copied!')">
             <p>Send <strong>130 KES ($1.00)</strong> to M-Pesa:</p>
-            <h2 style="color: var(--primary); margin: 10px 0; font-size: 24px;">Paybill: 714777</h2>
-            <h2 style="color: var(--primary); margin: 0 0 10px 0; font-size: 20px;">Acc: 440200289832</h2>
-            <p>Account Name: Empire Bet</p>
+            <h2 style="color: var(--primary); margin: 10px 0; font-size: 24px;">Paybill: 714777 📋</h2>
+        </div>
+        <div class="pay-box" onclick="copyToClipboard('440200289832', 'Account 440200289832 copied!')" style="margin-top: -10px;">
+            <h2 style="color: var(--primary); margin: 0; font-size: 20px;">Acc: 440200289832 📋</h2>
+            <p style="margin-top: 10px;">Account Name: <strong>Loop business</strong></p>
         </div>
         
         <div class="input-group" style="margin: 15px;">
@@ -558,7 +472,7 @@
         </div>
 
         <div class="upload-box">
-            <p style="margin-bottom: 15px; font-size: 13px; color: var(--text-sub);">Upload screenshot:</p>
+            <p style="margin-bottom: 15px; font-size: 13px; color: var(--text-sub);">After making payment, send screenshot for confirmation.</p>
             <input type="file" id="file-upload" accept="image/*" style="display: none;" onchange="document.getElementById('file-name').innerText = '✅ ' + event.target.files[0].name">
             <label for="file-upload" style="display: block; padding: 20px; border: 2px dashed #ccc; border-radius: 10px; cursor: pointer;">📸 Tap to select image</label>
             <p id="file-name" style="margin-top: 10px; font-size: 12px; color: var(--primary);"></p>
@@ -577,15 +491,18 @@
     <div class="nav-item" onclick="switchView('view-promos')"><span class="nav-icon">🎁</span> Promos</div>
     <div class="nav-item" onclick="switchView('view-profile')"><span class="nav-icon">👤</span> Profile</div>
 </div>
-        <script>
-        // --- GLOBAL STATE ---
-        let userBalance = 0.00;
-        let isLoggedIn = false;
-        let userPhone = "";
-        let generatedOTP = "";
-        let task1 = false, task2 = false, task3 = false, bonusClaimed = false;
+    <script>
+        // --- LOCAL STORAGE DATA ---
+        let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
+        let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        let userPhone = localStorage.getItem('userPhone') || "";
+        let userPassword = localStorage.getItem('userPassword') || "";
+        let task1 = localStorage.getItem('task1') === 'true';
+        let task2 = localStorage.getItem('task2') === 'true';
+        let task3 = localStorage.getItem('task3') === 'true';
+        let task4 = localStorage.getItem('task4') === 'true';
+        let bonusClaimed = localStorage.getItem('bonusClaimed') === 'true';
         let videoStream = null;
-        let pendingDeposits = []; 
         
         let logoTapCount = 0, lastTapTime = 0, isAdminMode = false;
 
@@ -601,6 +518,15 @@
         function updateBalanceUI() {
             document.getElementById('header-balance').innerText = "$" + userBalance.toFixed(2);
             document.getElementById('prof-balance').innerText = "$" + userBalance.toFixed(2);
+            localStorage.setItem('userBalance', userBalance);
+        }
+
+        function copyToClipboard(text, message) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(message, "success");
+            }).catch(err => {
+                showToast("Failed to copy", "error");
+            });
         }
 
         function switchView(viewId) {
@@ -639,10 +565,7 @@
 
         // --- $10 MINIMUM PLAY RULE ---
         function checkMinBalance() {
-            if (!isLoggedIn) {
-                showToast("Please sign up first.", "error");
-                return false;
-            }
+            if (!isLoggedIn) { showToast("Please sign up first.", "error"); return false; }
             if (userBalance < 10.00) {
                 showToast("❌ Minimum balance to play is $10.00", "error");
                 return false;
@@ -653,11 +576,27 @@
         // --- AUTHENTICATION LOGIC ---
         function processLogin() {
             let phone = document.getElementById('login-phone').value;
+            let pass = document.getElementById('login-pass').value;
+            if(!phone || phone.length < 8) { showToast("Enter valid phone", "error"); return; }
+            if(!pass) { showToast("Enter password", "error"); return; }
             
-            if(!phone || phone.length < 8) { showToast("Enter a valid phone number", "error"); return; }
-            
-            userPhone = phone;
+            // If registering new
+            if (userPassword === "") {
+                userPassword = pass;
+                userPhone = phone;
+                localStorage.setItem('userPassword', userPassword);
+                localStorage.setItem('userPhone', userPhone);
+                showToast("Account created!", "success");
+            } else {
+                // Check password
+                if (userPassword !== pass) {
+                    showToast("❌ Incorrect Password", "error");
+                    return;
+                }
+            }
+
             isLoggedIn = true;
+            localStorage.setItem('isLoggedIn', 'true');
             
             document.getElementById('login-screen').style.display = 'none';
             document.getElementById('top-green-banner').style.display = 'flex';
@@ -665,15 +604,15 @@
             document.getElementById('logged-out-header').style.display = 'none';
             document.getElementById('logged-in-header').style.display = 'flex';
             
-            document.getElementById('prof-phone-display').innerText = "+254 " + userPhone.slice(-9);
+            document.getElementById('prof-phone-display').innerText = "+254 " + phone.slice(-9);
             
             switchView('view-sports');
-            showToast("Welcome to Empire Bet!", "success");
             updateBalanceUI();
         }
 
         function logoutUser() {
-            isLoggedIn = false; userBalance = 0;
+            isLoggedIn = false;
+            localStorage.setItem('isLoggedIn', 'false');
             document.getElementById('login-screen').style.display = 'flex';
             document.getElementById('top-green-banner').style.display = 'none';
             document.getElementById('balance-bar').style.display = 'none';
@@ -682,36 +621,66 @@
             switchView('view-sports');
         }
 
+        // Auto-login if already logged in
+        if (isLoggedIn) {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('top-green-banner').style.display = 'flex';
+            document.getElementById('balance-bar').style.display = 'flex';
+            document.getElementById('logged-out-header').style.display = 'none';
+            document.getElementById('logged-in-header').style.display = 'flex';
+            document.getElementById('prof-phone-display').innerText = "+254 " + userPhone.slice(-9);
+            updateBalanceUI();
+        }
+
         // --- PROMOS / OTP CLAIMING ---
         function startOTP() {
             if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
             if(task2) return;
-            generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
-            alert(`📱 SMS SIMULATION\nYour OTP code is: ${generatedOTP}`);
+            let otp = Math.floor(100000 + Math.random() * 900000).toString();
+            alert(`📱 SMS SIMULATION\nYour OTP code is: ${otp}`);
             document.getElementById('otp-modal').style.display = 'flex';
+            window.currentOTP = otp;
         }
 
         function verifyOTP() {
-            if(document.getElementById('otp-input').value === generatedOTP) {
+            if(document.getElementById('otp-input').value === window.currentOTP) {
                 document.getElementById('otp-modal').style.display = 'none';
                 document.getElementById('task2-btn').innerText = "Done"; 
                 document.getElementById('task2-btn').className = "task-btn done";
-                task2 = true; 
+                task2 = true; localStorage.setItem('task2', 'true');
                 checkTasks();
-                showToast("Phone Verified!", "success");
             } else { showToast("Incorrect OTP", "error"); }
         }
 
         function openLinkModal() {
             if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
+            if(task1) return;
             document.getElementById('link-modal').style.display = 'flex';
         }
         function saveLinkAccount() {
-            if(document.getElementById('link-phone').value.length < 9) { showToast("Invalid number", "error"); return; }
+            let b = document.getElementById('link-bank').value;
+            let m = document.getElementById('link-mpesa').value;
+            let a = document.getElementById('link-airtel').value;
+            if(!b || !m || !a) { showToast("Fill all 3 fields!", "error"); return; }
+            
             document.getElementById('link-modal').style.display = 'none';
             document.getElementById('task1-btn').innerText = "Done"; 
             document.getElementById('task1-btn').className = "task-btn done";
-            task1 = true; checkTasks();
+            task1 = true; localStorage.setItem('task1', 'true');
+            checkTasks();
+        }
+
+        function openCountryModal() {
+            if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
+            if(task4) return;
+            document.getElementById('country-modal').style.display = 'flex';
+        }
+        function saveCountry() {
+            document.getElementById('country-modal').style.display = 'none';
+            document.getElementById('task4-btn').innerText = "Done"; 
+            document.getElementById('task4-btn').className = "task-btn done";
+            task4 = true; localStorage.setItem('task4', 'true');
+            checkTasks();
         }
 
         function startCameraCheck() {
@@ -728,7 +697,6 @@
                 document.getElementById('open-cam-btn').style.display = 'none'; 
                 document.getElementById('capture-btn').style.display = 'block';
             } catch (err) {
-                showToast("Camera unavailable. Simulating.", "default");
                 document.getElementById('camera-placeholder').innerText = "📸"; 
                 document.getElementById('open-cam-btn').style.display = 'none'; 
                 document.getElementById('capture-btn').style.display = 'block';
@@ -744,36 +712,49 @@
         }
         function processVerification() {
             document.getElementById('submit-cam-btn').style.display = 'none'; 
-            showToast("Verifying...", "default");
             setTimeout(() => {
                 closeCamera(); 
                 document.getElementById('task3-btn').innerText = "Done"; 
                 document.getElementById('task3-btn').className = "task-btn done"; 
-                task3 = true; checkTasks();
-            }, 1500);
+                task3 = true; localStorage.setItem('task3', 'true'); checkTasks();
+            }, 1000);
         }
         function closeCamera() { 
             if(videoStream) videoStream.getTracks().forEach(track => track.stop()); 
             document.getElementById('camera-modal').style.display = 'none'; 
         }
 
+        // Restore Task States on Load
+        if(task1) { document.getElementById('task1-btn').innerText = "Done"; document.getElementById('task1-btn').className = "task-btn done"; }
+        if(task2) { document.getElementById('task2-btn').innerText = "Done"; document.getElementById('task2-btn').className = "task-btn done"; }
+        if(task3) { document.getElementById('task3-btn').innerText = "Done"; document.getElementById('task3-btn').className = "task-btn done"; }
+        if(task4) { document.getElementById('task4-btn').innerText = "Done"; document.getElementById('task4-btn').className = "task-btn done"; }
+
         function checkTasks() { 
-            if(task1 && task2 && task3) { 
+            if(task1 && task2 && task3 && task4) { 
                 let btn = document.getElementById('main-claim-btn'); 
                 btn.innerText = "Claim $9.00 Now"; 
             } 
         }
+        if(task1 && task2 && task3 && task4 && !bonusClaimed) { checkTasks(); }
+
         function claimPromo() {
             if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
             if(bonusClaimed) { showToast("Already claimed!", "error"); return; }
-            if(task1 && task2 && task3) {
+            if(task1 && task2 && task3 && task4) {
                 userBalance += 9.00; updateBalanceUI(); bonusClaimed = true;
+                localStorage.setItem('bonusClaimed', 'true');
                 document.getElementById('promo-amount').innerText = "$0.00"; 
                 document.getElementById('main-claim-btn').innerText = "Claimed Successfully";
                 document.getElementById('main-claim-btn').style.background = "#334155";
                 showToast("$9.00 added to your balance!", "success"); 
                 switchView('view-sports');
-            } else { showToast("Complete all 3 tasks first", "error"); }
+            } else { showToast("Complete all 4 tasks first", "error"); }
+        }
+        if(bonusClaimed) {
+            document.getElementById('promo-amount').innerText = "$0.00"; 
+            document.getElementById('main-claim-btn').innerText = "Claimed Successfully";
+            document.getElementById('main-claim-btn').style.background = "#334155";
         }
 
         // --- DEPOSIT & ADMIN LOGIC ---
@@ -787,82 +768,131 @@
             showToast("Sending to Admin...", "default");
             setTimeout(() => {
                 document.getElementById('file-name').innerText = "⏳ Pending Admin Approval";
+                let pendingDeposits = JSON.parse(localStorage.getItem('pendingDeposits')) || [];
                 pendingDeposits.push({ id: Date.now(), amount: amount, phone: userPhone });
+                localStorage.setItem('pendingDeposits', JSON.stringify(pendingDeposits));
                 showToast("Deposit request sent!", "success");
             }, 1000);
         }
         function renderPendingDeposits() {
             let list = document.getElementById('pending-deposits-list');
+            let pendingDeposits = JSON.parse(localStorage.getItem('pendingDeposits')) || [];
+            
             if(pendingDeposits.length === 0) { list.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">No pending deposits.</p>`; return; }
             list.innerHTML = '';
             pendingDeposits.forEach((dep, index) => {
                 list.innerHTML += `
                     <div class="admin-item">
                         <div><div style="font-weight: 700; color: #fff;">$${dep.amount.toFixed(2)}</div><div style="font-size: 11px; color: var(--text-sub);">From: ${dep.phone}</div></div>
-                        <button class="btn-header" onclick="approveDeposit(${index})">Approve</button>
+                        <button class="btn-header" onclick="approveDeposit(${dep.id})">Approve</button>
                     </div>`;
             });
         }
-        function approveDeposit(index) {
-            let dep = pendingDeposits[index];
+        function approveDeposit(id) {
+            let pendingDeposits = JSON.parse(localStorage.getItem('pendingDeposits')) || [];
+            let dep = pendingDeposits.find(d => d.id === id);
+            if(!dep) return;
+            
             userBalance += dep.amount; updateBalanceUI();
-            pendingDeposits.splice(index, 1); renderPendingDeposits();
+            
+            pendingDeposits = pendingDeposits.filter(d => d.id !== id);
+            localStorage.setItem('pendingDeposits', JSON.stringify(pendingDeposits));
+            
+            renderPendingDeposits();
             showToast(`Admin Approved: $${dep.amount} added!`, "success");
         }
 
-        // --- SPORTS BETTING LOGIC ---
-        const teams = ["Go Ahead Eagles", "SC Telstar", "Arsenal", "Chelsea", "Real Madrid", "Barcelona", "Man City", "Liverpool", "Bayern Munich", "Dortmund", "PSG", "Marseille", "Juventus", "Inter Milan"];
-        const leagues = ["Eredivisie", "Premier League", "La Liga", "Bundesliga", "Ligue 1", "Serie A", "Champions League"];
-
-        function generateMatches() {
+        // --- REAL SPORTS API (OpenLigaDB) ---
+        async function fetchRealMatches() {
             let container = document.getElementById('matches-list');
-            for(let i=0; i<20; i++) { 
-                let team1 = teams[Math.floor(Math.random() * teams.length)];
-                let team2 = teams[Math.floor(Math.random() * teams.length)];
-                while(team1 === team2) { team2 = teams[Math.floor(Math.random() * teams.length)]; }
-                let league = leagues[Math.floor(Math.random() * leagues.length)];
-                let odd1 = (Math.random() * 3 + 1.1).toFixed(2);
-                let oddX = (Math.random() * 4 + 2.5).toFixed(2);
-                let odd2 = (Math.random() * 6 + 1.5).toFixed(2);
-                
-                container.innerHTML += `
-                    <div class="match-card">
-                        <div class="match-header"><span>${league}</span><span>Today</span></div>
-                        <div class="match-teams"><div>${team1}</div><div>${team2}</div></div>
-                        <div class="odds-row">
-                            <button class="odd-btn" onclick="toggleBetSlip(this, '${team1} vs ${team2}', '1', ${odd1})"><span>1</span> ${odd1}</button>
-                            <button class="odd-btn" onclick="toggleBetSlip(this, '${team1} vs ${team2}', 'X', ${oddX})"><span>X</span> ${oddX}</button>
-                            <button class="odd-btn" onclick="toggleBetSlip(this, '${team1} vs ${team2}', '2', ${odd2})"><span>2</span> ${odd2}</button>
-                        </div>
-                        <div style="font-size: 11px; color: var(--primary); margin-top: 10px;">+155 Markets ></div>
-                    </div>`;
+            container.innerHTML = '<p style="text-align:center; color: #94a3b8; padding: 20px;">Loading real matches...</p>';
+            
+            try {
+                const response = await fetch('https://api.openligadb.de/getmatchdata/bl1');
+                const matches = await response.json();
+                container.innerHTML = ''; 
+
+                matches.forEach(match => {
+                    let team1 = match.team1.teamName;
+                    let team2 = match.team2.teamName;
+                    let matchDate = new Date(match.matchDateTime);
+                    let timeString = matchDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    
+                    let today = new Date();
+                    let tomorrow = new Date(); tomorrow.setDate(today.getDate() + 1);
+                    let dayText = "Upcoming";
+                    if(matchDate.toDateString() === today.toDateString()) dayText = "Today";
+                    if(matchDate.toDateString() === tomorrow.toDateString()) dayText = "Tomorrow";
+
+                    let odd1 = (Math.random() * 2 + 1.1).toFixed(2);
+                    let oddX = (Math.random() * 2 + 2.5).toFixed(2);
+                    let odd2 = (Math.random() * 3 + 2.0).toFixed(2);
+
+                    container.innerHTML += `
+                        <div class="match-card">
+                            <div class="match-header"><span>Bundesliga</span><span>${dayText} at ${timeString}</span></div>
+                            <div class="match-teams"><div>${team1}</div><div>${team2}</div></div>
+                            <div class="odds-row">
+                                <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>1</span> ${odd1}</button>
+                                <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>X</span> ${oddX}</button>
+                                <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>2</span> ${odd2}</button>
+                            </div>
+                        </div>`;
+                });
+            } catch (error) {
+                container.innerHTML = '<p style="text-align:center; color: #ef4444; padding: 20px;">Failed to load matches.</p>';
             }
         }
-        generateMatches();
+        fetchRealMatches();
 
-        let betSlip = [];
-        function toggleBetSlip(btn, matchName, pick, odds) {
-            if(!isLoggedIn) { showToast("Sign up to place bets", "error"); return; }
-            
-            let existingIndex = betSlip.findIndex(b => b.match === matchName && b.pick === pick);
-            if (existingIndex > -1) { betSlip.splice(existingIndex, 1); btn.classList.remove('selected'); } 
-            else { betSlip.push({ match: matchName, pick: pick, odds: odds }); btn.classList.add('selected'); }
-            updateBetSlipUI();
+        // --- GENERATE 30 PREMIUM CASINO GAMES ---
+        function generateCasinoGames() {
+            const games = [
+                { name: "Aviator", icon: "✈️", color: "linear-gradient(135deg, #b91c1c, #7f1d1d)", badge: "HOT" },
+                { name: "JetX", icon: "🚀", color: "linear-gradient(135deg, #1e3a8a, #3b82f6)", badge: "HOT" },
+                { name: "Sweet Bonanza", icon: "🍭", color: "linear-gradient(135deg, #7e22ce, #c084fc)", badge: "NEW" },
+                { name: "Gates of Olympus", icon: "⚡", color: "linear-gradient(135deg, #0f766e, #14b8a6)", badge: "JACKPOT" },
+                { name: "Mines", icon: "💣", color: "linear-gradient(135deg, #d97706, #f59e0b)", badge: "" },
+                { name: "Roulette", icon: "🎡", color: "linear-gradient(135deg, #be123c, #f43f5e)", badge: "" },
+                { name: "Blackjack", icon: "🃏", color: "linear-gradient(135deg, #065f46, #10b981)", badge: "" },
+                { name: "Sugar Rush", icon: "🍬", color: "linear-gradient(135deg, #be185d, #ec4899)", badge: "NEW" },
+                { name: "Big Bass", icon: "🎣", color: "linear-gradient(135deg, #0369a1, #0ea5e9)", badge: "" },
+                { name: "Spaceman", icon: "👨‍🚀", color: "linear-gradient(135deg, #4c1d95, #8b5cf6)", badge: "HOT" },
+                { name: "Plinko", icon: "🔴", color: "linear-gradient(135deg, #831843, #db2777)", badge: "" },
+                          { name: "Dice", icon: "🎲", color: "linear-gradient(135deg, #374151, #6b7280)", badge: "" },
+                { name: "Crazy Time", icon: "🎪", color: "linear-gradient(135deg, #b45309, #f59e0b)", badge: "HOT" },
+                { name: "Monopoly", icon: "🏠", color: "linear-gradient(135deg, #15803d, #22c55e)", badge: "" },
+                { name: "Book of Dead", icon: "📖", color: "linear-gradient(135deg, #78350f, #b45309)", badge: "" },
+                { name: "Wolf Gold", icon: "🐺", color: "linear-gradient(135deg, #1e3a8a, #60a5fa)", badge: "" },
+                { name: "Starburst", icon: "⭐", color: "linear-gradient(135deg, #4c1d95, #a78bfa)", badge: "NEW" },
+                { name: "Gonzo's Quest", icon: "🗿", color: "linear-gradient(135deg, #854d0e, #eab308)", badge: "" },
+                { name: "Money Train", icon: "🚂", color: "linear-gradient(135deg, #450a0a, #dc2626)", badge: "" },
+                { name: "Fire Joker", icon: "🤡", color: "linear-gradient(135deg, #991b1b, #ef4444)", badge: "" },
+                { name: "Reactoonz", icon: "👾", color: "linear-gradient(135deg, #0f766e, #2dd4bf)", badge: "" },
+                { name: "Rise of Olympus", icon: "🌩️", color: "linear-gradient(135deg, #1e40af, #3b82f6)", badge: "" },
+                { name: "Temple Tumble", icon: "🏛️", color: "linear-gradient(135deg, #78350f, #d97706)", badge: "" },
+                { name: "Lucky 7", icon: "7️⃣", color: "linear-gradient(135deg, #b91c1c, #f87171)", badge: "" },
+                { name: "Keno", icon: "🔢", color: "linear-gradient(135deg, #3730a3, #6366f1)", badge: "" },
+                { name: "Baccarat", icon: "🀄", color: "linear-gradient(135deg, #831843, #f472b6)", badge: "" },
+                { name: "Dragon Tiger", icon: "🐉", color: "linear-gradient(135deg, #991b1b, #fca5a5)", badge: "" },
+                { name: "Andar Bahar", icon: "🃏", color: "linear-gradient(135deg, #0f766e, #5eead4)", badge: "" },
+                { name: "Teen Patti", icon: "🃏", color: "linear-gradient(135deg, #4c1d95, #c084fc)", badge: "" },
+                { name: "Poker", icon: "♠️", color: "linear-gradient(135deg, #1f2937, #4b5563)", badge: "" }
+            ];
+
+            const grid = document.getElementById('casino-grid');
+            games.forEach(game => {
+                let badgeHTML = game.badge ? `<div class="casino-badge ${game.badge === 'HOT' ? 'bg-hot' : game.badge === 'NEW' ? 'bg-new' : 'bg-jackpot'}">${game.badge}</div>` : '';
+                grid.innerHTML += `
+                    <div class="casino-card" onclick="checkMinBalance() && showToast('${game.name} loading...', 'success')">
+                        ${badgeHTML}
+                        <div class="casino-card-img" style="background: ${game.color};">${game.icon}</div>
+                        <div class="casino-card-title">${game.name}</div>
+                    </div>
+                `;
+            });
         }
+        generateCasinoGames();
     </script>
 </body>
 </html>
-
-    <div id="camera-modal" class="popup-modal" style="background: #000;">
-        <div style="background: var(--bg-card); width: 90%; max-width: 400px; border-radius: 20px; padding: 20px; text-align: center;">
-            <h3 style="color:#fff; margin-bottom: 15px;">Anti-Bot Check</h3>
-            <div style="width: 100%; height: 300px; background: #000; border-radius: 15px; margin-bottom: 15px; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-                <video id="camera-stream" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover; display: none;"></video>
-                <div id="camera-placeholder" style="color: #64748B; font-size: 60px;">📷</div>
-            </div>
-            <button class="btn-action" id="open-cam-btn" onclick="startCamera()">Open Camera</button>
-            <button class="btn-action" id="capture-btn" onclick="takePhoto()" style="display: none; background: var(--primary);">Capture</button>
-            <button class="btn-action" id="submit-cam-btn" onclick="processVerification()" style="display: none; background: #10B981;">Submit</button>
-            <button class="btn-action" style="background: transparent; border: 1px solid #fff; margin-top: 10px;" onclick="closeCamera()">Cancel</button>
-        </div>
-    </div>
