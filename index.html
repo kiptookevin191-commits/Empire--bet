@@ -35,11 +35,8 @@
         .input-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-sub); margin-bottom: 8px; }
         .input-wrapper { display: flex; align-items: center; background: var(--bg-input); border: 1px solid var(--border); border-radius: 12px; padding: 15px; }
         .input-wrapper span { font-size: 20px; color: var(--text-sub); margin-right: 10px;}
-        
-        /* Country Selector */
         .country-selector { background: transparent; border: none; color: #fff; font-size: 15px; outline: none; margin-right: 10px; border-right: 1px solid var(--border); padding-right: 10px; cursor: pointer;}
         .country-selector option { background: var(--bg-card); color: #fff; }
-
         .input-wrapper input { background: transparent; border: none; outline: none; color: #fff; font-size: 15px; width: 100%;}
         .btn-login-submit { width: 100%; padding: 18px; background: var(--primary); color: #000; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; margin-top: 10px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,230,118,0.3);}
 
@@ -49,16 +46,32 @@
         .logo { font-size: 22px; font-weight: 900; color: #fff; display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none;}
         .logo span { color: var(--primary); }
         .btn-header { background: var(--primary); color: #000; padding: 8px 15px; border-radius: 20px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,230,118,0.2);}
+        .btn-header-outline { background: transparent; color: #fff; padding: 8px 15px; border-radius: 20px; font-weight: 700; font-size: 13px; border: 1px solid #fff; cursor: pointer;}
+        .header-icon { width: 35px; height: 35px; background: var(--bg-card); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 16px; border: 1px solid var(--border); cursor: pointer; color: #fff;}
         
         .view { display: none; }
         .view.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* SPORTS / HOME */
+        /* SPORTS / HOME (Exact Match) */
         .category-scroll { display: flex; gap: 10px; padding: 15px 15px 10px 15px; overflow-x: auto; scrollbar-width: none; }
         .category-scroll::-webkit-scrollbar { display: none; }
-        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); padding: 8px 18px; border-radius: 20px; color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;}
+        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); padding: 8px 18px; border-radius: 20px; color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: 0.2s;}
         .cat-btn.active { background: rgba(0, 230, 118, 0.15); color: var(--primary); border-color: var(--primary);}
+        
+        .game-scroll { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none; }
+        .game-scroll::-webkit-scrollbar { display: none; }
+        .game-scroll-item { min-width: 80px; height: 80px; border-radius: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; position: relative; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .game-scroll-item img { width: 100%; height: 100%; object-fit: cover; }
+        .game-scroll-item span { position: absolute; bottom: 5px; font-size: 10px; font-weight: 700; color: #fff; text-shadow: 0 2px 4px #000; z-index: 2;}
+        .game-scroll-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); z-index: 1;}
+
+        .market-tabs { display: flex; gap: 15px; padding: 15px 15px; overflow-x: auto; scrollbar-width: none; align-items: center; }
+        .market-tabs::-webkit-scrollbar { display: none; }
+        .market-tab { font-size: 14px; font-weight: 600; color: var(--text-sub); cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 5px;}
+        .market-tab.active { color: var(--primary); }
+        .market-nav-arrow { width: 30px; height: 30px; background: var(--primary); color: #000; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; cursor: pointer;}
+        
         .matches-container { padding: 10px 15px; background: #0d131f;}
         .match-card { background: transparent; border-bottom: 1px solid var(--border); padding: 15px 0; }
         .match-header { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-sub); margin-bottom: 10px; }
@@ -79,8 +92,9 @@
         .casino-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); position: relative; transition: transform 0.2s;}
         .casino-card:active { transform: scale(0.95); }
         
-        /* Glossy Game Icons */
-        .casino-card-img { width: 100%; height: 120px; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 45px; position: relative; overflow: hidden; text-shadow: 0 4px 10px rgba(0,0,0,0.5);}
+        /* Glossy Game Images */
+        .casino-card-img { width: 100%; height: 130px; position: relative; overflow: hidden; }
+        .casino-card-img img { width: 100%; height: 100%; object-fit: cover; }
         .casino-card-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent); }
         
         .casino-card-title { padding: 12px; font-size: 13px; font-weight: 700; text-align: center; background: var(--bg-card); position: relative; z-index: 2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
@@ -101,7 +115,7 @@
         .task-btn.done { background: rgba(0,230,118,0.1); color: var(--primary); border: 1px solid var(--primary);}
         .btn-action { width: 100%; padding: 18px; border-radius: 15px; font-size: 18px; font-weight: 800; border: none; cursor: pointer; background: var(--primary); color: #000; }
 
-        /* NEW MY ACCOUNT PROFILE */
+        /* MY ACCOUNT PROFILE */
         .account-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: var(--bg-dark); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
         .account-header h2 { font-size: 18px; font-weight: 700; color: #fff; }
         .bell-icon { position: relative; font-size: 20px; cursor: pointer;}
@@ -134,15 +148,6 @@
         .acc-sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
         .acc-arrow { color: var(--text-sub); font-size: 18px; }
         .section-label { font-size: 12px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; margin: 20px 20px 10px 20px; letter-spacing: 1px;}
-        .accordion { background: var(--bg-card); margin: 0 15px 10px 15px; border-radius: 15px; border: 1px solid var(--border); overflow: hidden; }
-        .accordion summary { padding: 18px; font-weight: 600; font-size: 15px; color: #fff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none;}
-        .accordion summary::-webkit-details-marker { display: none; }
-        .accordion summary::after { content: '▼'; font-size: 10px; color: var(--text-sub); }
-        .accordion[open] summary::after { content: '▲'; }
-        .accordion p { padding: 0 18px 18px 18px; font-size: 13px; color: var(--text-sub); line-height: 1.5; }
-        
-        .social-row { display: flex; justify-content: space-between; margin: 20px 15px; }
-        .social-icon { width: 50px; height: 50px; background: var(--bg-card); border-radius: 15px; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #fff; border: 1px solid var(--border); }
         
         .info-boxes { display: flex; gap: 15px; margin: 20px 15px; }
         .info-box { flex: 1; background: var(--bg-card); border-radius: 15px; padding: 15px; border: 1px solid var(--border); }
@@ -155,7 +160,6 @@
 
         .license-section { text-align: center; margin: 20px 20px 100px 20px; font-size: 12px; color: var(--text-sub); line-height: 1.6; }
         .license-section h4 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px;}
-        
         .floating-chat { position: fixed; bottom: 90px; right: 20px; width: 60px; height: 60px; background: #4ade80; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; color: #000; box-shadow: 0 5px 15px rgba(74, 222, 128, 0.4); z-index: 99; cursor: pointer;}
 
         /* Bottom Nav */
@@ -173,7 +177,7 @@
         /* Deposit / Admin */
         .page-header { padding: 20px; background: var(--bg-card); display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 18px; border-bottom: 1px solid var(--border);}
         .deposit-container { padding: 20px; }
-        .pay-box { background: var(--bg-card); padding: 25px; border-radius: 20px; border: 1px dashed var(--primary); text-align: center; margin-bottom: 20px; cursor: pointer;}
+        .pay-box { background: var(--bg-card); padding: 25px; border-radius: 20px; border: 1px dashed var(--primary); text-align: center; margin-bottom: 15px; cursor: pointer;}
         .upload-box { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 20px; text-align: center; margin-bottom: 20px;}
         .admin-panel { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); padding: 20px; border-radius: 20px; margin-top: 20px; display: none;}
         .admin-item { background: var(--bg-card); padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;}
@@ -239,10 +243,12 @@
         </div>
         <div class="header-actions" id="header-actions">
             <div id="logged-out-header" style="display: flex; gap: 10px;">
-                <button class="btn-header" style="background: transparent; color: #fff; border: 1px solid #fff;" onclick="document.getElementById('login-screen').style.display='flex'">Login</button>
+                <button class="btn-header-outline" onclick="document.getElementById('login-screen').style.display='flex'">Login</button>
                 <button class="btn-header" onclick="document.getElementById('login-screen').style.display='flex'">Join Now</button>
             </div>
-            <div id="logged-in-header" style="display: none; gap: 10px;">
+            <div id="logged-in-header" style="display: none; gap: 10px; align-items: center;">
+                <div class="header-icon">🔍</div>
+                <div class="header-icon">☀️</div>
                 <button class="btn-header" onclick="switchView('view-deposit')">Deposit</button>
             </div>
         </div>
@@ -262,10 +268,11 @@
         </div>
     </div>
 
-    <!-- LINK ACCOUNT MODAL (BANK, MPESA, AIRTEL) -->
+    <!-- LINK ACCOUNT MODAL (PREFERRED METHOD) -->
     <div id="link-modal" class="popup-modal">
         <div class="popup-box">
-            <h3 style="color:#fff; margin-bottom: 15px;">Link Accounts</h3>
+            <h3 style="color:#fff; margin-bottom: 5px;">Link Account</h3>
+            <p style="color:var(--text-sub); font-size:12px; margin-bottom: 15px;">Fill in your preferred withdrawal method</p>
             <input type="text" id="link-bank" placeholder="Bank Account Number" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #0f172a; color: #fff; margin-bottom: 10px;">
             <input type="tel" id="link-mpesa" placeholder="M-Pesa Number" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #0f172a; color: #fff; margin-bottom: 10px;">
             <input type="tel" id="link-airtel" placeholder="Airtel Money Number" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #0f172a; color: #fff; margin-bottom: 15px;">
@@ -301,13 +308,44 @@
             <button class="btn-action" style="background: transparent; border: 1px solid #fff; margin-top: 10px;" onclick="closeCamera()">Cancel</button>
         </div>
     </div>
-    <!-- SPORTS VIEW -->
+    <!-- SPORTS VIEW (EXACT MATCH) -->
 <div id="view-sports" class="view active">
     <div class="category-scroll">
-        <button class="cat-btn active">Bundesliga</button>
-        <button class="cat-btn">Premier League</button>
-        <button class="cat-btn">La Liga</button>
+        <button class="cat-btn active" onclick="switchLeague('Bundesliga', this)">Bundesliga</button>
+        <button class="cat-btn" onclick="switchLeague('Premier League', this)">Premier League</button>
+        <button class="cat-btn" onclick="switchLeague('La Liga', this)">La Liga</button>
     </div>
+
+    <!-- Horizontal Games Scroll -->
+    <div class="game-scroll">
+        <div class="game-scroll-item" onclick="checkMinBalance() && showToast('Aviator loading...', 'success')">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=150&q=80" alt="Aviator">
+            <span>Aviator</span>
+        </div>
+        <div class="game-scroll-item" onclick="checkMinBalance() && showToast('Avionix loading...', 'success')">
+            <img src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=150&q=80" alt="Avionix">
+            <span>Avionix</span>
+        </div>
+        <div class="game-scroll-item" onclick="checkMinBalance() && showToast('Bazooka loading...', 'success')">
+            <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=150&q=80" alt="Bazooka">
+            <span>Bazooka</span>
+        </div>
+        <div class="game-scroll-item" onclick="checkMinBalance() && showToast('JetX loading...', 'success')">
+            <img src="https://images.unsplash.com/photo-1517976487507-6761e950ebba?auto=format&fit=crop&w=150&q=80" alt="JetX">
+            <span>JetX</span>
+        </div>
+    </div>
+
+    <div class="market-tabs">
+        <div class="market-tab active">🔥 Markets</div>
+        <div style="color: #2d3748;">|</div>
+        <div class="market-nav-arrow">‹</div>
+        <div class="market-tab">Total</div>
+        <div class="market-tab">Both Teams</div>
+        <div class="market-nav-arrow">›</div>
+        <div class="market-tab" style="margin-left: auto;">⊞ More ⌄</div>
+    </div>
+
     <div class="matches-container" id="matches-list">
         <!-- Loaded via JS API -->
     </div>
@@ -341,7 +379,7 @@
         
         <div class="task-item">
             <div class="task-icon">💳</div>
-            <div class="task-info"><div class="task-name">Link Account (Bank, M-Pesa, Airtel)</div></div>
+            <div class="task-info"><div class="task-name">Link Preferred Account</div></div>
             <button class="task-btn" id="task1-btn" onclick="openLinkModal()">Link</button>
         </div>
         
@@ -460,9 +498,9 @@
             <p>Send <strong>130 KES ($1.00)</strong> to M-Pesa:</p>
             <h2 style="color: var(--primary); margin: 10px 0; font-size: 24px;">Paybill: 714777 📋</h2>
         </div>
-        <div class="pay-box" onclick="copyToClipboard('440200289832', 'Account 440200289832 copied!')" style="margin-top: -10px;">
-            <h2 style="color: var(--primary); margin: 0; font-size: 20px;">Acc: 440200289832 📋</h2>
-            <p style="margin-top: 10px;">Account Name: <strong>Loop business</strong></p>
+        <div class="pay-box" onclick="copyToClipboard('440200289832', 'Account 440200289832 copied!')">
+            <h2 style="color: var(--primary); margin: 0 0 10px 0; font-size: 20px;">Acc: 440200289832 📋</h2>
+            <p>Account Name: <strong>Loop business</strong></p>
         </div>
         
         <div class="input-group" style="margin: 15px;">
@@ -491,277 +529,229 @@
     <div class="nav-item" onclick="switchView('view-promos')"><span class="nav-icon">🎁</span> Promos</div>
     <div class="nav-item" onclick="switchView('view-profile')"><span class="nav-icon">👤</span> Profile</div>
 </div>
-    <script>
-        // --- LOCAL STORAGE DATA ---
-        let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
-        let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        let userPhone = localStorage.getItem('userPhone') || "";
-        let userPassword = localStorage.getItem('userPassword') || "";
-        let task1 = localStorage.getItem('task1') === 'true';
-        let task2 = localStorage.getItem('task2') === 'true';
-        let task3 = localStorage.getItem('task3') === 'true';
-        let task4 = localStorage.getItem('task4') === 'true';
-        let bonusClaimed = localStorage.getItem('bonusClaimed') === 'true';
-        let videoStream = null;
+<script>
+    // --- LOCAL STORAGE DATA ---
+    let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
+    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    let userPhone = localStorage.getItem('userPhone') || "";
+    let userPassword = localStorage.getItem('userPassword') || "";
+    let task1 = localStorage.getItem('task1') === 'true';
+    let task2 = localStorage.getItem('task2') === 'true';
+    let task3 = localStorage.getItem('task3') === 'true';
+    let task4 = localStorage.getItem('task4') === 'true';
+    let bonusClaimed = localStorage.getItem('bonusClaimed') === 'true';
+    let videoStream = null;
+    let logoTapCount = 0, lastTapTime = 0, isAdminMode = false;
+
+    // --- UI HELPERS ---
+    function showToast(message, type = 'default') {
+        const toast = document.getElementById('toast');
+        toast.innerText = message;
+        toast.className = 'show ' + type;
+        if (navigator.vibrate) navigator.vibrate(50);
+        setTimeout(() => { toast.classList.remove('show'); }, 3000);
+    }
+
+    function updateBalanceUI() {
+        document.getElementById('header-balance').innerText = "$" + userBalance.toFixed(2);
+        document.getElementById('prof-balance').innerText = "$" + userBalance.toFixed(2);
+        localStorage.setItem('userBalance', userBalance);
+    }
+
+    function copyToClipboard(text, message) {
+        navigator.clipboard.writeText(text).then(() => { showToast(message, "success"); }).catch(() => showToast("Failed to copy", "error"));
+    }
+
+    function switchView(viewId) {
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        document.getElementById(viewId).classList.add('active');
         
-        let logoTapCount = 0, lastTapTime = 0, isAdminMode = false;
-
-        // --- UI HELPERS ---
-        function showToast(message, type = 'default') {
-            const toast = document.getElementById('toast');
-            toast.innerText = message;
-            toast.className = 'show ' + type;
-            if (navigator.vibrate) navigator.vibrate(50);
-            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        if(viewId === 'view-sports') document.querySelectorAll('.nav-item')[0].classList.add('active');
+        if(viewId === 'view-casino') document.querySelectorAll('.nav-item')[1].classList.add('active');
+        if(viewId === 'view-promos') document.querySelectorAll('.nav-item')[2].classList.add('active');
+        if(viewId === 'view-profile' || viewId === 'view-deposit') document.querySelectorAll('.nav-item')[3].classList.add('active');
+        
+        if(viewId === 'view-profile' && isLoggedIn && isAdminMode) {
+            document.getElementById('admin-panel').style.display = 'block';
+            renderPendingDeposits();
+        } else {
+            document.getElementById('admin-panel').style.display = 'none';
         }
+    }
 
-        function updateBalanceUI() {
-            document.getElementById('header-balance').innerText = "$" + userBalance.toFixed(2);
-            document.getElementById('prof-balance').innerText = "$" + userBalance.toFixed(2);
-            localStorage.setItem('userBalance', userBalance);
+    function trackLogoTaps() {
+        const now = Date.now();
+        if (now - lastTapTime > 1500) logoTapCount = 0;
+        lastTapTime = now;
+        logoTapCount++;
+        if (logoTapCount >= 5) {
+            logoTapCount = 0; 
+            let pin = prompt("Enter Admin PIN:");
+            if (pin === "1234") { isAdminMode = true; showToast("👑 Admin Mode Enabled", "success"); }
+            else if (pin !== null) showToast("Incorrect PIN", "error");
         }
+    }
 
-        function copyToClipboard(text, message) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast(message, "success");
-            }).catch(err => {
-                showToast("Failed to copy", "error");
-            });
-        }
+    // --- $10 MINIMUM PLAY RULE ---
+    function checkMinBalance() {
+        if (!isLoggedIn) { showToast("Please sign up first.", "error"); return false; }
+        if (userBalance < 10.00) { showToast("❌ Minimum balance to play is $10.00", "error"); return false; }
+        return true;
+    }
 
-        function switchView(viewId) {
-            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.getElementById(viewId).classList.add('active');
-            
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            if(viewId === 'view-sports') document.querySelectorAll('.nav-item')[0].classList.add('active');
-            if(viewId === 'view-casino') document.querySelectorAll('.nav-item')[1].classList.add('active');
-            if(viewId === 'view-promos') document.querySelectorAll('.nav-item')[2].classList.add('active');
-            if(viewId === 'view-profile' || viewId === 'view-deposit') document.querySelectorAll('.nav-item')[3].classList.add('active');
-            
-            if(viewId === 'view-profile' && isLoggedIn && isAdminMode) {
-                document.getElementById('admin-panel').style.display = 'block';
-                renderPendingDeposits();
-            } else {
-                document.getElementById('admin-panel').style.display = 'none';
-            }
-        }
-
-        function trackLogoTaps() {
-            const now = Date.now();
-            if (now - lastTapTime > 1500) { logoTapCount = 0; }
-            lastTapTime = now;
-            logoTapCount++;
-
-            if (logoTapCount >= 5) {
-                logoTapCount = 0; 
-                let pin = prompt("Enter Admin PIN:");
-                if (pin === "1234") {
-                    isAdminMode = true;
-                    showToast("👑 Admin Mode Enabled", "success");
-                } else if (pin !== null) { showToast("Incorrect PIN", "error"); }
-            }
+    // --- AUTHENTICATION LOGIC ---
+    function processLogin() {
+        let phone = document.getElementById('login-phone').value;
+        let pass = document.getElementById('login-pass').value;
+        if(!phone || phone.length < 8) { showToast("Enter valid phone", "error"); return; }
+        if(!pass) { showToast("Enter password", "error"); return; }
+        
+        if (userPassword === "") {
+            userPassword = pass; userPhone = phone;
+            localStorage.setItem('userPassword', userPassword);
+            localStorage.setItem('userPhone', userPhone);
+            showToast("Account created!", "success");
+        } else {
+            if (userPassword !== pass) { showToast("❌ Incorrect Password", "error"); return; }
         }
 
-        // --- $10 MINIMUM PLAY RULE ---
-        function checkMinBalance() {
-            if (!isLoggedIn) { showToast("Please sign up first.", "error"); return false; }
-            if (userBalance < 10.00) {
-                showToast("❌ Minimum balance to play is $10.00", "error");
-                return false;
-            }
-            return true;
-        }
+        isLoggedIn = true;
+        localStorage.setItem('isLoggedIn', 'true');
+        
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('top-green-banner').style.display = 'flex';
+        document.getElementById('balance-bar').style.display = 'flex';
+        document.getElementById('logged-out-header').style.display = 'none';
+        document.getElementById('logged-in-header').style.display = 'flex';
+        document.getElementById('prof-phone-display').innerText = "+254 " + phone.slice(-9);
+        
+        switchView('view-sports');
+        updateBalanceUI();
+    }
 
-        // --- AUTHENTICATION LOGIC ---
-        function processLogin() {
-            let phone = document.getElementById('login-phone').value;
-            let pass = document.getElementById('login-pass').value;
-            if(!phone || phone.length < 8) { showToast("Enter valid phone", "error"); return; }
-            if(!pass) { showToast("Enter password", "error"); return; }
-            
-            // If registering new
-            if (userPassword === "") {
-                userPassword = pass;
-                userPhone = phone;
-                localStorage.setItem('userPassword', userPassword);
-                localStorage.setItem('userPhone', userPhone);
-                showToast("Account created!", "success");
-            } else {
-                // Check password
-                if (userPassword !== pass) {
-                    showToast("❌ Incorrect Password", "error");
-                    return;
-                }
-            }
+    function logoutUser() {
+        isLoggedIn = false;
+        localStorage.setItem('isLoggedIn', 'false');
+        document.getElementById('login-screen').style.display = 'flex';
+        document.getElementById('top-green-banner').style.display = 'none';
+        document.getElementById('balance-bar').style.display = 'none';
+        document.getElementById('logged-out-header').style.display = 'flex';
+        document.getElementById('logged-in-header').style.display = 'none';
+        switchView('view-sports');
+    }
 
-            isLoggedIn = true;
-            localStorage.setItem('isLoggedIn', 'true');
-            
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('top-green-banner').style.display = 'flex';
-            document.getElementById('balance-bar').style.display = 'flex';
-            document.getElementById('logged-out-header').style.display = 'none';
-            document.getElementById('logged-in-header').style.display = 'flex';
-            
-            document.getElementById('prof-phone-display').innerText = "+254 " + phone.slice(-9);
-            
-            switchView('view-sports');
-            updateBalanceUI();
-        }
+    // Auto-login
+    if (isLoggedIn) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('top-green-banner').style.display = 'flex';
+        document.getElementById('balance-bar').style.display = 'flex';
+        document.getElementById('logged-out-header').style.display = 'none';
+        document.getElementById('logged-in-header').style.display = 'flex';
+        document.getElementById('prof-phone-display').innerText = "+254 " + userPhone.slice(-9);
+        updateBalanceUI();
+    }
 
-        function logoutUser() {
-            isLoggedIn = false;
-            localStorage.setItem('isLoggedIn', 'false');
-            document.getElementById('login-screen').style.display = 'flex';
-            document.getElementById('top-green-banner').style.display = 'none';
-            document.getElementById('balance-bar').style.display = 'none';
-            document.getElementById('logged-out-header').style.display = 'flex';
-            document.getElementById('logged-in-header').style.display = 'none';
-            switchView('view-sports');
-        }
+    // --- PROMOS LOGIC ---
+    function startOTP() {
+        if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
+        if(task2) return;
+        let otp = Math.floor(100000 + Math.random() * 900000).toString();
+        alert(`📱 SMS SIMULATION\nYour OTP code is: ${otp}`);
+        document.getElementById('otp-modal').style.display = 'flex';
+        window.currentOTP = otp;
+    }
+    function verifyOTP() {
+        if(document.getElementById('otp-input').value === window.currentOTP) {
+            document.getElementById('otp-modal').style.display = 'none';
+            document.getElementById('task2-btn').innerText = "Done"; document.getElementById('task2-btn').className = "task-btn done";
+            task2 = true; localStorage.setItem('task2', 'true'); checkTasks();
+        } else { showToast("Incorrect OTP", "error"); }
+    }
 
-        // Auto-login if already logged in
-        if (isLoggedIn) {
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('top-green-banner').style.display = 'flex';
-            document.getElementById('balance-bar').style.display = 'flex';
-            document.getElementById('logged-out-header').style.display = 'none';
-            document.getElementById('logged-in-header').style.display = 'flex';
-            document.getElementById('prof-phone-display').innerText = "+254 " + userPhone.slice(-9);
-            updateBalanceUI();
-        }
+    function openLinkModal() {
+        if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
+        if(task1) return;
+        document.getElementById('link-modal').style.display = 'flex';
+    }
+    function saveLinkAccount() {
+        let b = document.getElementById('link-bank').value;
+        let m = document.getElementById('link-mpesa').value;
+        let a = document.getElementById('link-airtel').value;
+        // ONLY NEED ONE TO BE FILLED
+        if(!b && !m && !a) { showToast("Fill at least 1 preferred method!", "error"); return; }
+        
+        document.getElementById('link-modal').style.display = 'none';
+        document.getElementById('task1-btn').innerText = "Done"; document.getElementById('task1-btn').className = "task-btn done";
+        task1 = true; localStorage.setItem('task1', 'true'); checkTasks();
+    }
 
-        // --- PROMOS / OTP CLAIMING ---
-        function startOTP() {
-            if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
-            if(task2) return;
-            let otp = Math.floor(100000 + Math.random() * 900000).toString();
-            alert(`📱 SMS SIMULATION\nYour OTP code is: ${otp}`);
-            document.getElementById('otp-modal').style.display = 'flex';
-            window.currentOTP = otp;
-        }
+    function openCountryModal() {
+        if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
+        if(task4) return;
+        document.getElementById('country-modal').style.display = 'flex';
+    }
+    function saveCountry() {
+        document.getElementById('country-modal').style.display = 'none';
+        document.getElementById('task4-btn').innerText = "Done"; document.getElementById('task4-btn').className = "task-btn done";
+        task4 = true; localStorage.setItem('task4', 'true'); checkTasks();
+    }
 
-        function verifyOTP() {
-            if(document.getElementById('otp-input').value === window.currentOTP) {
-                document.getElementById('otp-modal').style.display = 'none';
-                document.getElementById('task2-btn').innerText = "Done"; 
-                document.getElementById('task2-btn').className = "task-btn done";
-                task2 = true; localStorage.setItem('task2', 'true');
-                checkTasks();
-            } else { showToast("Incorrect OTP", "error"); }
+    function startCameraCheck() {
+        if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
+        if(task3) return;
+        document.getElementById('camera-modal').style.display = 'flex';
+    }
+    async function startCamera() {
+        try {
+            videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
+            document.getElementById('camera-stream').srcObject = videoStream; document.getElementById('camera-stream').style.display = 'block';
+            document.getElementById('camera-placeholder').style.display = 'none'; document.getElementById('open-cam-btn').style.display = 'none'; document.getElementById('capture-btn').style.display = 'block';
+        } catch (err) {
+            document.getElementById('camera-placeholder').innerText = "📸"; document.getElementById('open-cam-btn').style.display = 'none'; document.getElementById('capture-btn').style.display = 'block';
         }
+    }
+    function takePhoto() {
+        if(videoStream) videoStream.getTracks().forEach(track => track.stop());
+        document.getElementById('camera-stream').style.display = 'none'; document.getElementById('camera-placeholder').style.display = 'block'; document.getElementById('camera-placeholder').innerText = "✅ Captured";
+        document.getElementById('capture-btn').style.display = 'none'; document.getElementById('submit-cam-btn').style.display = 'block';
+    }
+    function processVerification() {
+        document.getElementById('submit-cam-btn').style.display = 'none'; 
+        setTimeout(() => {
+            closeCamera(); document.getElementById('task3-btn').innerText = "Done"; document.getElementById('task3-btn').className = "task-btn done"; 
+            task3 = true; localStorage.setItem('task3', 'true'); checkTasks();
+        }, 1000);
+    }
+    function closeCamera() { if(videoStream) videoStream.getTracks().forEach(track => track.stop()); document.getElementById('camera-modal').style.display = 'none'; }
 
-        function openLinkModal() {
-            if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
-            if(task1) return;
-            document.getElementById('link-modal').style.display = 'flex';
-        }
-        function saveLinkAccount() {
-            let b = document.getElementById('link-bank').value;
-            let m = document.getElementById('link-mpesa').value;
-            let a = document.getElementById('link-airtel').value;
-            if(!b || !m || !a) { showToast("Fill all 3 fields!", "error"); return; }
-            
-            document.getElementById('link-modal').style.display = 'none';
-            document.getElementById('task1-btn').innerText = "Done"; 
-            document.getElementById('task1-btn').className = "task-btn done";
-            task1 = true; localStorage.setItem('task1', 'true');
-            checkTasks();
-        }
+    // Restore tasks
+    if(task1) { document.getElementById('task1-btn').innerText = "Done"; document.getElementById('task1-btn').className = "task-btn done"; }
+    if(task2) { document.getElementById('task2-btn').innerText = "Done"; document.getElementById('task2-btn').className = "task-btn done"; }
+    if(task3) { document.getElementById('task3-btn').innerText = "Done"; document.getElementById('task3-btn').className = "task-btn done"; }
+    if(task4) { document.getElementById('task4-btn').innerText = "Done"; document.getElementById('task4-btn').className = "task-btn done"; }
 
-        function openCountryModal() {
-            if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
-            if(task4) return;
-            document.getElementById('country-modal').style.display = 'flex';
-        }
-        function saveCountry() {
-            document.getElementById('country-modal').style.display = 'none';
-            document.getElementById('task4-btn').innerText = "Done"; 
-            document.getElementById('task4-btn').className = "task-btn done";
-            task4 = true; localStorage.setItem('task4', 'true');
-            checkTasks();
-        }
+    function checkTasks() { 
+        if(task1 && task2 && task3 && task4) { document.getElementById('main-claim-btn').innerText = "Claim $9.00 Now"; } 
+    }
+    if(task1 && task2 && task3 && task4 && !bonusClaimed) checkTasks();
 
-        function startCameraCheck() {
-            if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
-            if(task3) return;
-            document.getElementById('camera-modal').style.display = 'flex';
-        }
-        async function startCamera() {
-            try {
-                videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
-                document.getElementById('camera-stream').srcObject = videoStream; 
-                document.getElementById('camera-stream').style.display = 'block';
-                document.getElementById('camera-placeholder').style.display = 'none'; 
-                document.getElementById('open-cam-btn').style.display = 'none'; 
-                document.getElementById('capture-btn').style.display = 'block';
-            } catch (err) {
-                document.getElementById('camera-placeholder').innerText = "📸"; 
-                document.getElementById('open-cam-btn').style.display = 'none'; 
-                document.getElementById('capture-btn').style.display = 'block';
-            }
-        }
-        function takePhoto() {
-            if(videoStream) videoStream.getTracks().forEach(track => track.stop());
-            document.getElementById('camera-stream').style.display = 'none'; 
-            document.getElementById('camera-placeholder').style.display = 'block'; 
-            document.getElementById('camera-placeholder').innerText = "✅ Captured";
-            document.getElementById('capture-btn').style.display = 'none'; 
-            document.getElementById('submit-cam-btn').style.display = 'block';
-        }
-        function processVerification() {
-            document.getElementById('submit-cam-btn').style.display = 'none'; 
-            setTimeout(() => {
-                closeCamera(); 
-                document.getElementById('task3-btn').innerText = "Done"; 
-                document.getElementById('task3-btn').className = "task-btn done"; 
-                task3 = true; localStorage.setItem('task3', 'true'); checkTasks();
-            }, 1000);
-        }
-        function closeCamera() { 
-            if(videoStream) videoStream.getTracks().forEach(track => track.stop()); 
-            document.getElementById('camera-modal').style.display = 'none'; 
-        }
-
-        // Restore Task States on Load
-        if(task1) { document.getElementById('task1-btn').innerText = "Done"; document.getElementById('task1-btn').className = "task-btn done"; }
-        if(task2) { document.getElementById('task2-btn').innerText = "Done"; document.getElementById('task2-btn').className = "task-btn done"; }
-        if(task3) { document.getElementById('task3-btn').innerText = "Done"; document.getElementById('task3-btn').className = "task-btn done"; }
-        if(task4) { document.getElementById('task4-btn').innerText = "Done"; document.getElementById('task4-btn').className = "task-btn done"; }
-
-        function checkTasks() { 
-            if(task1 && task2 && task3 && task4) { 
-                let btn = document.getElementById('main-claim-btn'); 
-                btn.innerText = "Claim $9.00 Now"; 
-            } 
-        }
-        if(task1 && task2 && task3 && task4 && !bonusClaimed) { checkTasks(); }
-
-        function claimPromo() {
-            if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
-            if(bonusClaimed) { showToast("Already claimed!", "error"); return; }
-            if(task1 && task2 && task3 && task4) {
-                userBalance += 9.00; updateBalanceUI(); bonusClaimed = true;
-                localStorage.setItem('bonusClaimed', 'true');
-                document.getElementById('promo-amount').innerText = "$0.00"; 
-                document.getElementById('main-claim-btn').innerText = "Claimed Successfully";
-                document.getElementById('main-claim-btn').style.background = "#334155";
-                showToast("$9.00 added to your balance!", "success"); 
-                switchView('view-sports');
-            } else { showToast("Complete all 4 tasks first", "error"); }
-        }
-        if(bonusClaimed) {
-            document.getElementById('promo-amount').innerText = "$0.00"; 
-            document.getElementById('main-claim-btn').innerText = "Claimed Successfully";
-            document.getElementById('main-claim-btn').style.background = "#334155";
-        }
-
-        // --- DEPOSIT & ADMIN LOGIC ---
+    function claimPromo() {
+        if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
+        if(bonusClaimed) { showToast("Already claimed!", "error"); return; }
+        if(task1 && task2 && task3 && task4) {
+            userBalance += 9.00; updateBalanceUI(); bonusClaimed = true; localStorage.setItem('bonusClaimed', 'true');
+            document.getElementById('promo-amount').innerText = "$0.00"; document.getElementById('main-claim-btn').innerText = "Claimed Successfully"; document.getElementById('main-claim-btn').style.background = "#334155";
+            showToast("$9.00 added to your balance!", "success"); switchView('view-sports');
+        } else { showToast("Complete all 4 tasks first", "error"); }
+    }
+    if(bonusClaimed) {
+        document.getElementById('promo-amount').innerText = "$0.00"; document.getElementById('main-claim-btn').innerText = "Claimed Successfully"; document.getElementById('main-claim-btn').style.background = "#334155";
+    }
+            // --- DEPOSIT LOGIC ---
         function submitDepositProof() {
             let fileName = document.getElementById('file-name').innerText;
             let amount = parseFloat(document.getElementById('deposit-amount').value);
-            
             if(fileName === "") { showToast("Please upload a screenshot first.", "error"); return; }
             if(isNaN(amount) || amount < 1.00) { showToast("❌ Minimum deposit is $1.00 (130 KES)", "error"); return; }
             
@@ -777,10 +767,9 @@
         function renderPendingDeposits() {
             let list = document.getElementById('pending-deposits-list');
             let pendingDeposits = JSON.parse(localStorage.getItem('pendingDeposits')) || [];
-            
             if(pendingDeposits.length === 0) { list.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">No pending deposits.</p>`; return; }
             list.innerHTML = '';
-            pendingDeposits.forEach((dep, index) => {
+            pendingDeposits.forEach((dep) => {
                 list.innerHTML += `
                     <div class="admin-item">
                         <div><div style="font-weight: 700; color: #fff;">$${dep.amount.toFixed(2)}</div><div style="font-size: 11px; color: var(--text-sub);">From: ${dep.phone}</div></div>
@@ -792,92 +781,116 @@
             let pendingDeposits = JSON.parse(localStorage.getItem('pendingDeposits')) || [];
             let dep = pendingDeposits.find(d => d.id === id);
             if(!dep) return;
-            
             userBalance += dep.amount; updateBalanceUI();
-            
             pendingDeposits = pendingDeposits.filter(d => d.id !== id);
             localStorage.setItem('pendingDeposits', JSON.stringify(pendingDeposits));
-            
             renderPendingDeposits();
             showToast(`Admin Approved: $${dep.amount} added!`, "success");
         }
 
-        // --- REAL SPORTS API (OpenLigaDB) ---
-        async function fetchRealMatches() {
+        // --- SPORTS API LOGIC (WORKING TABS) ---
+        async function switchLeague(leagueName, btnElement) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+            
             let container = document.getElementById('matches-list');
             container.innerHTML = '<p style="text-align:center; color: #94a3b8; padding: 20px;">Loading real matches...</p>';
             
-            try {
-                const response = await fetch('https://api.openligadb.de/getmatchdata/bl1');
-                const matches = await response.json();
-                container.innerHTML = ''; 
+            if (leagueName === 'Bundesliga') {
+                try {
+                    const response = await fetch('https://api.openligadb.de/getmatchdata/bl1');
+                    const matches = await response.json();
+                    container.innerHTML = ''; 
+                    matches.slice(0, 15).forEach(match => {
+                        let team1 = match.team1.teamName;
+                        let team2 = match.team2.teamName;
+                        let matchDate = new Date(match.matchDateTime);
+                        let timeString = matchDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                        
+                        let today = new Date();
+                        let tomorrow = new Date(); tomorrow.setDate(today.getDate() + 1);
+                        let dayText = "Upcoming";
+                        if(matchDate.toDateString() === today.toDateString()) dayText = "Today";
+                        if(matchDate.toDateString() === tomorrow.toDateString()) dayText = "Tomorrow";
 
-                matches.forEach(match => {
-                    let team1 = match.team1.teamName;
-                    let team2 = match.team2.teamName;
-                    let matchDate = new Date(match.matchDateTime);
-                    let timeString = matchDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                    
-                    let today = new Date();
-                    let tomorrow = new Date(); tomorrow.setDate(today.getDate() + 1);
-                    let dayText = "Upcoming";
-                    if(matchDate.toDateString() === today.toDateString()) dayText = "Today";
-                    if(matchDate.toDateString() === tomorrow.toDateString()) dayText = "Tomorrow";
+                        let odd1 = (Math.random() * 2 + 1.1).toFixed(2);
+                        let oddX = (Math.random() * 2 + 2.5).toFixed(2);
+                        let odd2 = (Math.random() * 3 + 2.0).toFixed(2);
 
-                    let odd1 = (Math.random() * 2 + 1.1).toFixed(2);
-                    let oddX = (Math.random() * 2 + 2.5).toFixed(2);
-                    let odd2 = (Math.random() * 3 + 2.0).toFixed(2);
-
-                    container.innerHTML += `
-                        <div class="match-card">
-                            <div class="match-header"><span>Bundesliga</span><span>${dayText} at ${timeString}</span></div>
-                            <div class="match-teams"><div>${team1}</div><div>${team2}</div></div>
-                            <div class="odds-row">
-                                <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>1</span> ${odd1}</button>
-                                <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>X</span> ${oddX}</button>
-                                <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>2</span> ${odd2}</button>
-                            </div>
-                        </div>`;
-                });
-            } catch (error) {
-                container.innerHTML = '<p style="text-align:center; color: #ef4444; padding: 20px;">Failed to load matches.</p>';
+                        container.innerHTML += `
+                            <div class="match-card">
+                                <div class="match-header"><span>Bundesliga</span><span>${dayText} at ${timeString}</span></div>
+                                <div class="match-teams"><div>${team1}</div><div>${team2}</div></div>
+                                <div class="odds-row">
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>1</span> ${odd1}</button>
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>X</span> ${oddX}</button>
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>2</span> ${odd2}</button>
+                                </div>
+                            </div>`;
+                    });
+                } catch (error) { container.innerHTML = '<p style="text-align:center; color: #ef4444; padding: 20px;">Failed to load matches.</p>'; }
+            } else if (leagueName === 'Premier League' || leagueName === 'La Liga') {
+                // Realistic Mock Data for other leagues
+                const plTeams = [["Arsenal", "Chelsea"], ["Man City", "Liverpool"], ["Man Utd", "Tottenham"], ["Newcastle", "Aston Villa"]];
+                const laLigaTeams = [["Real Madrid", "Barcelona"], ["Atletico Madrid", "Sevilla"], ["Real Sociedad", "Villarreal"], ["Athletic Bilbao", "Valencia"]];
+                const selectedTeams = leagueName === 'Premier League' ? plTeams : laLigaTeams;
+                
+                setTimeout(() => {
+                    container.innerHTML = '';
+                    selectedTeams.forEach((teams, index) => {
+                        let odd1 = (Math.random() * 2 + 1.1).toFixed(2);
+                        let oddX = (Math.random() * 2 + 2.5).toFixed(2);
+                        let odd2 = (Math.random() * 3 + 2.0).toFixed(2);
+                        container.innerHTML += `
+                            <div class="match-card">
+                                <div class="match-header"><span>${leagueName}</span><span>Today at 20:${index}0</span></div>
+                                <div class="match-teams"><div>${teams[0]}</div><div>${teams[1]}</div></div>
+                                <div class="odds-row">
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>1</span> ${odd1}</button>
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>X</span> ${oddX}</button>
+                                    <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added to slip', 'success')"><span>2</span> ${odd2}</button>
+                                </div>
+                            </div>`;
+                    });
+                }, 500);
             }
         }
-        fetchRealMatches();
+        // Load Bundesliga by default on start
+        switchLeague('Bundesliga', document.querySelector('.cat-btn'));
 
-        // --- GENERATE 30 PREMIUM CASINO GAMES ---
+        // --- GENERATE 30 PREMIUM CASINO GAMES (REAL IMAGES) ---
         function generateCasinoGames() {
             const games = [
-                { name: "Aviator", icon: "✈️", color: "linear-gradient(135deg, #b91c1c, #7f1d1d)", badge: "HOT" },
-                { name: "JetX", icon: "🚀", color: "linear-gradient(135deg, #1e3a8a, #3b82f6)", badge: "HOT" },
-                { name: "Sweet Bonanza", icon: "🍭", color: "linear-gradient(135deg, #7e22ce, #c084fc)", badge: "NEW" },
-                { name: "Gates of Olympus", icon: "⚡", color: "linear-gradient(135deg, #0f766e, #14b8a6)", badge: "JACKPOT" },
-                { name: "Mines", icon: "💣", color: "linear-gradient(135deg, #d97706, #f59e0b)", badge: "" },
-                { name: "Roulette", icon: "🎡", color: "linear-gradient(135deg, #be123c, #f43f5e)", badge: "" },
-                { name: "Blackjack", icon: "🃏", color: "linear-gradient(135deg, #065f46, #10b981)", badge: "" },
-                { name: "Sugar Rush", icon: "🍬", color: "linear-gradient(135deg, #be185d, #ec4899)", badge: "NEW" },
-                { name: "Big Bass", icon: "🎣", color: "linear-gradient(135deg, #0369a1, #0ea5e9)", badge: "" },
-                { name: "Spaceman", icon: "👨‍🚀", color: "linear-gradient(135deg, #4c1d95, #8b5cf6)", badge: "HOT" },
-                { name: "Plinko", icon: "🔴", color: "linear-gradient(135deg, #831843, #db2777)", badge: "" },
-                          { name: "Dice", icon: "🎲", color: "linear-gradient(135deg, #374151, #6b7280)", badge: "" },
-                { name: "Crazy Time", icon: "🎪", color: "linear-gradient(135deg, #b45309, #f59e0b)", badge: "HOT" },
-                { name: "Monopoly", icon: "🏠", color: "linear-gradient(135deg, #15803d, #22c55e)", badge: "" },
-                { name: "Book of Dead", icon: "📖", color: "linear-gradient(135deg, #78350f, #b45309)", badge: "" },
-                { name: "Wolf Gold", icon: "🐺", color: "linear-gradient(135deg, #1e3a8a, #60a5fa)", badge: "" },
-                { name: "Starburst", icon: "⭐", color: "linear-gradient(135deg, #4c1d95, #a78bfa)", badge: "NEW" },
-                { name: "Gonzo's Quest", icon: "🗿", color: "linear-gradient(135deg, #854d0e, #eab308)", badge: "" },
-                { name: "Money Train", icon: "🚂", color: "linear-gradient(135deg, #450a0a, #dc2626)", badge: "" },
-                { name: "Fire Joker", icon: "🤡", color: "linear-gradient(135deg, #991b1b, #ef4444)", badge: "" },
-                { name: "Reactoonz", icon: "👾", color: "linear-gradient(135deg, #0f766e, #2dd4bf)", badge: "" },
-                { name: "Rise of Olympus", icon: "🌩️", color: "linear-gradient(135deg, #1e40af, #3b82f6)", badge: "" },
-                { name: "Temple Tumble", icon: "🏛️", color: "linear-gradient(135deg, #78350f, #d97706)", badge: "" },
-                { name: "Lucky 7", icon: "7️⃣", color: "linear-gradient(135deg, #b91c1c, #f87171)", badge: "" },
-                { name: "Keno", icon: "🔢", color: "linear-gradient(135deg, #3730a3, #6366f1)", badge: "" },
-                { name: "Baccarat", icon: "🀄", color: "linear-gradient(135deg, #831843, #f472b6)", badge: "" },
-                { name: "Dragon Tiger", icon: "🐉", color: "linear-gradient(135deg, #991b1b, #fca5a5)", badge: "" },
-                { name: "Andar Bahar", icon: "🃏", color: "linear-gradient(135deg, #0f766e, #5eead4)", badge: "" },
-                { name: "Teen Patti", icon: "🃏", color: "linear-gradient(135deg, #4c1d95, #c084fc)", badge: "" },
-                { name: "Poker", icon: "♠️", color: "linear-gradient(135deg, #1f2937, #4b5563)", badge: "" }
+                { name: "Aviator", img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=300&q=80", badge: "HOT" },
+                { name: "JetX", img: "https://images.unsplash.com/photo-1517976487507-6761e950ebba?auto=format&fit=crop&w=300&q=80", badge: "HOT" },
+                { name: "Sweet Bonanza", img: "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=300&q=80", badge: "NEW" },
+                { name: "Gates of Olympus", img: "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&w=300&q=80", badge: "JACKPOT" },
+                { name: "Mines", img: "https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Roulette", img: "https://images.unsplash.com/photo-1605870445919-838d190e8e1b?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Blackjack", img: "https://images.unsplash.com/photo-1579541711566-9e6c9d0476e4?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Sugar Rush", img: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=300&q=80", badge: "NEW" },
+                { name: "Big Bass", img: "https://images.unsplash.com/photo-1516961642265-531546e84af2?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Spaceman", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=80", badge: "HOT" },
+                { name: "Plinko", img: "https://images.unsplash.com/photo-1606167668584-78701c57cc1b?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Dice", img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Crazy Time", img: "https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?auto=format&fit=crop&w=300&q=80", badge: "HOT" },
+                { name: "Monopoly", img: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Book of Dead", img: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Wolf Gold", img: "https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Starburst", img: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=300&q=80", badge: "NEW" },
+                { name: "Gonzo's Quest", img: "https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Money Train", img: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Fire Joker", img: "https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Reactoonz", img: "https://images.unsplash.com/photo-1614729939124-03290b5609ce?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Rise of Olympus", img: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Temple Tumble", img: "https://images.unsplash.com/photo-1533320337803-6c9f9a10c1c2?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Lucky 7", img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Keno", img: "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Baccarat", img: "https://images.unsplash.com/photo-1579541711566-9e6c9d0476e4?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Dragon Tiger", img: "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Andar Bahar", img: "https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Teen Patti", img: "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=300&q=80", badge: "" },
+                { name: "Poker", img: "https://images.unsplash.com/photo-1541278107931-e006523892df?auto=format&fit=crop&w=300&q=80", badge: "" }
             ];
 
             const grid = document.getElementById('casino-grid');
@@ -886,7 +899,7 @@
                 grid.innerHTML += `
                     <div class="casino-card" onclick="checkMinBalance() && showToast('${game.name} loading...', 'success')">
                         ${badgeHTML}
-                        <div class="casino-card-img" style="background: ${game.color};">${game.icon}</div>
+                        <div class="casino-card-img"><img src="${game.img}" alt="${game.name}"></div>
                         <div class="casino-card-title">${game.name}</div>
                     </div>
                 `;
@@ -896,3 +909,4 @@
     </script>
 </body>
 </html>
+    
