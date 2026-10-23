@@ -15,17 +15,24 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); padding-bottom: 80px; overflow-x: hidden; }
-        
-        .top-green-banner { background: #00e676; color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 700; }
-        header { background: var(--bg-dark); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border);}
-        .logo-area { display: flex; align-items: center; gap: 10px; cursor: pointer;}
-        .balance-pill { background: var(--bg-card); padding: 5px 15px; border-radius: 20px; font-size: 13px; font-weight: 700; border: 1px solid var(--border);}
-        .btn-header { background: var(--primary); color: #000; padding: 6px 15px; border-radius: 20px; font-weight: 700; font-size: 13px; border: none; cursor: pointer;}
-        .icon-btn { width: 35px; height: 35px; background: var(--bg-card); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 16px; border: 1px solid var(--border); cursor: pointer; color: #fff;}
-        
         .view { display: none; }
         .view.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* HEADER */
+.top-green-banner { background: #00e676; color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 700; }
+header { background: var(--bg-dark); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border);}
+.logo-area { display: flex; align-items: center; gap: 10px; cursor: pointer;}
+.balance-pill { background: var(--bg-card); padding: 5px 15px; border-radius: 20px; font-size: 13px; font-weight: 700; border: 1px solid var(--border);}
+.btn-header { background: var(--primary); color: #000; padding: 6px 15px; border-radius: 20px; font-weight: 700; font-size: 13px; border: none; cursor: pointer;}
+.icon-btn { width: 35px; height: 35px; background: var(--bg-card); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 16px; border: 1px solid var(--border); cursor: pointer; color: #fff;}
+
+/* LOGIN */
+#login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-dark); z-index: 9999; display: flex; flex-direction: column; padding: 20px; }
+.login-logo-circle { width: 100px; height: 100px; background: var(--bg-card); border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 50px; border: 2px solid var(--primary); box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);}
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-sub); margin-bottom: 8px; }
+.input-wrapper { display: flex; align-items: center; background: var(--bg-input); border: 1px solid var(--border); border-radius: 12px; padding: 15px; }
+.input-wrapper input { background: transparent; border: none; outline: none; color: #fff; font-size: 15px; width: 100%;}
         /* SPORTS */
 .category-scroll { display: flex; gap: 10px; padding: 15px 15px 10px 15px; overflow-x: auto; scrollbar-width: none; }
 .category-scroll::-webkit-scrollbar { display: none; }
@@ -40,7 +47,6 @@
 .game-scroll-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); z-index: 1;}
 
 .filter-bar { display: flex; gap: 15px; padding: 10px 15px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-card); margin: 0 15px; border-radius: 10px; font-size: 13px; font-weight: 600; align-items: center; overflow-x: auto; scrollbar-width: none;}
-.filter-bar::-webkit-scrollbar { display: none; }
 .filter-item { display: flex; align-items: center; gap: 5px; cursor: pointer; white-space: nowrap; color: #fff;}
 
 .market-tabs { display: flex; gap: 15px; padding: 15px 15px; align-items: center; border-bottom: 1px solid var(--border);}
@@ -66,7 +72,6 @@
 .odds-row { display: flex; gap: 10px; }
 .odd-btn { flex: 1; background: transparent; border: 1px solid #2d3748; padding: 12px 0; border-radius: 8px; color: #fff; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center;}
 .odd-btn span { font-size: 11px; color: var(--text-sub); margin-right: 10px; font-weight: 500;}
-.match-footer { margin-top: 10px; font-size: 12px; color: var(--primary); font-weight: 600;}
 
 .bet-slip { position: fixed; bottom: 80px; left: 10px; width: calc(100% - 20px); background: #1a2436; border: 1px solid var(--primary); border-radius: 15px; padding: 12px; display: flex; justify-content: space-between; align-items: center; z-index: 90;}
 .slip-left { display: flex; align-items: center; gap: 10px;}
@@ -79,10 +84,7 @@
         .casino-card-img { width: 100%; height: 130px; position: relative; overflow: hidden; }
         .casino-card-img img { width: 100%; height: 100%; object-fit: cover; }
         .casino-card-title { padding: 12px; font-size: 13px; font-weight: 700; text-align: center; background: var(--bg-card);}
-        .casino-badge { position: absolute; top: 10px; right: 10px; color: #fff; font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 10px; z-index: 2;}
-        .bg-hot { background: var(--danger); }
-        .bg-new { background: var(--primary); color: #000; }
-
+        
         /* PROFILE */
         .account-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid var(--border); }
         .profile-top-card { background: var(--bg-card); margin: 15px; border-radius: 15px; padding: 20px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;}
@@ -97,16 +99,15 @@
         .my-account-list { background: var(--bg-card); margin: 15px; border-radius: 15px; border: 1px solid var(--border); overflow: hidden; }
         .acc-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid var(--border); }
         .acc-icon { width: 40px; height: 40px; background: var(--bg-dark); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; margin-right: 15px; }
-        .acc-title { font-size: 15px; font-weight: 700; color: #fff; }
 
-        /* GAMES & MODALS */
+        /* GAMES */
         .game-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-dark); z-index: 2000; display: none; flex-direction: column;}
         .game-nav { padding: 15px; display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 18px; background: var(--bg-card);}
         .game-nav span { cursor: pointer; font-size: 24px;}
         .play-area { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;}
         .crash-display { font-size: 60px; font-weight: 900; color: #fff; margin-bottom: 20px; }
         .mines-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; max-width: 300px;}
-        .mine-btn { background: var(--bg-card); height: 50px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; cursor: pointer;}
+        .mine-btn { background: var(--bg-card); border: 1px solid var(--border); height: 50px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; cursor: pointer;}
         .mine-btn.safe { background: var(--primary); color: #000; }
         .mine-btn.bomb { background: var(--danger); color: #fff; }
         .dice-display { font-size: 80px; margin-bottom: 20px; color: #fff;}
@@ -116,7 +117,6 @@
         .game-input { width: 100%; padding: 15px; border-radius: 12px; background: #0f172a; border: 1px solid var(--border); color: #fff; font-size: 18px; text-align: center; margin-bottom: 15px;}
         .btn-action { width: 100%; padding: 15px; border-radius: 12px; font-size: 18px; font-weight: 800; border: none; cursor: pointer;}
         .btn-start { background: var(--primary); color: #000; }
-        .btn-cashout { background: var(--gold); color: #000; }
         .popup-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 5000; display: none; flex-direction: column; justify-content: center; align-items: center; }
         .popup-box { background: var(--bg-card); width: 90%; max-width: 360px; border-radius: 24px; padding: 30px; text-align: center; border: 1px solid var(--border);}
         .bottom-nav { position: fixed; bottom: 0; width: 100%; background: var(--bg-dark); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 10px 0 20px 0; z-index: 100; }
@@ -129,198 +129,281 @@
         #toast.success { background: var(--primary); color: black;}
     </style>
 </head>
-        /* CASINO */
-        .casino-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
-        .casino-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); position: relative;}
-        .casino-card-img { width: 100%; height: 130px; position: relative; overflow: hidden; }
-        .casino-card-img img { width: 100%; height: 100%; object-fit: cover; }
-        .casino-card-title { padding: 12px; font-size: 13px; font-weight: 700; text-align: center; background: var(--bg-card);}
-        .casino-badge { position: absolute; top: 10px; right: 10px; color: #fff; font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 10px; z-index: 2;}
-        .bg-hot { background: var(--danger); }
-        .bg-new { background: var(--primary); color: #000; }
+    <body>
+    <div id="toast">Message</div>
 
-        /* PROFILE */
-        .account-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid var(--border); }
-        .profile-top-card { background: var(--bg-card); margin: 15px; border-radius: 15px; padding: 20px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;}
-        .prof-avatar { width: 50px; height: 50px; background: #4ade80; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #000; }
-        .balance-card { background: var(--bg-card); margin: 15px; border-radius: 15px; padding: 20px; border: 1px solid var(--border); }
-        .bal-row { display: flex; gap: 15px; margin-bottom: 20px; }
-        .bal-box { flex: 1; background: var(--bg-dark); padding: 15px; border-radius: 12px; }
-        .bal-box h2 { font-size: 24px; color: var(--primary); font-weight: 800;}
-        .btn-row { display: flex; gap: 15px; }
-        .btn-dep { flex: 1; background: var(--primary); color: #000; padding: 12px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer;}
-        .btn-wit { flex: 1; background: var(--gold); color: #000; padding: 12px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer;}
-        .my-account-list { background: var(--bg-card); margin: 15px; border-radius: 15px; border: 1px solid var(--border); overflow: hidden; }
-        .acc-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid var(--border); }
-        .acc-icon { width: 40px; height: 40px; background: var(--bg-dark); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; margin-right: 15px; }
-        .acc-title { font-size: 15px; font-weight: 700; color: #fff; }
+    <div id="login-screen" class="view active" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-dark); z-index: 9999; display: flex; flex-direction: column; padding: 20px;">
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 30px;">
+            <div style="color: var(--primary); font-weight: 600; font-size: 14px; cursor: pointer;" onclick="processLogin()">Create Account →</div>
+        </div>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div style="width: 100px; height: 100px; background: var(--bg-card); border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 50px; border: 2px solid var(--primary);">👑</div>
+            <div style="font-size: 24px; font-weight: 700; color: #fff;">Welcome to <span style="color: var(--primary);">Empire Bet</span></div>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 13px; color: var(--text-sub); margin-bottom: 8px;">Phone Number</label>
+            <div style="display: flex; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 15px;">
+                <select style="background: transparent; border: none; color: #fff; outline: none; margin-right: 10px;"><option>🇰🇪 +254</option></select>
+                <input type="tel" id="login-phone" placeholder="712345678" style="background: transparent; border: none; outline: none; color: #fff; width: 100%;">
+            </div>
+        </div>
+        <button onclick="processLogin()" style="width: 100%; padding: 18px; background: var(--primary); color: #000; font-size: 16px; font-weight: 800; border: none; border-radius: 12px;">Sign In / Sign Up →</button>
+    </div>
 
-        /* GAMES & MODALS */
-        .game-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-dark); z-index: 2000; display: none; flex-direction: column;}
-        .game-nav { padding: 15px; display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 18px; background: var(--bg-card);}
-        .game-nav span { cursor: pointer; font-size: 24px;}
-        .play-area { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;}
-        .crash-display { font-size: 60px; font-weight: 900; color: #fff; margin-bottom: 20px; }
-        .mines-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; max-width: 300px;}
-        .mine-btn { background: var(--bg-card); height: 50px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; cursor: pointer;}
-        .mine-btn.safe { background: var(--primary); color: #000; }
-        .mine-btn.bomb { background: var(--danger); color: #fff; }
-        .dice-display { font-size: 80px; margin-bottom: 20px; color: #fff;}
-        .reels-container { display: flex; gap: 10px; background: #000; padding: 20px; border-radius: 20px; border: 4px solid var(--gold); margin-bottom: 30px;}
-        .reel { width: 70px; height: 90px; background: #fff; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 40px; color: #000;}
-        .game-controls { background: var(--bg-card); padding: 20px; border-radius: 24px 24px 0 0; text-align: center; width: 100%;}
-        .game-input { width: 100%; padding: 15px; border-radius: 12px; background: #0f172a; border: 1px solid var(--border); color: #fff; font-size: 18px; text-align: center; margin-bottom: 15px;}
-        .btn-action { width: 100%; padding: 15px; border-radius: 12px; font-size: 18px; font-weight: 800; border: none; cursor: pointer;}
-        .btn-start { background: var(--primary); color: #000; }
-        .btn-cashout { background: var(--gold); color: #000; }
-        .popup-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 5000; display: none; flex-direction: column; justify-content: center; align-items: center; }
-        .popup-box { background: var(--bg-card); width: 90%; max-width: 360px; border-radius: 24px; padding: 30px; text-align: center; border: 1px solid var(--border);}
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: var(--bg-dark); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 10px 0 20px 0; z-index: 100; }
-        .nav-item { text-align: center; font-size: 11px; font-weight: 600; color: var(--text-sub); cursor: pointer; }
-        .nav-item.active { color: var(--primary); }
-        .nav-icon { font-size: 22px; display: block; margin-bottom: 4px; }
-        #toast { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; padding: 14px 28px; border-radius: 30px; font-size: 14px; font-weight: 700; z-index: 10000; transition: top 0.4s ease; }
-        #toast.show { top: 25px; }
-        #toast.error { background: var(--danger); color: white;}
-        #toast.success { background: var(--primary); color: black;}
-    </style>
-</head>
-    <!-- GAME SCREENS -->
-<div id="game-crash" class="game-screen">
-    <div class="game-nav"><span onclick="closeGameScreen()">‹</span> Crash</div>
-    <div class="play-area"><div class="crash-display" id="crash-multiplier">1.00x</div></div>
-    <div class="game-controls"><input type="number" id="crash-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="crash-btn" onclick="handleCrashAction()">Place Bet</button></div>
+    <div class="top-green-banner" id="top-green-banner" style="display: none;">
+        <div>Deposit via M-PESA paybill 714777</div>
+        <div style="text-decoration: underline; cursor: pointer;" onclick="switchView('view-deposit')">Click to deposit</div>
+    </div>
+    <header id="main-header" style="display: none;">
+        <div class="logo-area" onclick="trackLogoTaps()">
+            <div style="font-size: 24px;">👑</div>
+            <div class="balance-pill">KES <span id="header-balance">0.00</span></div>
+            <button class="btn-header" onclick="switchView('view-deposit')">Deposit</button>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <div class="icon-btn">🔍</div>
+            <div class="icon-btn">☀️</div>
+            <div class="icon-btn">🔔</div>
+        </div>
+    </header>
+        <div id="view-sports" class="view">
+    <div class="category-scroll">
+        <button class="cat-btn active" onclick="switchLeague('Bundesliga', this)">Bundesliga</button>
+        <button class="cat-btn" onclick="switchLeague('Premier League', this)">Premier League</button>
+        <button class="cat-btn" onclick="switchLeague('La Liga', this)">La Liga</button>
+    </div>
+    <div class="game-scroll">
+        <div class="game-scroll-item" onclick="openGame('crash')"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=100&q=80"><span>Aviator</span></div>
+        <div class="game-scroll-item" onclick="openGame('mines')"><img src="https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?auto=format&fit=crop&w=100&q=80"><span>Mines</span></div>
+        <div class="game-scroll-item" onclick="openGame('dice')"><img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=100&q=80"><span>Dice</span></div>
+        <div class="game-scroll-item" onclick="openGame('slot1')"><img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=100&q=80"><span>Slots</span></div>
+    </div>
+    <div class="filter-bar">
+        <div class="filter-item">📅 All ⌄</div>
+        <div class="filter-item">⚽ Soccer ⌄</div>
+        <div class="filter-item">🏆 Leagues ⌄</div>
+    </div>
+    <div class="market-tabs">
+        <div class="market-tab active">🔥 Markets</div>
+        <div class="nav-arrow">‹</div>
+        <div class="market-tab">Total</div>
+        <div class="nav-arrow">›</div>
+    </div>
+    <div class="match-header-info"><span>200 matches</span><span>1 &nbsp;&nbsp;&nbsp; X &nbsp;&nbsp;&nbsp; 2</span></div>
+    
+    <div class="early-payout-box">
+        <div class="ep-top">
+            <div style="display: flex; gap: 10px; align-items: center;"><div class="ep-icon">⚡</div><div class="ep-text"><h4>Early Payout</h4><p>Get paid early</p></div></div>
+            <button class="ep-btn">HOW IT WORKS</button>
+        </div>
+        <div class="ep-tabs"><div class="ep-tab active">Normal</div><div class="ep-tab">1UP</div><div class="ep-tab">2UP</div></div>
+    </div>
+    
+    <div class="matches-container" id="matches-list"></div>
+    
+    <div class="bet-slip">
+        <div class="slip-left">
+            <div class="slip-icon">🔥</div>
+            <div class="slip-info"><h4>11 picks · Odds 12108.64</h4><p>25% win boost · add 1 more pick for 30%</p></div>
+        </div>
+    </div>
+        </div>
+        <!-- CASINO VIEW (UPDATED WITH HORIZONTAL SCROLL) -->
+<div id="view-casino" class="view" style="padding-bottom: 20px;">
+    <div class="category-scroll">
+        <button class="cat-btn active">Lobby</button>
+        <button class="cat-btn">Crash</button>
+        <button class="cat-btn">Slots</button>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #1e293b, #0f172a); margin: 15px; border-radius: 15px; padding: 15px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=100&q=80" style="width: 60px; height: 60px; border-radius: 15px; object-fit: cover;">
+            <div>
+                <p style="font-size: 11px; color: var(--text-sub);">Most Played</p>
+                <h3 style="color: #fff;">Aviator</h3>
+            </div>
+        </div>
+        <button onclick="openGame('crash')" style="background: var(--primary); color: #000; border: none; padding: 8px 20px; border-radius: 20px; font-weight: 800; cursor: pointer;">Play</button>
+    </div>
+
+    <div class="game-scroll" style="padding-bottom: 0;">
+        <div class="game-scroll-item" onclick="openGame('crash')"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=150&q=80"><span>Aviator</span></div>
+        <div class="game-scroll-item" onclick="openGame('mines')"><img src="https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?auto=format&fit=crop&w=150&q=80"><span>Mines</span></div>
+        <div class="game-scroll-item" onclick="openGame('dice')"><img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=150&q=80"><span>Dice</span></div>
+        <div class="game-scroll-item" onclick="openGame('slot1')"><img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=150&q=80"><span>Slots</span></div>
+    </div>
+
+    <div style="padding: 15px;"><h2 style="color: #fff; font-size: 18px;">Top Casino Games</h2></div>
+    <div class="casino-grid" id="casino-grid"></div>
 </div>
-<div id="game-mines" class="game-screen">
-    <div class="game-nav"><span onclick="closeGameScreen()">‹</span> Mines</div>
-    <div class="play-area"><div class="mines-grid" id="mines-grid"></div></div>
-    <div class="game-controls"><input type="number" id="mines-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="mines-btn" onclick="handleMinesAction()">Start</button></div>
+
+<!-- PROFILE VIEW -->
+<div id="view-profile" class="view">
+    <div class="account-header">
+        <div style="cursor: pointer;" onclick="switchView('view-sports')">‹ Back</div>
+        <h2>My Account</h2>
+        <div>🔔</div>
+    </div>
+    <div class="profile-top-card">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="prof-avatar">👤</div>
+            <div><h3 style="color: #fff;" id="prof-phone-display">+254 700 000 000</h3></div>
+        </div>
+    </div>
+    <div class="balance-card">
+        <div class="bal-row">
+            <div class="bal-box"><p>Balance (USD)</p><h2 id="prof-balance">$0.00</h2></div>
+        </div>
+        <div class="btn-row">
+            <button class="btn-dep" onclick="switchView('view-deposit')">Deposit</button>
+            <button class="btn-wit" onclick="openWithdrawModal()">Withdraw</button>
+        </div>
+    </div>
+    <div class="my-account-list">
+        <div class="acc-item"><div class="acc-icon">🧾</div><div>Transaction History</div></div>
+        <div class="acc-item"><div class="acc-icon">🕒</div><div>Bet History</div></div>
+    </div>
+    <div style="margin: 20px 15px;">
+        <button onclick="logoutUser()" style="width: 100%; padding: 15px; background: transparent; border: 1px solid #fff; color: #fff; border-radius: 15px; font-weight: 600;">Sign Out</button>
+    </div>
+    
+    <div id="admin-panel" style="display: none; margin: 20px; padding: 15px; background: rgba(239,68,68,0.1); border: 1px solid var(--danger); border-radius: 15px;">
+        <h3 style="color: var(--danger); margin-bottom: 10px;">Admin Approvals</h3>
+        <div id="pending-list"></div>
+    </div>
 </div>
-<div id="game-dice" class="game-screen">
-    <div class="game-nav"><span onclick="closeGameScreen()">‹</span> Dice</div>
-    <div class="play-area"><div class="dice-display" id="dice-display">🎲</div></div>
-    <div class="game-controls"><input type="number" id="dice-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="dice-btn" onclick="rollDice()">Roll</button></div>
+       <!-- DEPOSIT VIEW -->
+<div id="view-deposit" class="view">
+    <div class="account-header"><div style="cursor: pointer;" onclick="switchView('view-sports')">‹ Back</div><h2>Deposit</h2><div></div></div>
+    <div style="padding: 20px;">
+        <div style="background: var(--bg-card); padding: 25px; border-radius: 20px; border: 1px dashed var(--primary); text-align: center; margin-bottom: 20px;">
+            <p>Send <strong>130 KES ($1.00)</strong> to:</p>
+            <h2 style="color: var(--primary); margin: 10px 0;">Paybill: 714777</h2>
+            <h2 style="color: var(--primary); margin: 0 0 10px 0;">Acc: 440200289832</h2>
+            <p>Name: <strong>Loop business</strong></p>
+        </div>
+        <label>M-Pesa Code</label>
+        <input type="text" id="mpesa-code" placeholder="e.g. QGH7XYZ123" style="width: 100%; padding: 15px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); color: #fff; margin-bottom: 15px; text-transform: uppercase;">
+        <button onclick="submitDeposit()" class="btn-action btn-start">Submit Proof</button>
+    </div>
 </div>
-<div id="game-plinko" class="game-screen">
-    <div class="game-nav"><span onclick="closeGameScreen()">‹</span> Plinko</div>
-    <div class="play-area"><div id="plinko-result" style="font-size: 50px; color: var(--primary);">🔴</div></div>
-    <div class="game-controls"><input type="number" id="plinko-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="plinko-btn" onclick="playPlinko()">Drop</button></div>
+
+<!-- WITHDRAW MODAL -->
+<div id="withdraw-modal" class="popup-modal">
+    <div class="popup-box">
+        <h3 style="margin-bottom: 15px;">Withdraw Funds</h3>
+        <p style="font-size: 12px; color: var(--text-sub); margin-bottom: 15px;">Minimum $10. 50 KES fee required.</p>
+        <input type="number" id="withdraw-amount" placeholder="Amount ($)" style="width: 100%; padding: 15px; border-radius: 12px; background: var(--bg-dark); border: 1px solid var(--border); color: #fff; margin-bottom: 10px;">
+        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 10px; text-align: left; margin-bottom: 10px;">
+            <p style="font-size: 11px; color: var(--text-sub);">Pay 50 KES fee to:</p>
+            <p style="font-size: 13px; color: var(--primary); font-weight: bold;">Paybill: 714777</p>
+            <p style="font-size: 13px; color: var(--primary); font-weight: bold;">Acc: 440200289832</p>
+        </div>
+        <input type="text" id="withdraw-code" placeholder="Enter 50 KES M-Pesa code" style="width: 100%; padding: 15px; border-radius: 12px; background: var(--bg-dark); border: 1px solid var(--border); color: #fff; margin-bottom: 15px; text-transform: uppercase;">
+        <button onclick="submitWithdraw()" class="btn-action btn-start">Submit</button>
+        <button onclick="document.getElementById('withdraw-modal').style.display='none'" style="width: 100%; padding: 10px; background: transparent; border: 1px solid #fff; color: #fff; border-radius: 12px; margin-top: 10px;">Cancel</button>
+    </div>
 </div>
-<div id="game-slot1" class="game-screen">
-    <div class="game-nav"><span onclick="closeGameScreen()">‹</span> Slots</div>
-    <div class="play-area"><div class="reels-container"><div class="reel" id="s1-r1">🍒</div><div class="reel" id="s1-r2">🍋</div><div class="reel" id="s1-r3">🔔</div></div></div>
-    <div class="game-controls"><input type="number" id="slot1-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="slot1-btn" onclick="playSlot(1)">Spin</button></div>
+        <!-- GAME SCREENS -->
+<div id="game-crash" class="game-screen"><div class="game-nav"><span onclick="closeGame()">‹</span> Crash</div><div class="play-area"><div class="crash-display" id="crash-multi">1.00x</div></div><div class="game-controls"><input type="number" id="crash-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="crash-btn" onclick="playCrash()">Place Bet</button></div></div>
+<div id="game-mines" class="game-screen"><div class="game-nav"><span onclick="closeGame()">‹</span> Mines</div><div class="play-area"><div class="mines-grid" id="mines-grid"></div></div><div class="game-controls"><input type="number" id="mines-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="mines-btn" onclick="startMines()">Start</button></div></div>
+<div id="game-dice" class="game-screen"><div class="game-nav"><span onclick="closeGame()">‹</span> Dice</div><div class="play-area"><div class="dice-display" id="dice-display">🎲</div></div><div class="game-controls"><input type="number" id="dice-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="dice-btn" onclick="playDice()">Roll</button></div></div>
+<div id="game-slot1" class="game-screen"><div class="game-nav"><span onclick="closeGame()">‹</span> Slots</div><div class="play-area"><div class="reels-container"><div class="reel" id="s1-r1">🍒</div><div class="reel" id="s1-r2">🍋</div><div class="reel" id="s1-r3">🔔</div></div></div><div class="game-controls"><input type="number" id="slot1-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="slot1-btn" onclick="playSlot(1)">Spin</button></div></div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav" id="bottom-nav" style="display: none;">
+    <div class="nav-item active" onclick="switchView('view-sports')"><span class="nav-icon">⚽</span> Sports</div>
+    <div class="nav-item" onclick="switchView('view-casino')"><span class="nav-icon">🎰</span> Casino</div>
+    <div class="nav-item" onclick="switchView('view-profile')"><span class="nav-icon">👤</span> Profile</div>
 </div>
-<div id="game-slot2" class="game-screen">
-    <div class="game-nav"><span onclick="closeGameScreen()">‹</span> Slots</div>
-    <div class="play-area"><div class="reels-container"><div class="reel" id="s2-r1">🍎</div><div class="reel" id="s2-r2">🍌</div><div class="reel" id="s2-r3">🍇</div></div></div>
-    <div class="game-controls"><input type="number" id="slot2-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="slot2-btn" onclick="playSlot(2)">Spin</button></div>
-</div>
-<div id="game-slot3" class="game-screen">
-    <div class="game-nav"><span onclick="closeGameScreen()">‹</span> Slots</div>
-    <div class="play-area"><div class="reels-container"><div class="reel" id="s3-r1">7️⃣</div><div class="reel" id="s3-r2">7️⃣</div><div class="reel" id="s3-r3">7️⃣</div></div></div>
-    <div class="game-controls"><input type="number" id="slot3-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="slot3-btn" onclick="playSlot(3)">Spin</button></div>
-</div>
-<div id="game-slot4" class="game-screen">
-    <div class="game-nav"><span onclick="closeGameScreen()">‹</span> Slots</div>
-    <div class="play-area"><div class="reels-container"><div class="reel" id="s4-r1">💎</div><div class="reel" id="s4-r2">💎</div><div class="reel" id="s4-r3">💎</div></div></div>
-    <div class="game-controls"><input type="number" id="slot4-bet" class="game-input" value="1.00"><button class="btn-action btn-start" id="slot4-btn" onclick="playSlot(4)">Spin</button></div>
-</div>
-        <script>
-        // INIT FIREBASE
-        const firebaseConfig = {
-            apiKey: "AIzaSyDSvvOuSIahbt-pVhHMS-xPfgMWNdxHJcY",
-            authDomain: "empire-bet-world.firebaseapp.com",
-            projectId: "empire-bet-world",
-            storageBucket: "empire-bet-world.firebasestorage.app",
-            messagingSenderId: "877672098158",
-            appId: "1:877672098158:web:407963a29c666f58f4397f"
-        };
+            <script>
+        // FIREBASE CONFIG
+        const firebaseConfig = { apiKey: "AIzaSyDSvvOuSIahbt-pVhHMS-xPfgMWNdxHJcY", authDomain: "empire-bet-world.firebaseapp.com", projectId: "empire-bet-world", storageBucket: "empire-bet-world.firebasestorage.app", messagingSenderId: "877672098158", appId: "1:877672098158:web:407963a29c666f58f4397f" };
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
         let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
         let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         let userPhone = localStorage.getItem('userPhone') || "";
-        let logoTapCount = 0, lastTapTime = 0, isAdminMode = false;
+        let logoTaps = 0, lastTap = 0, isAdmin = false;
 
-        function showToast(msg, type) {
-            let t = document.getElementById('toast'); t.innerText = msg; t.className = 'show ' + type;
-            setTimeout(() => t.classList.remove('show'), 3000);
-        }
-        function updateBalanceUI() {
-            document.getElementById('header-balance').innerText = userBalance.toFixed(2);
-            document.getElementById('prof-balance').innerText = "$" + userBalance.toFixed(2);
-            localStorage.setItem('userBalance', userBalance);
-        }
-        function switchView(id) {
-            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-        }
+        function showToast(m, t) { let el = document.getElementById('toast'); el.innerText = m; el.className = 'show ' + t; setTimeout(() => el.classList.remove('show'), 3000); }
+        function updateBalanceUI() { document.getElementById('header-balance').innerText = userBalance.toFixed(2); document.getElementById('prof-balance').innerText = "$" + userBalance.toFixed(2); localStorage.setItem('userBalance', userBalance); }
+        function switchView(id) { document.querySelectorAll('.view').forEach(v => v.classList.remove('active')); document.getElementById(id).classList.add('active'); }
+        
         function trackLogoTaps() {
-            const now = Date.now(); if (now - lastTapTime > 1500) logoTapCount = 0;
-            lastTapTime = now; logoTapCount++;
-            if (logoTapCount >= 5) {
-                logoTapCount = 0; let pin = prompt("Admin PIN:");
-                if (pin === "1234") { isAdminMode = true; document.getElementById('admin-panel').style.display = 'block'; renderAdmin(); showToast("Admin Mode", "success"); }
+            const now = Date.now(); if (now - lastTap > 1500) logoTaps = 0; lastTap = now; logoTaps++;
+            if (logoTaps >= 5) {
+                logoTaps = 0; if (prompt("Admin PIN:") === "1234") { isAdmin = true; document.getElementById('admin-panel').style.display = 'block'; renderAdmin(); showToast("Admin Mode", "success"); }
             }
         }
         function processLogin() {
-            let phone = document.getElementById('login-phone').value;
-            if(!phone) { showToast("Enter phone", "error"); return; }
-            userPhone = phone; isLoggedIn = true; localStorage.setItem('isLoggedIn', 'true'); localStorage.setItem('userPhone', phone);
+            let p = document.getElementById('login-phone').value; if(!p) { showToast("Enter phone", "error"); return; }
+            userPhone = p; isLoggedIn = true; localStorage.setItem('isLoggedIn', 'true'); localStorage.setItem('userPhone', p);
             document.getElementById('login-screen').style.display = 'none';
             document.getElementById('top-green-banner').style.display = 'flex';
             document.getElementById('main-header').style.display = 'flex';
             document.getElementById('bottom-nav').style.display = 'flex';
-            document.getElementById('prof-phone-display').innerText = "+254 " + phone;
-            switchView('view-sports'); updateBalanceUI(); generateMatches();
+            document.getElementById('prof-phone-display').innerText = "+254 " + p;
+            switchView('view-sports'); updateBalanceUI(); loadMatches(); loadCasino();
+            checkApprovedDeposits();
         }
         function logoutUser() { localStorage.clear(); location.reload(); }
 
-        // SPORTS DATA
-        function generateMatches() {
+        function loadMatches() {
             let c = document.getElementById('matches-list'); c.innerHTML = '';
-            let teams = [["Arsenal", "Chelsea"], ["Man City", "Liverpool"], ["Real Madrid", "Barcelona"], ["Bayern", "Dortmund"], ["PSG", "Marseille"]];
-            for(let i=0; i<15; i++) {
-                let t = teams[i % teams.length];
+            [["Arsenal", "Chelsea"], ["Man City", "Liverpool"], ["Real Madrid", "Barcelona"]].forEach(t => {
                 c.innerHTML += `<div class="match-card"><div class="match-top"><span>League</span><span>Today</span></div><div class="match-teams"><div>${t[0]}</div><div>${t[1]}</div></div><div class="odds-row"><button class="odd-btn">1.50</button><button class="odd-btn">3.20</button><button class="odd-btn">4.10</button></div></div>`;
-            }
-        }
-        function switchLeague() { generateMatches(); }
-
-        // CASINO DATA
-        function generateCasino() {
-            let grid = document.getElementById('casino-grid');
-            let games = [
-                {n: "Aviator", i: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05", a: "crash"},
-                {n: "Mines", i: "https://images.unsplash.com/photo-1611195974226-a6a9be9dd763", a: "mines"},
-                {n: "Dice", i: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1", a: "dice"},
-                {n: "Plinko", i: "https://images.unsplash.com/photo-1606167668584-78701c57cc1b", a: "plinko"},
-                {n: "Slots", i: "https://images.unsplash.com/photo-1596838132731-3301c3fd4317", a: "slot1"},
-                {n: "Fruits", i: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f", a: "slot2"},
-                {n: "Lucky 7s", i: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b", a: "slot3"},
-                {n: "Diamonds", i: "https://images.unsplash.com/photo-1614729939124-03290b5609ce", a: "slot4"}
-            ];
-            games.forEach(g => {
-                grid.innerHTML += `<div class="casino-card" onclick="openGame('${g.a}')"><div class="casino-card-img"><img src="${g.i}?auto=format&fit=crop&w=300&q=80"></div><div class="casino-card-title">${g.n}</div></div>`;
             });
         }
-        generateCasino();
+        function switchLeague(l) { loadMatches(); showToast(l + " loaded", "success"); }
+
+        function loadCasino() {
+            let g = document.getElementById('casino-grid'); g.innerHTML = '';
+            let games = [{n:"Aviator", i:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05", a:"crash", b:"HOT"}, {n:"Mines", i:"https://images.unsplash.com/photo-1611195974226-a6a9be9dd763", a:"mines", b:""}, {n:"Dice", i:"https://images.unsplash.com/photo-1596461404969-9ae70f2830c1", a:"dice", b:""}, {n:"Slots", i:"https://images.unsplash.com/photo-1596838132731-3301c3fd4317", a:"slot1", b:"NEW"}];
+            games.forEach(x => {
+                let badge = x.b ? `<div style="position:absolute; top:10px; right:10px; background:${x.b==='HOT'?'var(--danger)':'var(--primary)'}; color:#fff; font-size:9px; font-weight:800; padding:3px 8px; border-radius:10px; z-index:2;">${x.b}</div>` : '';
+                g.innerHTML += `<div class="casino-card" onclick="openGame('${x.a}')">${badge}<div class="casino-card-img"><img src="${x.i}?auto=format&fit=crop&w=300&q=80"></div><div class="casino-card-title">${x.n}</div></div>`;
+            });
+        }
         function openGame(id) { if(userBalance < 10) { showToast("Min $10 to play", "error"); return; } document.getElementById('game-'+id).style.display = 'flex'; }
-        function closeGameScreen() { document.querySelectorAll('.game-screen').forEach(s => s.style.display = 'none'); }
+        function closeGame() { document.querySelectorAll('.game-screen').forEach(s => s.style.display = 'none'); }
 
-        // GAME LOGIC (Shortened for this example)
-        let isPlaying = false;
-        function handleCrashAction() { showToast("Crash game started", "success"); closeGameScreen(); }
-        function handleMinesAction() { showToast("Mines game started", "success"); closeGameScreen(); }
-        function rollDice() { showToast("Dice rolled", "success"); closeGameScreen(); }
-        function playPlinko() { showToast("Ball dropped", "success"); closeGameScreen(); }
-        function playSlot(id) { showToast("Spinning...", "success"); setTimeout(closeGameScreen, 1000); }
+        function playCrash() { let b = parseFloat(document.getElementById('crash-bet').value); if(b > userBalance) return showToast("Low balance", "error"); userBalance -= b; updateBalanceUI(); let m = 1.0; let c = (Math.random()*3)+1.5; let iv = setInterval(() => { m+=0.05; document.getElementById('crash-multi').innerText = m.toFixed(2)+"x"; if(m >= c) { clearInterval(iv); showToast("Crashed!", "error"); document.getElementById('crash-multi').innerText = "CRASHED"; setTimeout(closeGame, 2000); } }, 100); }
+        function startMines() { let b = parseFloat(document.getElementById('mines-bet').value); if(b > userBalance) return showToast("Low balance", "error"); userBalance -= b; updateBalanceUI(); let g = document.getElementById('mines-grid'); g.innerHTML = ''; for(let i=0; i<25; i++) { let btn = document.createElement('div'); btn.className = 'mine-btn'; btn.innerText = '💎'; btn.onclick = () => { if(Math.random() < 0.2) { btn.innerText = '💣'; btn.className = 'mine-btn bomb'; showToast("Boom!", "error"); setTimeout(closeGame, 1500); } else { btn.innerText = '✅'; btn.className = 'mine-btn safe'; userBalance += (b * 1.5); updateBalanceUI(); } }; g.appendChild(btn); } }
+        function playDice() { let b = parseFloat(document.getElementById('dice-bet').value); if(b > userBalance) return showToast("Low balance", "error"); userBalance -= b; updateBalanceUI(); document.getElementById('dice-display').innerText = "🎲"; setTimeout(() => { let win = Math.random() > 0.5; if(win) { userBalance += (b * 2); updateBalanceUI(); showToast("Won!", "success"); } else showToast("Lost!", "error"); }, 1000); }
+        function playSlot(id) { let b = parseFloat(document.getElementById(id+'-bet').value); if(b > userBalance) return showToast("Low balance", "error"); userBalance -= b; updateBalanceUI(); let r = document.getElementById('s'+id+'-r1'); r.innerText = "🎰"; setTimeout(() => { if(Math.random() > 0.5) { userBalance += (b * 3); updateBalanceUI(); showToast("Jackpot!", "success"); } else showToast("Try again", "error"); closeGame(); }, 1500); }
 
-        function openWithdrawModal() { showToast("Withdraw system processing", "default"); }
-        function renderAdmin() { document.getElementById('pending-deposits-list').innerHTML = "<p style='color:#fff;'>No pending deposits.</p>"; }
+        function openWithdrawModal() { document.getElementById('withdraw-modal').style.display = 'flex'; }
+        async function submitWithdraw() {
+            let amt = parseFloat(document.getElementById('withdraw-amount').value); let code = document.getElementById('withdraw-code').value;
+            if(amt < 10 || amt > userBalance) return showToast("Invalid amount (Min $10)", "error"); if(!code) return showToast("Enter M-Pesa code", "error");
+            try { await db.collection("withdrawals").add({ phone: userPhone, amount: amt, feeCode: code, status: "pending", date: firebase.firestore.FieldValue.serverTimestamp() }); document.getElementById('withdraw-modal').style.display = 'none'; showToast("Sent to Admin!", "success"); } catch(e) { showToast("Error", "error"); }
+        }
+        async function submitDeposit() {
+            let code = document.getElementById('mpesa-code').value; if(!code) return showToast("Enter code", "error");
+            try { await db.collection("deposits").add({ phone: userPhone, amount: 1, code: code, status: "pending", date: firebase.firestore.FieldValue.serverTimestamp() }); showToast("Deposit sent!", "success"); document.getElementById('mpesa-code').value = ""; } catch(e) { showToast("Error", "error"); }
+        }
+        
+        async function renderAdmin() {
+            let l = document.getElementById('pending-list'); l.innerHTML = "Loading...";
+            let snap = await db.collection("deposits").where("status", "==", "pending").get();
+            l.innerHTML = snap.empty ? "No pending." : "";
+            snap.forEach(d => { l.innerHTML += `<div style="background:var(--bg-dark); padding:10px; margin-bottom:5px; border-radius:10px; display:flex; justify-content:space-between;"><span>${d.data().phone} - $1</span><button onclick="approve('${d.id}')" style="background:var(--primary); border:none; padding:5px 10px; border-radius:5px; font-weight:bold;">Approve</button></div>`; });
+        }
+        async function approve(id) { await db.collection("deposits").doc(id).update({status:"approved"}); showToast("Approved", "success"); renderAdmin(); }
+
+        async function checkApprovedDeposits() {
+            if(!userPhone) return;
+            let snap = await db.collection("deposits").where("phone", "==", userPhone).where("status", "==", "approved").get();
+            if(!snap.empty) {
+                let total = 0;
+                snap.forEach(async (d) => { total += d.data().amount; await db.collection("deposits").doc(d.id).update({ status: "completed" }); });
+                userBalance += total; updateBalanceUI(); showToast(`$${total.toFixed(2)} Approved!`, "success");
+            }
+        }
     </script>
 </body>
 </html>
-    
+        
