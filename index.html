@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Empire Bet</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Supabase Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --primary: #00e676;
@@ -35,8 +37,11 @@
         .input-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-sub); margin-bottom: 8px; }
         .input-wrapper { display: flex; align-items: center; background: var(--bg-input); border: 1px solid var(--border); border-radius: 12px; padding: 15px; }
         .input-wrapper span { font-size: 20px; color: var(--text-sub); margin-right: 10px;}
+        
+        /* Country Selector */
         .country-selector { background: transparent; border: none; color: #fff; font-size: 15px; outline: none; margin-right: 10px; border-right: 1px solid var(--border); padding-right: 10px; cursor: pointer;}
         .country-selector option { background: var(--bg-card); color: #fff; }
+
         .input-wrapper input { background: transparent; border: none; outline: none; color: #fff; font-size: 15px; width: 100%;}
         .btn-login-submit { width: 100%; padding: 18px; background: var(--primary); color: #000; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; margin-top: 10px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,230,118,0.3);}
 
@@ -92,7 +97,6 @@
         .casino-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); position: relative; transition: transform 0.2s;}
         .casino-card:active { transform: scale(0.95); }
         
-        /* Glossy Game Images */
         .casino-card-img { width: 100%; height: 130px; position: relative; overflow: hidden; }
         .casino-card-img img { width: 100%; height: 100%; object-fit: cover; }
         .casino-card-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent); }
@@ -530,6 +534,11 @@
     <div class="nav-item" onclick="switchView('view-profile')"><span class="nav-icon">👤</span> Profile</div>
 </div>
 <script>
+    // --- INITIALIZE SUPABASE WITH YOUR KEYS ---
+    const supabaseUrl = 'https://lroitdasakrxwyudlytn.supabase.co';
+    const supabaseKey = 'sb_publishable_zDhPLRENJLAOlEzdDBhpug_tFi2RtqD';
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
     // --- LOCAL STORAGE DATA ---
     let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
     let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -577,6 +586,9 @@
             renderPendingDeposits();
         } else {
             document.getElementById('admin-panel').style.display = 'none';
+        }
+        if(viewId === 'view-profile' && isLoggedIn) {
+            syncBalanceFromSupabase(); 
         }
     }
 
@@ -628,6 +640,7 @@
         
         switchView('view-sports');
         updateBalanceUI();
+        syncBalanceFromSupabase(); 
     }
 
     function logoutUser() {
@@ -650,6 +663,7 @@
         document.getElementById('logged-in-header').style.display = 'flex';
         document.getElementById('prof-phone-display').innerText = "+254 " + userPhone.slice(-9);
         updateBalanceUI();
+        syncBalanceFromSupabase();
     }
 
     // --- PROMOS LOGIC ---
@@ -748,47 +762,90 @@
     if(bonusClaimed) {
         document.getElementById('promo-amount').innerText = "$0.00"; document.getElementById('main-claim-btn').innerText = "Claimed Successfully"; document.getElementById('main-claim-btn').style.background = "#334155";
     }
-            // --- DEPOSIT LOGIC ---
-        function submitDepositProof() {
-            let fileName = document.getElementById('file-name').innerText;
+            // --- DEPOSIT & SUPABASE LOGIC ---
+        async function submitDepositProof() {
             let amount = parseFloat(document.getElementById('deposit-amount').value);
-            if(fileName === "") { showToast("Please upload a screenshot first.", "error"); return; }
             if(isNaN(amount) || amount < 1.00) { showToast("❌ Minimum deposit is $1.00 (130 KES)", "error"); return; }
             
             showToast("Sending to Admin...", "default");
-            setTimeout(() => {
+            
+            let currentPhone = localStorage.getItem('userPhone') || "Unknown";
+
+            // Save to Supabase
+            const { data, error } = await supabaseClient
+                .from('deposits')
+                .insert([{ amount: amount, status: 'pending', user_id: currentPhone }]);
+
+            if (error) {
+                console.error(error);
+                showToast("Failed to connect to database.", "error");
+            } else {
                 document.getElementById('file-name').innerText = "⏳ Pending Admin Approval";
-                let pendingDeposits = JSON.parse(localStorage.getItem('pendingDeposits')) || [];
-                pendingDeposits.push({ id: Date.now(), amount: amount, phone: userPhone });
-                localStorage.setItem('pendingDeposits', JSON.stringify(pendingDeposits));
-                showToast("Deposit request sent!", "success");
-            }, 1000);
+                showToast("Deposit request sent successfully!", "success");
+            }
         }
-        function renderPendingDeposits() {
+
+        async function syncBalanceFromSupabase() {
+            if(!userPhone) return;
+            // Look for approved deposits for this user
+            const { data, error } = await supabaseClient
+                .from('deposits')
+                .select('*')
+                .eq('user_id', userPhone)
+                .eq('status', 'approved');
+
+            if(data && data.length > 0) {
+                let total = 0;
+                for(let dep of data) {
+                    total += parseFloat(dep.amount);
+                    // Mark as completed so it doesn't get added again
+                    await supabaseClient.from('deposits').update({ status: 'completed' }).eq('id', dep.id);
+                }
+                userBalance += total;
+                updateBalanceUI();
+                showToast(`Deposit of $${total.toFixed(2)} confirmed by Admin!`, "success");
+            }
+        }
+
+        async function renderPendingDeposits() {
             let list = document.getElementById('pending-deposits-list');
-            let pendingDeposits = JSON.parse(localStorage.getItem('pendingDeposits')) || [];
-            if(pendingDeposits.length === 0) { list.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">No pending deposits.</p>`; return; }
+            list.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">Loading deposits...</p>`;
+
+            const { data: deposits, error } = await supabaseClient
+                .from('deposits')
+                .select('*')
+                .eq('status', 'pending');
+
+            if (error || !deposits || deposits.length === 0) {
+                list.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">No pending deposits.</p>`;
+                return;
+            }
+
             list.innerHTML = '';
-            pendingDeposits.forEach((dep) => {
+            deposits.forEach((dep) => {
                 list.innerHTML += `
                     <div class="admin-item">
-                        <div><div style="font-weight: 700; color: #fff;">$${dep.amount.toFixed(2)}</div><div style="font-size: 11px; color: var(--text-sub);">From: ${dep.phone}</div></div>
+                        <div><div style="font-weight: 700; color: #fff;">$${parseFloat(dep.amount).toFixed(2)}</div><div style="font-size: 11px; color: var(--text-sub);">From: ${dep.user_id}</div></div>
                         <button class="btn-header" onclick="approveDeposit(${dep.id})">Approve</button>
                     </div>`;
             });
         }
-        function approveDeposit(id) {
-            let pendingDeposits = JSON.parse(localStorage.getItem('pendingDeposits')) || [];
-            let dep = pendingDeposits.find(d => d.id === id);
-            if(!dep) return;
-            userBalance += dep.amount; updateBalanceUI();
-            pendingDeposits = pendingDeposits.filter(d => d.id !== id);
-            localStorage.setItem('pendingDeposits', JSON.stringify(pendingDeposits));
-            renderPendingDeposits();
-            showToast(`Admin Approved: $${dep.amount} added!`, "success");
+
+        async function approveDeposit(id) {
+            const { error } = await supabaseClient
+                .from('deposits')
+                .update({ status: 'approved' })
+                .eq('id', id);
+
+            if (error) {
+                showToast("Failed to approve.", "error");
+            } else {
+                showToast(`Deposit Approved!`, "success");
+                renderPendingDeposits(); 
+            }
         }
 
-        // --- SPORTS API LOGIC (WORKING TABS) ---
+        // --- SPORTS API LOGIC ---
         async function switchLeague(leagueName, btnElement) {
             document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
@@ -830,7 +887,6 @@
                     });
                 } catch (error) { container.innerHTML = '<p style="text-align:center; color: #ef4444; padding: 20px;">Failed to load matches.</p>'; }
             } else if (leagueName === 'Premier League' || leagueName === 'La Liga') {
-                // Realistic Mock Data for other leagues
                 const plTeams = [["Arsenal", "Chelsea"], ["Man City", "Liverpool"], ["Man Utd", "Tottenham"], ["Newcastle", "Aston Villa"]];
                 const laLigaTeams = [["Real Madrid", "Barcelona"], ["Atletico Madrid", "Sevilla"], ["Real Sociedad", "Villarreal"], ["Athletic Bilbao", "Valencia"]];
                 const selectedTeams = leagueName === 'Premier League' ? plTeams : laLigaTeams;
@@ -855,10 +911,9 @@
                 }, 500);
             }
         }
-        // Load Bundesliga by default on start
         switchLeague('Bundesliga', document.querySelector('.cat-btn'));
 
-        // --- GENERATE 30 PREMIUM CASINO GAMES (REAL IMAGES) ---
+        // --- GENERATE 30 PREMIUM CASINO GAMES ---
         function generateCasinoGames() {
             const games = [
                 { name: "Aviator", img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=300&q=80", badge: "HOT" },
@@ -909,4 +964,3 @@
     </script>
 </body>
 </html>
-    
