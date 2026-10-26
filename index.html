@@ -419,6 +419,7 @@
     <div class="nav-item" onclick="switchView('view-profile')"><span class="nav-icon">👤</span> Profile</div>
 </div>
 <script>
+    // --- INITIALIZE FIREBASE ---
     const firebaseConfig = {
         apiKey: "AIzaSyDSvvOuSIahbt-pVhHMS-xPfgMWNdxHJcY",
         authDomain: "empire-bet-world.firebaseapp.com",
@@ -431,6 +432,7 @@
     if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
     const db = firebase.firestore();
 
+    // --- GLOBAL STATE ---
     let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
     let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     let userPhone = localStorage.getItem('userPhone') || "";
@@ -443,6 +445,7 @@
     let videoStream = null;
     let logoTapCount = 0, lastTapTime = 0, isAdminMode = false;
 
+    // --- UI HELPERS ---
     function showToast(message, type = 'default') {
         const toast = document.getElementById('toast');
         toast.innerText = message;
@@ -501,20 +504,28 @@
         return true;
     }
 
+    // --- BULLETPROOF LOGIN FUNCTION ---
     function processLogin() {
-        let phone = document.getElementById('login-phone').value;
-        let pass = document.getElementById('login-pass').value;
+        let phoneInput = document.getElementById('login-phone').value;
+        let passInput = document.getElementById('login-pass').value;
         
-        if(!phone || phone.length < 8) { showToast("Enter valid phone", "error"); return; }
-        if(!pass) { showToast("Enter password", "error"); return; }
+        // Test Popup
+        alert("Button clicked! Processing login...");
+
+        if(!phoneInput || !passInput) { 
+            alert("Please enter both phone and password."); 
+            return; 
+        }
         
         if (userPassword === "") {
-            userPassword = pass; userPhone = phone;
+            userPassword = passInput; userPhone = phoneInput;
             localStorage.setItem('userPassword', userPassword);
             localStorage.setItem('userPhone', userPhone);
-            showToast("Account created!", "success");
         } else {
-            if (userPassword !== pass) { showToast("❌ Incorrect Password", "error"); return; }
+            if (userPassword !== passInput) { 
+                alert("❌ Incorrect Password"); 
+                return; 
+            }
         }
 
         isLoggedIn = true;
@@ -525,11 +536,11 @@
         document.getElementById('header-balance-pill').style.display = 'block';
         document.getElementById('header-deposit-btn').style.display = 'block';
         
-        document.getElementById('prof-phone-display').innerText = "+254 " + phone.slice(-9);
+        document.getElementById('prof-phone-display').innerText = phoneInput;
         
         switchView('view-sports');
         updateBalanceUI();
-        syncBalanceFromFirebase(); 
+        if(typeof syncBalanceFromFirebase === 'function') syncBalanceFromFirebase(); 
     }
 
     function logoutUser() {
@@ -542,21 +553,24 @@
         switchView('view-sports');
     }
 
+    // Auto-login if user was already logged in
     if (isLoggedIn) {
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('top-green-banner').style.display = 'flex';
         document.getElementById('header-balance-pill').style.display = 'block';
         document.getElementById('header-deposit-btn').style.display = 'block';
-        document.getElementById('prof-phone-display').innerText = "+254 " + userPhone.slice(-9);
+        document.getElementById('prof-phone-display').innerText = userPhone;
         updateBalanceUI();
         syncBalanceFromFirebase();
     }
 
+    // --- GENERATE MATCHES ---
     const leagues = ["Netherlands · Eredivisie", "Germany · Bundesliga", "International Clubs · CONMEBOL", "Colombia · Liga DIMAYOR", "England · Premier League", "Spain · La Liga", "Italy · Serie A", "France · Ligue 1"];
     const teams = [["Go Ahead Eagles", "SC Telstar"], ["VfB Stuttgart", "Borussia Monchengladbach"], ["CR Flamengo RJ", "Estudiantes de La Plata"], ["Atletico Nacional", "AD Pasto"], ["Arsenal", "Chelsea"], ["Man City", "Liverpool"], ["Real Madrid", "Barcelona"], ["Atletico Madrid", "Sevilla"], ["Juventus", "Inter Milan"], ["AC Milan", "Napoli"], ["PSG", "Marseille"], ["Bayern Munich", "Dortmund"]];
 
     function generateMatches() {
         const container = document.getElementById('matches-list');
+        if(!container) return;
         container.innerHTML = ''; 
         for(let i=0; i<50; i++) {
             let league = leagues[Math.floor(Math.random() * leagues.length)];
@@ -585,6 +599,7 @@
     }
     generateMatches();
 
+    // --- GENERATE CASINO GRID ---
     function generateCasinoGames() {
         const games = [
             { name: "Aviator", img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=300&q=80", badge: "HOT", action: "openGameScreen('crash')" },
@@ -888,8 +903,32 @@
         }
 
         let isSpinning = false;
-          }, 2000);
+        const slotSymbols = { 1: ['🍒', '🍋', '🔔', '💎', '7️⃣'], 2: ['🍎', '🍌', '🍇', '🍓', '🍉'], 3: ['7️⃣', '7️⃣', '7️⃣', '💰', '⭐'], 4: ['💎', '💎', '💎', '👑', '💍'] };
+        function playSlot(slotId) {
+            if(isSpinning) return;
+            let bet = parseFloat(document.getElementById(`slot${slotId}-bet`).value);
+            if(isNaN(bet) || bet <= 0 || bet > userBalance) { showToast("Invalid bet", "error"); return; }
+            userBalance -= bet; updateBalanceUI(); isSpinning = true;
+            let r1 = document.getElementById(`s${slotId}-r1`), r2 = document.getElementById(`s${slotId}-r2`), r3 = document.getElementById(`s${slotId}-r3`);
+            let symbols = slotSymbols[slotId];
+            let spinInterval = setInterval(() => {
+                r1.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                r2.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                r3.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            }, 50);
+            setTimeout(() => {
+                clearInterval(spinInterval);
+                let f1 = symbols[Math.floor(Math.random() * symbols.length)];
+                let f2 = symbols[Math.floor(Math.random() * symbols.length)];
+                let f3 = symbols[Math.floor(Math.random() * symbols.length)];
+                r1.innerText = f1; r2.innerText = f2; r3.innerText = f3;
+                let win = (f1 === f2 && f2 === f3) ? bet * 5 : (f1 === f2 || f2 === f3 || f1 === f3) ? bet * 1.5 : 0;
+                if (win > 0) { userBalance += win; updateBalanceUI(); showToast(`YOU WON $${win.toFixed(2)}!`, "success"); } 
+                else { showToast("No match. Try again!", "error"); }
+                isSpinning = false;
+            }, 2000);
         }
     </script>
 </body>
 </html>
+            
