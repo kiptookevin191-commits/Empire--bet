@@ -42,18 +42,19 @@
         .balance-pill { background: var(--bg-card); padding: 5px 15px; border-radius: 20px; font-size: 13px; font-weight: 700; border: 1px solid var(--border);}
         .btn-header { background: var(--primary); color: #000; padding: 6px 15px; border-radius: 20px; font-weight: 700; font-size: 13px; border: none; cursor: pointer;}
         .icon-btn { width: 35px; height: 35px; background: var(--bg-card); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 16px; border: 1px solid var(--border); cursor: pointer; color: #fff;}
+
         /* SPORTS */
-.category-scroll { display: flex; gap: 10px; padding: 15px 15px 10px 15px; overflow-x: auto; scrollbar-width: none; }
-.category-scroll::-webkit-scrollbar { display: none; }
-.cat-btn { background: var(--bg-card); border: 1px solid var(--border); padding: 6px 16px; border-radius: 20px; color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;}
-.cat-btn.active { background: rgba(0, 230, 118, 0.1); color: var(--primary); border-color: var(--primary);}
-.game-scroll { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none; }
-.game-scroll::-webkit-scrollbar { display: none; }
-.game-scroll-item { min-width: 75px; height: 75px; border-radius: 15px; position: relative; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer;}
-.game-scroll-item img { width: 100%; height: 100%; object-fit: cover; }
-.game-scroll-item span { position: absolute; bottom: 4px; width: 100%; text-align: center; font-size: 10px; font-weight: 700; color: #fff; text-shadow: 0 2px 4px #000; z-index: 2;}
-.game-scroll-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); z-index: 1;}
-.filter-bar { display: flex; gap: 15px; padding: 10px 15px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-card); margin: 0 15px; border-radius: 10px; font-size: 13px; font-weight: 600; align-items: center; overflow-x: auto; scrollbar-width: none;}
+        .category-scroll { display: flex; gap: 10px; padding: 15px 15px 10px 15px; overflow-x: auto; scrollbar-width: none; }
+        .category-scroll::-webkit-scrollbar { display: none; }
+        .cat-btn { background: var(--bg-card); border: 1px solid var(--border); padding: 6px 16px; border-radius: 20px; color: var(--text-sub); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;}
+        .cat-btn.active { background: rgba(0, 230, 118, 0.1); color: var(--primary); border-color: var(--primary);}
+        .game-scroll { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none; }
+        .game-scroll::-webkit-scrollbar { display: none; }
+        .game-scroll-item { min-width: 75px; height: 75px; border-radius: 15px; position: relative; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer;}
+        .game-scroll-item img { width: 100%; height: 100%; object-fit: cover; }
+        .game-scroll-item span { position: absolute; bottom: 4px; width: 100%; text-align: center; font-size: 10px; font-weight: 700; color: #fff; text-shadow: 0 2px 4px #000; z-index: 2;}
+        .game-scroll-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); z-index: 1;}
+        .filter-bar { display: flex; gap: 15px; padding: 10px 15px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-card); margin: 0 15px; border-radius: 10px; font-size: 13px; font-weight: 600; align-items: center; overflow-x: auto; scrollbar-width: none;}
 .filter-bar::-webkit-scrollbar { display: none; }
 .filter-item { display: flex; align-items: center; gap: 5px; cursor: pointer; white-space: nowrap; color: #fff;}
 .market-tabs { display: flex; gap: 15px; padding: 15px 15px; align-items: center; border-bottom: 1px solid var(--border);}
@@ -102,7 +103,7 @@
 .bg-new { background: var(--primary); color: #000; }
 .bg-jackpot { background: var(--gold); color: #000; }
 
-/* PROFILE */
+/* PROFILE (EXACT MATCH) */
 .account-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: var(--bg-dark); border-bottom: 1px solid var(--border);}
 .account-header h2 { font-size: 18px; font-weight: 700; color: #fff; }
 .bell-icon { position: relative; font-size: 20px; cursor: pointer;}
@@ -114,6 +115,7 @@
 .prof-text h3 { font-size: 16px; font-weight: 700; color: #fff;}
 .prof-text p { font-size: 13px; color: var(--text-sub);}
 .verified-tag { background: rgba(0,230,118,0.1); color: var(--primary); padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 5px;}
+
 .balance-card { background: var(--bg-card); margin: 15px; border-radius: 15px; padding: 20px; border: 1px solid var(--border); }
 .bal-row { display: flex; gap: 15px; margin-bottom: 20px; }
 .bal-box { flex: 1; background: var(--bg-dark); padding: 15px; border-radius: 12px; }
@@ -123,6 +125,15 @@
 .btn-row { display: flex; gap: 15px; }
 .btn-dep { flex: 1; background: var(--primary); color: #000; padding: 12px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer; font-size: 15px;}
 .btn-wit { flex: 1; background: var(--gold); color: #000; padding: 12px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer; font-size: 15px;}
+
+.get-app-banner { background: var(--bg-card); margin: 0 15px 20px 15px; border: 1px solid var(--border); border-radius: 15px; padding: 15px; display: flex; align-items: center; gap: 15px; }
+.get-app-icon { width: 40px; height: 40px; background: var(--bg-dark); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; border: 1px solid var(--border);}
+.get-app-text { flex: 1; }
+.get-app-title { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 5px; color: #fff;}
+.get-app-badge { background: var(--gold); color: #000; font-size: 9px; font-weight: 800; padding: 2px 5px; border-radius: 5px;}
+.get-app-desc { font-size: 11px; color: var(--text-sub); margin-top: 2px;}
+.btn-install { background: var(--primary); color: #000; padding: 8px 15px; border-radius: 10px; font-weight: 700; font-size: 12px; border: none; cursor: pointer;}
+
 .my-account-list { background: var(--bg-card); margin: 15px; border-radius: 15px; border: 1px solid var(--border); overflow: hidden; }
 .acc-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid var(--border); cursor: pointer; }
 .acc-item:last-child { border-bottom: none; }
@@ -174,7 +185,7 @@
         .floating-chat { position: fixed; bottom: 90px; right: 20px; width: 60px; height: 60px; background: #4ade80; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; color: #000; box-shadow: 0 5px 15px rgba(74, 222, 128, 0.4); z-index: 99; cursor: pointer;}
     </style>
 </head>
-<body>
+    <body>
 
     <div id="toast">Message</div>
 
@@ -275,53 +286,53 @@
         </div>
         <div class="matches-container" id="matches-list"></div>
     </div>
-
-    <!-- CASINO VIEW -->
-    <div id="view-casino" class="view">
-        <div class="casino-categories">
-            <div class="casino-cat active"><div style="font-size: 24px;">🔲</div><span>Lobby</span></div>
-            <div class="casino-cat"><div style="font-size: 24px;">🚀</div><span>Crash</span></div>
-            <div class="casino-cat"><div style="font-size: 24px;">🍒</div><span>Slots</span></div>
-        </div>
-        <div class="casino-banner">
-            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=80">
-            <div class="banner-content">
-                <div class="banner-text"><p>Most Played</p><h3>Aviator</h3></div>
-                <button class="btn-play" onclick="openGameScreen('crash')">Play</button>
-            </div>
-        </div>
-        <div class="casino-section-title">New Games <span>View all 49 ></span></div>
-        <div class="game-grid" id="casino-grid"></div>
+        <!-- CASINO VIEW -->
+<div id="view-casino" class="view">
+    <div class="casino-categories">
+        <div class="casino-cat active"><div style="font-size: 24px;">🔲</div><span>Lobby</span></div>
+        <div class="casino-cat"><div style="font-size: 24px;">🚀</div><span>Crash</span></div>
+        <div class="casino-cat"><div style="font-size: 24px;">🍒</div><span>Slots</span></div>
     </div>
-
-    <!-- PROMOS VIEW -->
-    <div id="view-promos" class="view">
-        <div class="page-header"><span onclick="switchView('view-sports')">‹</span> Claim Bonus</div>
-        <div class="promo-container" style="padding: 15px;">
-            <div class="top-gift-card" style="background: var(--bg-card); border-radius: 20px; padding: 20px; text-align: center; border: 1px solid var(--primary); margin-bottom: 15px;">
-                <h3 style="color: #fff; margin-bottom: 5px;">Newcomer Gift</h3>
-                <div style="font-size: 40px; font-weight: 900; color: var(--primary); margin-bottom: 15px;" id="promo-amount">$9.00</div>
-                <button class="btn-action" id="main-claim-btn" onclick="claimPromo()">Complete Tasks to Claim</button>
-            </div>
-            <div class="task-item" style="display: flex; align-items: center; padding: 15px; background: var(--bg-card); border-radius: 15px; margin-bottom: 10px; border: 1px solid var(--border);">
-                <div style="font-size: 24px; margin-right: 15px;">💳</div><div style="flex: 1;"><div style="font-weight: 700; font-size: 14px; color: #fff;">Link Preferred Account</div></div>
-                <button class="task-btn" id="task1-btn" onclick="openLinkModal()" style="background: var(--primary); color: #000; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; font-weight: 700; cursor: pointer;">Link</button>
-            </div>
-            <div class="task-item" style="display: flex; align-items: center; padding: 15px; background: var(--bg-card); border-radius: 15px; margin-bottom: 10px; border: 1px solid var(--border);">
-                <div style="font-size: 24px; margin-right: 15px;">📱</div><div style="flex: 1;"><div style="font-weight: 700; font-size: 14px; color: #fff;">Verify Phone</div></div>
-                <button class="task-btn" id="task2-btn" onclick="startOTP()" style="background: var(--primary); color: #000; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; font-weight: 700; cursor: pointer;">Verify</button>
-            </div>
-            <div class="task-item" style="display: flex; align-items: center; padding: 15px; background: var(--bg-card); border-radius: 15px; margin-bottom: 10px; border: 1px solid var(--border);">
-                <div style="font-size: 24px; margin-right: 15px;">🤖</div><div style="flex: 1;"><div style="font-weight: 700; font-size: 14px; color: #fff;">Anti-Bot Check</div></div>
-                <button class="task-btn" id="task3-btn" onclick="startCameraCheck()" style="background: var(--primary); color: #000; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; font-weight: 700; cursor: pointer;">Verify</button>
-            </div>
-            <div class="task-item" style="display: flex; align-items: center; padding: 15px; background: var(--bg-card); border-radius: 15px; margin-bottom: 10px; border: 1px solid var(--border);">
-                <div style="font-size: 24px; margin-right: 15px;">🌍</div><div style="flex: 1;"><div style="font-weight: 700; font-size: 14px; color: #fff;">Select Country</div></div>
-                <button class="task-btn" id="task4-btn" onclick="openCountryModal()" style="background: var(--primary); color: #000; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; font-weight: 700; cursor: pointer;">Select</button>
-            </div>
+    <div class="casino-banner">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=80">
+        <div class="banner-content">
+            <div class="banner-text"><p>Most Played</p><h3>Aviator</h3></div>
+            <button class="btn-play" onclick="openGameScreen('crash')">Play</button>
         </div>
     </div>
-    <!-- PROFILE VIEW -->
+    <div class="casino-section-title">New Games <span>View all 49 ></span></div>
+    <div class="game-grid" id="casino-grid"></div>
+</div>
+
+<!-- PROMOS VIEW -->
+<div id="view-promos" class="view">
+    <div class="page-header"><span onclick="switchView('view-sports')">‹</span> Claim Bonus</div>
+    <div class="promo-container" style="padding: 15px;">
+        <div class="top-gift-card" style="background: var(--bg-card); border-radius: 20px; padding: 20px; text-align: center; border: 1px solid var(--primary); margin-bottom: 15px;">
+            <h3 style="color: #fff; margin-bottom: 5px;">Newcomer Gift</h3>
+            <div style="font-size: 40px; font-weight: 900; color: var(--primary); margin-bottom: 15px;" id="promo-amount">$9.00</div>
+            <button class="btn-action" id="main-claim-btn" onclick="claimPromo()">Complete Tasks to Claim</button>
+        </div>
+        <div class="task-item" style="display: flex; align-items: center; padding: 15px; background: var(--bg-card); border-radius: 15px; margin-bottom: 10px; border: 1px solid var(--border);">
+            <div style="font-size: 24px; margin-right: 15px;">💳</div><div style="flex: 1;"><div style="font-weight: 700; font-size: 14px; color: #fff;">Link Preferred Account</div></div>
+            <button class="task-btn" id="task1-btn" onclick="openLinkModal()" style="background: var(--primary); color: #000; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; font-weight: 700; cursor: pointer;">Link</button>
+        </div>
+        <div class="task-item" style="display: flex; align-items: center; padding: 15px; background: var(--bg-card); border-radius: 15px; margin-bottom: 10px; border: 1px solid var(--border);">
+            <div style="font-size: 24px; margin-right: 15px;">📱</div><div style="flex: 1;"><div style="font-weight: 700; font-size: 14px; color: #fff;">Verify Phone</div></div>
+            <button class="task-btn" id="task2-btn" onclick="startOTP()" style="background: var(--primary); color: #000; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; font-weight: 700; cursor: pointer;">Verify</button>
+        </div>
+        <div class="task-item" style="display: flex; align-items: center; padding: 15px; background: var(--bg-card); border-radius: 15px; margin-bottom: 10px; border: 1px solid var(--border);">
+            <div style="font-size: 24px; margin-right: 15px;">🤖</div><div style="flex: 1;"><div style="font-weight: 700; font-size: 14px; color: #fff;">Anti-Bot Check</div></div>
+            <button class="task-btn" id="task3-btn" onclick="startCameraCheck()" style="background: var(--primary); color: #000; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; font-weight: 700; cursor: pointer;">Verify</button>
+        </div>
+        <div class="task-item" style="display: flex; align-items: center; padding: 15px; background: var(--bg-card); border-radius: 15px; margin-bottom: 10px; border: 1px solid var(--border);">
+            <div style="font-size: 24px; margin-right: 15px;">🌍</div><div style="flex: 1;"><div style="font-weight: 700; font-size: 14px; color: #fff;">Select Country</div></div>
+            <button class="task-btn" id="task4-btn" onclick="openCountryModal()" style="background: var(--primary); color: #000; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; font-weight: 700; cursor: pointer;">Select</button>
+        </div>
+    </div>
+</div>
+
+<!-- PROFILE VIEW (EXACT MATCH) -->
 <div id="view-profile" class="view">
     <div class="account-header">
         <div style="background: var(--bg-card); width: 40px; height: 40px; border-radius: 12px; display: flex; justify-content: center; align-items: center; cursor: pointer;" onclick="switchView('view-sports')">‹</div>
@@ -345,28 +356,59 @@
             <button class="btn-wit" onclick="openWithdrawModal()">Withdraw</button>
         </div>
     </div>
+
+    <div class="get-app-banner">
+        <div class="get-app-icon">👑</div>
+        <div class="get-app-text">
+            <div class="get-app-title">Get the app <span class="get-app-badge">BETTER DEALS</span></div>
+            <div class="get-app-desc">Faster, smoother betting with app-only offers.</div>
+        </div>
+        <button class="btn-install" onclick="showToast('App downloading...')">⬇ Install</button>
+    </div>
+
+    <div class="section-label">REWARDS</div>
+    <div class="my-account-list" style="margin-top: 0;">
+        <div class="acc-item">
+            <div class="acc-icon" style="color: var(--primary);">👥</div>
+            <div class="acc-text"><div class="acc-title">Refer and Earn</div><div class="acc-sub">Invite friends & earn on every deposit</div></div>
+            <div class="acc-arrow">›</div>
+        </div>
+        <div class="acc-item" onclick="switchView('view-promos')">
+            <div class="acc-icon" style="color: var(--gold);">🎁</div>
+            <div class="acc-text"><div class="acc-title">Promotions</div><div class="acc-sub">Free bets & cash prizes</div></div>
+            <div class="acc-arrow">›</div>
+        </div>
+        <div class="acc-item">
+            <div class="acc-icon" style="color: var(--gold);">🎟️</div>
+            <div class="acc-text"><div class="acc-title">Redeem Bonus</div><div class="acc-sub">Enter a promo code to claim</div></div>
+            <div class="acc-arrow">›</div>
+        </div>
+    </div>
+
     <div class="section-label">WALLET</div>
     <div class="my-account-list" style="margin-top: 0;">
         <div class="acc-item"><div class="acc-icon">🧾</div><div class="acc-text"><div class="acc-title">Transaction History</div></div><div class="acc-arrow">›</div></div>
         <div class="acc-item"><div class="acc-icon">🕒</div><div class="acc-text"><div class="acc-title">Bet History</div></div><div class="acc-arrow">›</div></div>
     </div>
+
     <div class="section-label">SUPPORT</div>
     <div class="my-account-list" style="margin-top: 0;">
         <div class="acc-item" onclick="window.location.href='tel:0781617031'">
             <div class="acc-icon" style="color: var(--primary);">🎧</div><div class="acc-text"><div class="acc-title">Live Support (0781 617031)</div></div>
         </div>
     </div>
+
     <div style="margin: 20px 15px;">
         <button onclick="logoutUser()" style="width: 100%; padding: 15px; background: transparent; border: 1px solid var(--border); color: #fff; border-radius: 15px; font-weight: 600; cursor: pointer;">🚪 Sign Out</button>
     </div>
+    
     <div class="admin-panel" id="admin-panel" style="margin: 20px;">
         <h3 style="color: var(--danger); margin-bottom: 10px;">👑 Admin Approvals</h3>
         <div id="pending-deposits-list"></div>
         <div id="pending-withdrawals-list" style="margin-top: 15px;"></div>
     </div>
 </div>
-
-<!-- DEPOSIT VIEW -->
+        <!-- DEPOSIT VIEW -->
 <div id="view-deposit" class="view">
     <div class="page-header"><span onclick="switchView('view-sports')">‹</span> Deposit Funds</div>
     <div class="deposit-container">
@@ -410,223 +452,210 @@
 <!-- FLOATING CHAT -->
 <div class="floating-chat" onclick="window.location.href='tel:0781617031'">💬</div>
 
-<!-- BOTTOM NAV -->
+<!-- BOTTOM NAV (EXACT TABS) -->
 <div class="bottom-nav">
     <div class="nav-item active" onclick="switchView('view-sports')"><span class="nav-icon">🏠</span> Home</div>
     <div class="nav-item" onclick="showToast('Live coming soon')"><span class="nav-icon">🎥</span> Live</div>
-    <div class="nav-item" onclick="showToast('My Bets coming soon')"><span class="nav-icon">🧾</span> My Bets</div>
+    <div class="nav-item" onclick="switchView('view-promos')"><span class="nav-icon">🎁</span> Promotion</div>
     <div class="nav-item" onclick="switchView('view-casino')"><span class="nav-icon">🎰</span> Casino</div>
     <div class="nav-item" onclick="switchView('view-profile')"><span class="nav-icon">👤</span> Profile</div>
 </div>
-<script>
-    // --- INITIALIZE FIREBASE ---
-    const firebaseConfig = {
-        apiKey: "AIzaSyDSvvOuSIahbt-pVhHMS-xPfgMWNdxHJcY",
-        authDomain: "empire-bet-world.firebaseapp.com",
-        projectId: "empire-bet-world",
-        storageBucket: "empire-bet-world.firebasestorage.app",
-        messagingSenderId: "877672098158",
-        appId: "1:877672098158:web:407963a29c666f58f4397f"
-    };
-    
-    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
-    const db = firebase.firestore();
-
-    // --- GLOBAL STATE ---
-    let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
-    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    let userPhone = localStorage.getItem('userPhone') || "";
-    let userPassword = localStorage.getItem('userPassword') || "";
-    let task1 = localStorage.getItem('task1') === 'true';
-    let task2 = localStorage.getItem('task2') === 'true';
-    let task3 = localStorage.getItem('task3') === 'true';
-    let task4 = localStorage.getItem('task4') === 'true';
-    let bonusClaimed = localStorage.getItem('bonusClaimed') === 'true';
-    let videoStream = null;
-    let logoTapCount = 0, lastTapTime = 0, isAdminMode = false;
-
-    // --- UI HELPERS ---
-    function showToast(message, type = 'default') {
-        const toast = document.getElementById('toast');
-        toast.innerText = message;
-        toast.className = 'show ' + type;
-        if (navigator.vibrate) navigator.vibrate(50);
-        setTimeout(() => { toast.classList.remove('show'); }, 3000);
-    }
-
-    function updateBalanceUI() {
-        document.getElementById('header-balance').innerText = userBalance.toFixed(2);
-        document.getElementById('prof-balance').innerText = "$" + userBalance.toFixed(2);
-        localStorage.setItem('userBalance', userBalance); 
-    }
-
-    function copyToClipboard(text, message) {
-        navigator.clipboard.writeText(text).then(() => { showToast(message, "success"); }).catch(() => showToast("Failed to copy", "error"));
-    }
-
-    function switchView(viewId) {
-        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-        document.getElementById(viewId).classList.add('active');
+            <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDSvvOuSIahbt-pVhHMS-xPfgMWNdxHJcY",
+            authDomain: "empire-bet-world.firebaseapp.com",
+            projectId: "empire-bet-world",
+            storageBucket: "empire-bet-world.firebasestorage.app",
+            messagingSenderId: "877672098158",
+            appId: "1:877672098158:web:407963a29c666f58f4397f"
+        };
         
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        if(viewId === 'view-sports') document.querySelectorAll('.nav-item')[0].classList.add('active');
-        if(viewId === 'view-casino') document.querySelectorAll('.nav-item')[3].classList.add('active');
-        if(viewId === 'view-profile' || viewId === 'view-deposit') document.querySelectorAll('.nav-item')[4].classList.add('active');
-        
-        if(viewId === 'view-profile' && isLoggedIn && isAdminMode) {
-            document.getElementById('admin-panel').style.display = 'block';
-            renderPendingRequests();
-        } else if (document.getElementById('admin-panel')) {
-            document.getElementById('admin-panel').style.display = 'none';
+        if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+        const db = firebase.firestore();
+
+        let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
+        let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        let userPhone = localStorage.getItem('userPhone') || "";
+        let userPassword = localStorage.getItem('userPassword') || "";
+        let task1 = localStorage.getItem('task1') === 'true';
+        let task2 = localStorage.getItem('task2') === 'true';
+        let task3 = localStorage.getItem('task3') === 'true';
+        let task4 = localStorage.getItem('task4') === 'true';
+        let bonusClaimed = localStorage.getItem('bonusClaimed') === 'true';
+        let videoStream = null;
+        let logoTapCount = 0, lastTapTime = 0, isAdminMode = false;
+
+        function showToast(message, type = 'default') {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.className = 'show ' + type;
+            if (navigator.vibrate) navigator.vibrate(50);
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
         }
-        
-        if(viewId === 'view-profile' && isLoggedIn) {
-            syncBalanceFromFirebase(); 
+
+        function updateBalanceUI() {
+            document.getElementById('header-balance').innerText = userBalance.toFixed(2);
+            document.getElementById('prof-balance').innerText = "$" + userBalance.toFixed(2);
+            localStorage.setItem('userBalance', userBalance); 
         }
-    }
 
-    function trackLogoTaps() {
-        const now = Date.now();
-        if (now - lastTapTime > 1500) logoTapCount = 0;
-        lastTapTime = now;
-        logoTapCount++;
-        if (logoTapCount >= 5) {
-            logoTapCount = 0; 
-            let pin = prompt("Enter Admin PIN:");
-            if (pin === "1234") { isAdminMode = true; showToast("👑 Admin Mode Enabled", "success"); }
-            else if (pin !== null) showToast("Incorrect PIN", "error");
+        function copyToClipboard(text, message) {
+            navigator.clipboard.writeText(text).then(() => { showToast(message, "success"); }).catch(() => showToast("Failed to copy", "error"));
         }
-    }
 
-    function checkMinBalance() {
-        if (!isLoggedIn) { showToast("Please sign up first.", "error"); return false; }
-        if (userBalance < 10.00) { showToast("❌ Minimum balance to play is $10.00", "error"); return false; }
-        return true;
-    }
-
-    // --- BULLETPROOF LOGIN FUNCTION ---
-    function processLogin() {
-        let phoneInput = document.getElementById('login-phone').value;
-        let passInput = document.getElementById('login-pass').value;
-        
-        // Test Popup
-        alert("Button clicked! Processing login...");
-
-        if(!phoneInput || !passInput) { 
-            alert("Please enter both phone and password."); 
-            return; 
-        }
-        
-        if (userPassword === "") {
-            userPassword = passInput; userPhone = phoneInput;
-            localStorage.setItem('userPassword', userPassword);
-            localStorage.setItem('userPhone', userPhone);
-        } else {
-            if (userPassword !== passInput) { 
-                alert("❌ Incorrect Password"); 
-                return; 
+        function switchView(viewId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
+            
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            if(viewId === 'view-sports') document.querySelectorAll('.nav-item')[0].classList.add('active');
+            if(viewId === 'view-promos') document.querySelectorAll('.nav-item')[2].classList.add('active');
+            if(viewId === 'view-casino') document.querySelectorAll('.nav-item')[3].classList.add('active');
+            if(viewId === 'view-profile' || viewId === 'view-deposit') document.querySelectorAll('.nav-item')[4].classList.add('active');
+            
+            if(viewId === 'view-profile' && isLoggedIn && isAdminMode) {
+                document.getElementById('admin-panel').style.display = 'block';
+                renderPendingRequests();
+            } else if (document.getElementById('admin-panel')) {
+                document.getElementById('admin-panel').style.display = 'none';
+            }
+            
+            if(viewId === 'view-profile' && isLoggedIn) {
+                syncBalanceFromFirebase(); 
             }
         }
 
-        isLoggedIn = true;
-        localStorage.setItem('isLoggedIn', 'true');
-        
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('top-green-banner').style.display = 'flex';
-        document.getElementById('header-balance-pill').style.display = 'block';
-        document.getElementById('header-deposit-btn').style.display = 'block';
-        
-        document.getElementById('prof-phone-display').innerText = phoneInput;
-        
-        switchView('view-sports');
-        updateBalanceUI();
-        if(typeof syncBalanceFromFirebase === 'function') syncBalanceFromFirebase(); 
-    }
-
-    function logoutUser() {
-        isLoggedIn = false;
-        localStorage.setItem('isLoggedIn', 'false');
-        document.getElementById('login-screen').style.display = 'flex';
-        document.getElementById('top-green-banner').style.display = 'none';
-        document.getElementById('header-balance-pill').style.display = 'none';
-        document.getElementById('header-deposit-btn').style.display = 'none';
-        switchView('view-sports');
-    }
-
-    // Auto-login if user was already logged in
-    if (isLoggedIn) {
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('top-green-banner').style.display = 'flex';
-        document.getElementById('header-balance-pill').style.display = 'block';
-        document.getElementById('header-deposit-btn').style.display = 'block';
-        document.getElementById('prof-phone-display').innerText = userPhone;
-        updateBalanceUI();
-        syncBalanceFromFirebase();
-    }
-
-    // --- GENERATE MATCHES ---
-    const leagues = ["Netherlands · Eredivisie", "Germany · Bundesliga", "International Clubs · CONMEBOL", "Colombia · Liga DIMAYOR", "England · Premier League", "Spain · La Liga", "Italy · Serie A", "France · Ligue 1"];
-    const teams = [["Go Ahead Eagles", "SC Telstar"], ["VfB Stuttgart", "Borussia Monchengladbach"], ["CR Flamengo RJ", "Estudiantes de La Plata"], ["Atletico Nacional", "AD Pasto"], ["Arsenal", "Chelsea"], ["Man City", "Liverpool"], ["Real Madrid", "Barcelona"], ["Atletico Madrid", "Sevilla"], ["Juventus", "Inter Milan"], ["AC Milan", "Napoli"], ["PSG", "Marseille"], ["Bayern Munich", "Dortmund"]];
-
-    function generateMatches() {
-        const container = document.getElementById('matches-list');
-        if(!container) return;
-        container.innerHTML = ''; 
-        for(let i=0; i<50; i++) {
-            let league = leagues[Math.floor(Math.random() * leagues.length)];
-            let teamPair = teams[Math.floor(Math.random() * teams.length)];
-            let team1 = teamPair[0]; let team2 = teamPair[1];
-            let odd1 = (Math.random() * 1.5 + 1.2).toFixed(2);
-            let oddX = (Math.random() * 2.5 + 3.0).toFixed(2);
-            let odd2 = (Math.random() * 4.0 + 1.5).toFixed(2);
-            let timeHour = Math.floor(Math.random() * 4) + 8; 
-            let timeStr = `Starts today at ${timeHour}:${Math.random() < 0.5 ? '00' : '30'} PM`;
-            let markets = Math.floor(Math.random() * 200) + 150;
-
-            container.innerHTML += `
-                <div class="match-card">
-                    <div class="match-top"><span>${league}</span><span>${timeStr}</span></div>
-                    <div class="match-teams"><div>${team1}</div><div>${team2}</div></div>
-                    <div class="odds-row">
-                        <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>1</span> ${odd1}</button>
-                        <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>X</span> ${oddX}</button>
-                        <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>2</span> ${odd2}</button>
-                    </div>
-                    <div class="match-footer">+${markets} Markets ></div>
-                </div>
-            `;
+        function trackLogoTaps() {
+            const now = Date.now();
+            if (now - lastTapTime > 1500) logoTapCount = 0;
+            lastTapTime = now;
+            logoTapCount++;
+            if (logoTapCount >= 5) {
+                logoTapCount = 0; 
+                let pin = prompt("Enter Admin PIN:");
+                if (pin === "1234") { isAdminMode = true; showToast("👑 Admin Mode Enabled", "success"); }
+                else if (pin !== null) showToast("Incorrect PIN", "error");
+            }
         }
-    }
-    generateMatches();
 
-    // --- GENERATE CASINO GRID ---
-    function generateCasinoGames() {
-        const games = [
-            { name: "Aviator", img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=300&q=80", badge: "HOT", action: "openGameScreen('crash')" },
-            { name: "Mines", img: "https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?auto=format&fit=crop&w=300&q=80", badge: "", action: "openGameScreen('mines')" },
-            { name: "Dice", img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=300&q=80", badge: "", action: "openGameScreen('dice')" },
-            { name: "Plinko", img: "https://images.unsplash.com/photo-1606167668584-78701c57cc1b?auto=format&fit=crop&w=300&q=80", badge: "NEW", action: "openGameScreen('plinko')" },
-            { name: "Classic Slots", img: "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=300&q=80", badge: "", action: "openGameScreen('slot1')" },
-            { name: "Fruit Slots", img: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=300&q=80", badge: "", action: "openGameScreen('slot2')" },
-            { name: "Lucky 7s", img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=300&q=80", badge: "HOT", action: "openGameScreen('slot3')" },
-            { name: "Diamond Slots", img: "https://images.unsplash.com/photo-1614729939124-03290b5609ce?auto=format&fit=crop&w=300&q=80", badge: "JACKPOT", action: "openGameScreen('slot4')" }
-        ];
-        const grid = document.getElementById('casino-grid');
-        if(!grid) return;
-        games.forEach(game => {
-            let badgeHTML = game.badge ? `<div class="casino-badge ${game.badge === 'HOT' ? 'bg-hot' : game.badge === 'NEW' ? 'bg-new' : 'bg-jackpot'}">${game.badge}</div>` : '';
-            grid.innerHTML += `<div class="casino-card" onclick="checkMinBalance() && ${game.action}">${badgeHTML}<img src="${game.img}"><div class="casino-card-title">${game.name}</div></div>`;
-        });
-    }
-    generateCasinoGames();
+        function checkMinBalance() {
+            if (!isLoggedIn) { showToast("Please sign up first.", "error"); return false; }
+            if (userBalance < 10.00) { showToast("❌ Minimum balance to play is $10.00", "error"); return false; }
+            return true;
+        }
 
-    function openGameScreen(gameId) { 
-        if(!checkMinBalance()) return; 
-        let screen = document.getElementById('game-'+gameId);
-        if(screen) screen.style.display = 'flex'; 
-    }
-    function closeGameScreen() { document.querySelectorAll('.game-screen').forEach(s => s.style.display = 'none'); }
-            // --- PROMOS ---
+        function processLogin() {
+            let phoneInput = document.getElementById('login-phone').value;
+            let passInput = document.getElementById('login-pass').value;
+            
+            if(!phoneInput || !passInput) { showToast("Enter phone and password", "error"); return; }
+            
+            if (userPassword === "") {
+                userPassword = passInput; userPhone = phoneInput;
+                localStorage.setItem('userPassword', userPassword);
+                localStorage.setItem('userPhone', userPhone);
+                showToast("Account created!", "success");
+            } else {
+                if (userPassword !== passInput) { showToast("❌ Incorrect Password", "error"); return; }
+            }
+
+            isLoggedIn = true;
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('top-green-banner').style.display = 'flex';
+            document.getElementById('header-balance-pill').style.display = 'block';
+            document.getElementById('header-deposit-btn').style.display = 'block';
+            
+            document.getElementById('prof-phone-display').innerText = phoneInput;
+            
+            switchView('view-sports');
+            updateBalanceUI();
+            syncBalanceFromFirebase(); 
+        }
+
+        function logoutUser() {
+            isLoggedIn = false;
+            localStorage.setItem('isLoggedIn', 'false');
+            document.getElementById('login-screen').style.display = 'flex';
+            document.getElementById('top-green-banner').style.display = 'none';
+            document.getElementById('header-balance-pill').style.display = 'none';
+            document.getElementById('header-deposit-btn').style.display = 'none';
+            switchView('view-sports');
+        }
+
+        if (isLoggedIn) {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('top-green-banner').style.display = 'flex';
+            document.getElementById('header-balance-pill').style.display = 'block';
+            document.getElementById('header-deposit-btn').style.display = 'block';
+            document.getElementById('prof-phone-display').innerText = userPhone;
+            updateBalanceUI();
+            syncBalanceFromFirebase();
+        }
+
+        const leagues = ["Netherlands · Eredivisie", "Germany · Bundesliga", "International Clubs · CONMEBOL", "Colombia · Liga DIMAYOR", "England · Premier League", "Spain · La Liga", "Italy · Serie A", "France · Ligue 1"];
+        const teams = [["Go Ahead Eagles", "SC Telstar"], ["VfB Stuttgart", "Borussia Monchengladbach"], ["CR Flamengo RJ", "Estudiantes de La Plata"], ["Atletico Nacional", "AD Pasto"], ["Arsenal", "Chelsea"], ["Man City", "Liverpool"], ["Real Madrid", "Barcelona"], ["Atletico Madrid", "Sevilla"], ["Juventus", "Inter Milan"], ["AC Milan", "Napoli"], ["PSG", "Marseille"], ["Bayern Munich", "Dortmund"]];
+
+        function generateMatches() {
+            const container = document.getElementById('matches-list');
+            if(!container) return;
+            container.innerHTML = ''; 
+            for(let i=0; i<50; i++) {
+                let league = leagues[Math.floor(Math.random() * leagues.length)];
+                let teamPair = teams[Math.floor(Math.random() * teams.length)];
+                let team1 = teamPair[0]; let team2 = teamPair[1];
+                let odd1 = (Math.random() * 1.5 + 1.2).toFixed(2);
+                let oddX = (Math.random() * 2.5 + 3.0).toFixed(2);
+                let odd2 = (Math.random() * 4.0 + 1.5).toFixed(2);
+                let timeHour = Math.floor(Math.random() * 4) + 8; 
+                let timeStr = `Starts today at ${timeHour}:${Math.random() < 0.5 ? '00' : '30'} PM`;
+                let markets = Math.floor(Math.random() * 200) + 150;
+
+                container.innerHTML += `
+                    <div class="match-card">
+                        <div class="match-top"><span>${league}</span><span>${timeStr}</span></div>
+                        <div class="match-teams"><div>${team1}</div><div>${team2}</div></div>
+                        <div class="odds-row">
+                            <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>1</span> ${odd1}</button>
+                            <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>X</span> ${oddX}</button>
+                            <button class="odd-btn" onclick="checkMinBalance() && showToast('Bet added', 'success')"><span>2</span> ${odd2}</button>
+                        </div>
+                        <div class="match-footer">+${markets} Markets ></div>
+                    </div>
+                `;
+            }
+        }
+        generateMatches();
+
+        function generateCasinoGames() {
+            const games = [
+                { name: "Aviator", img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=300&q=80", badge: "HOT", action: "openGameScreen('crash')" },
+                { name: "Mines", img: "https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?auto=format&fit=crop&w=300&q=80", badge: "", action: "openGameScreen('mines')" },
+                { name: "Dice", img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=300&q=80", badge: "", action: "openGameScreen('dice')" },
+                { name: "Plinko", img: "https://images.unsplash.com/photo-1606167668584-78701c57cc1b?auto=format&fit=crop&w=300&q=80", badge: "NEW", action: "openGameScreen('plinko')" },
+                { name: "Classic Slots", img: "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=300&q=80", badge: "", action: "openGameScreen('slot1')" },
+                { name: "Fruit Slots", img: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=300&q=80", badge: "", action: "openGameScreen('slot2')" },
+                { name: "Lucky 7s", img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=300&q=80", badge: "HOT", action: "openGameScreen('slot3')" },
+                { name: "Diamond Slots", img: "https://images.unsplash.com/photo-1614729939124-03290b5609ce?auto=format&fit=crop&w=300&q=80", badge: "JACKPOT", action: "openGameScreen('slot4')" }
+            ];
+            const grid = document.getElementById('casino-grid');
+            if(!grid) return;
+            games.forEach(game => {
+                let badgeHTML = game.badge ? `<div class="casino-badge ${game.badge === 'HOT' ? 'bg-hot' : game.badge === 'NEW' ? 'bg-new' : 'bg-jackpot'}">${game.badge}</div>` : '';
+                grid.innerHTML += `<div class="casino-card" onclick="checkMinBalance() && ${game.action}">${badgeHTML}<img src="${game.img}"><div class="casino-card-title">${game.name}</div></div>`;
+            });
+        }
+        generateCasinoGames();
+
+        function openGameScreen(gameId) { 
+            if(!checkMinBalance()) return; 
+            let screen = document.getElementById('game-'+gameId);
+            if(screen) screen.style.display = 'flex'; 
+        }
+        function closeGameScreen() { document.querySelectorAll('.game-screen').forEach(s => s.style.display = 'none'); }
+
+        // --- PROMOS ---
         function startOTP() {
             if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
             if(task2) return;
@@ -713,21 +742,33 @@
         }
         if(bonusClaimed) { document.getElementById('promo-amount').innerText = "$0.00"; document.getElementById('main-claim-btn').innerText = "Claimed Successfully"; document.getElementById('main-claim-btn').style.background = "#334155"; }
 
-        // --- FIREBASE DEPOSIT & WITHDRAWAL ---
+                // --- FIREBASE DEPOSIT & WITHDRAWAL ---
         async function submitDepositProof() {
             const amountInput = document.getElementById("deposit-amount");
             const amount = Number(amountInput?.value);
             const currentPhone = localStorage.getItem("userPhone");
+            
             if (!currentPhone) { showToast("Please register first.", "error"); return; }
             if (amount !== 1) { showToast("Minimum deposit is $1.00 (KSh 130).", "error"); return; }
+            
             const transactionInput = document.getElementById("mpesa-transaction-code");
             const transactionCode = transactionInput?.value?.trim()?.toUpperCase();
             if (!transactionCode) { showToast("Enter your M-Pesa transaction code.", "error"); return; }
+            
             try {
-                await db.collection("deposits").add({ phone: currentPhone, amountKES: 130, creditUSD: 1, transactionCode: transactionCode, status: "pending", createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+                await db.collection("deposits").add({ 
+                    phone: currentPhone, 
+                    amountKES: 130, 
+                    creditUSD: 1, 
+                    transactionCode: transactionCode, 
+                    status: "pending", 
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp() 
+                });
                 document.getElementById('mpesa-transaction-code').value = "";
                 showToast("Deposit request submitted! Pending Admin.", "success");
-            } catch (error) { showToast("Could not submit. Check connection.", "error"); }
+            } catch (error) { 
+                showToast("Could not submit. Check connection.", "error"); 
+            }
         }
 
         function openWithdrawModal() {
@@ -738,19 +779,30 @@
         async function submitWithdrawal() {
             let amount = parseFloat(document.getElementById('withdraw-amount').value);
             let feeCode = document.getElementById('withdraw-fee-code').value.trim().toUpperCase();
+            
             if(isNaN(amount) || amount < 10) { showToast("Minimum withdrawal is $10", "error"); return; }
             if(amount > userBalance) { showToast("Insufficient balance", "error"); return; }
             if(!feeCode) { showToast("Enter the M-Pesa code for the 50 KES fee", "error"); return; }
+            
             try {
-                await db.collection("withdrawals").add({ phone: userPhone, amountUSD: amount, feeCode: feeCode, status: "pending", createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+                await db.collection("withdrawals").add({ 
+                    phone: userPhone, 
+                    amountUSD: amount, 
+                    feeCode: feeCode, 
+                    status: "pending", 
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp() 
+                });
                 document.getElementById('withdraw-modal').style.display = 'none';
                 showToast("Withdrawal request sent! Pending Admin.", "success");
-            } catch (e) { showToast("Error sending request", "error"); }
+            } catch (e) { 
+                showToast("Error sending request", "error"); 
+            }
         }
 
         async function syncBalanceFromFirebase() {
             if(!userPhone) return;
             try {
+                // Check approved deposits
                 const depSnap = await db.collection("deposits").where("phone", "==", userPhone).where("status", "==", "approved").get();
                 if (!depSnap.empty) {
                     let total = 0; let batch = db.batch();
@@ -758,6 +810,8 @@
                     await batch.commit(); userBalance += total; updateBalanceUI();
                     showToast(`Deposit of $${total.toFixed(2)} confirmed!`, "success");
                 }
+                
+                // Check processing withdrawals to show the message
                 const witSnap = await db.collection("withdrawals").where("phone", "==", userPhone).where("status", "==", "processing").get();
                 if (!witSnap.empty) {
                     let batchWit = db.batch();
@@ -776,6 +830,7 @@
             let witList = document.getElementById('pending-withdrawals-list');
             depList.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">Loading...</p>`;
             witList.innerHTML = '';
+
             try {
                 const depSnap = await db.collection("deposits").where("status", "==", "pending").get();
                 if (depSnap.empty) { depList.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">No pending deposits.</p>`; } 
@@ -783,27 +838,54 @@
                     depList.innerHTML = '<h4 style="color:#fff; margin-bottom:10px;">Deposits</h4>';
                     depSnap.forEach((doc) => {
                         const dep = doc.data();
-                        depList.innerHTML += `<div class="admin-item"><div><div style="font-weight: 700; color: #fff;">$${dep.creditUSD.toFixed(2)}</div><div style="font-size: 11px; color: var(--text-sub);">${dep.phone}</div><div style="font-size: 11px; color: var(--gold);">Code: ${dep.transactionCode}</div></div><button class="btn-header" onclick="approveDeposit('${doc.id}')">Approve</button></div>`;
+                        depList.innerHTML += `
+                            <div class="admin-item">
+                                <div>
+                                    <div style="font-weight: 700; color: #fff;">$${dep.creditUSD.toFixed(2)}</div>
+                                    <div style="font-size: 11px; color: var(--text-sub);">${dep.phone}</div>
+                                    <div style="font-size: 11px; color: var(--gold);">Code: ${dep.transactionCode}</div>
+                                </div>
+                                <button class="btn-header" onclick="approveDeposit('${doc.id}')">Approve</button>
+                            </div>`;
                     });
                 }
+
                 const witSnap = await db.collection("withdrawals").where("status", "==", "pending").get();
                 if (!witSnap.empty) {
                     witList.innerHTML = '<h4 style="color:#fff; margin-bottom:10px;">Withdrawals</h4>';
                     witSnap.forEach((doc) => {
                         const wit = doc.data();
-                        witList.innerHTML += `<div class="admin-item"><div><div style="font-weight: 700; color: #fff;">$${wit.amountUSD.toFixed(2)}</div><div style="font-size: 11px; color: var(--text-sub);">${wit.phone}</div><div style="font-size: 11px; color: var(--gold);">Fee Code: ${wit.feeCode}</div></div><button class="btn-header" onclick="approveWithdrawal('${doc.id}', ${wit.amountUSD})">Approve</button></div>`;
+                        witList.innerHTML += `
+                            <div class="admin-item">
+                                <div>
+                                    <div style="font-weight: 700; color: #fff;">$${wit.amountUSD.toFixed(2)}</div>
+                                    <div style="font-size: 11px; color: var(--text-sub);">${wit.phone}</div>
+                                    <div style="font-size: 11px; color: var(--gold);">Fee Code: ${wit.feeCode}</div>
+                                </div>
+                                <button class="btn-header" onclick="approveWithdrawal('${doc.id}', ${wit.amountUSD})">Approve</button>
+                            </div>`;
                     });
                 }
             } catch (error) { depList.innerHTML = `<p style="color: var(--danger);">Error loading.</p>`; }
         }
+
         async function approveDeposit(id) {
-            try { await db.collection("deposits").doc(id).update({ status: "approved" }); showToast(`Deposit Approved!`, "success"); renderPendingRequests(); } catch (error) { showToast("Failed to approve.", "error"); }
-        }
-        async function approveWithdrawal(id, amount) {
-            try { await db.collection("withdrawals").doc(id).update({ status: "processing" }); showToast(`Withdrawal Approved! User will see 'Processing' message.`, "success"); renderPendingRequests(); } catch (error) { showToast("Failed to approve.", "error"); }
+            try { 
+                await db.collection("deposits").doc(id).update({ status: "approved" }); 
+                showToast(`Deposit Approved!`, "success"); 
+                renderPendingRequests(); 
+            } catch (error) { showToast("Failed to approve.", "error"); }
         }
 
-        // --- GAME LOGIC ---
+        async function approveWithdrawal(id, amount) {
+            try {
+                await db.collection("withdrawals").doc(id).update({ status: "processing" });
+                showToast(`Withdrawal Approved! User will see 'Processing' message.`, "success"); 
+                renderPendingRequests();
+            } catch (error) { showToast("Failed to approve.", "error"); }
+        }
+
+        // --- GAME 1: CRASH / AVIATOR ---
         let isPlayingCrash = false, currentMultiplier = 1.00, crashPoint = 1.00, crashInterval, currentCrashBet = 0;
         function handleCrashAction() {
             if (!isPlayingCrash) {
@@ -814,8 +896,10 @@
         }
         function startCrashGame() {
             isPlayingCrash = true; currentMultiplier = 1.00;
-            document.getElementById('crash-btn').innerText = "Cash Out"; document.getElementById('crash-btn').className = "btn-action btn-cashout";
+            document.getElementById('crash-btn').innerText = "Cash Out"; 
+            document.getElementById('crash-btn').className = "btn-action btn-cashout";
             document.getElementById('crash-multiplier').className = "crash-display";
+            
             crashPoint = (Math.random() * 5) + 1.0; 
             crashInterval = setInterval(() => {
                 currentMultiplier += currentMultiplier < 2 ? 0.02 : currentMultiplier < 5 ? 0.05 : 0.1;
@@ -824,20 +908,32 @@
             }, 100); 
         }
         function cashOutCrash() {
-            if(!isPlayingCrash) return; clearInterval(crashInterval); isPlayingCrash = false;
+            if(!isPlayingCrash) return; 
+            clearInterval(crashInterval); isPlayingCrash = false;
             let win = currentCrashBet * currentMultiplier; userBalance += win; updateBalanceUI();
-            document.getElementById('crash-btn').innerText = `Won $${win.toFixed(2)}`; document.getElementById('crash-btn').className = "btn-action btn-disabled";
+            document.getElementById('crash-btn').innerText = `Won $${win.toFixed(2)}`; 
+            document.getElementById('crash-btn').className = "btn-action btn-disabled";
             showToast(`Cashed out at ${currentMultiplier.toFixed(2)}x!`, "success"); 
-            setTimeout(() => { document.getElementById('crash-btn').innerText = "Place Bet"; document.getElementById('crash-btn').className = "btn-action btn-start"; document.getElementById('crash-multiplier').innerText = "1.00x"; }, 3000);
+            setTimeout(() => { 
+                document.getElementById('crash-btn').innerText = "Place Bet"; 
+                document.getElementById('crash-btn').className = "btn-action btn-start"; 
+                document.getElementById('crash-multiplier').innerText = "1.00x"; 
+            }, 3000);
         }
         function gameCrashed() {
             clearInterval(crashInterval); isPlayingCrash = false;
-            document.getElementById('crash-multiplier').innerText = "CRASHED!"; document.getElementById('crash-multiplier').className = "crash-display crashed";
-            document.getElementById('crash-btn').innerText = "Place Bet"; document.getElementById('crash-btn').className = "btn-action btn-start";
+            document.getElementById('crash-multiplier').innerText = "CRASHED!"; 
+            document.getElementById('crash-multiplier').className = "crash-display crashed";
+            document.getElementById('crash-btn').innerText = "Place Bet"; 
+            document.getElementById('crash-btn').className = "btn-action btn-start";
             showToast("Flew away! You lost.", "error"); 
-            setTimeout(() => { document.getElementById('crash-multiplier').innerText = "1.00x"; document.getElementById('crash-multiplier').className = "crash-display"; }, 3000);
+            setTimeout(() => { 
+                document.getElementById('crash-multiplier').innerText = "1.00x"; 
+                document.getElementById('crash-multiplier').className = "crash-display"; 
+            }, 3000);
         }
 
+        // --- GAME 2: MINES ---
         let isPlayingMines = false, minesBet = 0, minesMult = 1.0, safeSq = 0, minePos = [];
         function handleMinesAction() {
             if (!isPlayingMines) {
@@ -845,9 +941,16 @@
                 if(isNaN(minesBet) || minesBet <= 0 || minesBet > userBalance) { showToast("Invalid bet", "error"); return; }
                 userBalance -= minesBet; updateBalanceUI(); isPlayingMines = true; minesMult = 1.0; safeSq = 0; minePos = [];
                 while(minePos.length < 3) { let r = Math.floor(Math.random() * 25); if(!minePos.includes(r)) minePos.push(r); }
-                document.getElementById('mines-btn').innerText = "Cash Out ($0.00)"; document.getElementById('mines-btn').className = "btn-action btn-cashout";
+                document.getElementById('mines-btn').innerText = "Cash Out ($0.00)"; 
+                document.getElementById('mines-btn').className = "btn-action btn-cashout";
                 document.getElementById('mines-grid').innerHTML = '';
-                for(let i=0; i<25; i++) { let b = document.createElement('div'); b.className = 'mine-btn'; b.innerText = '💎'; b.onclick = () => handleMineClick(b, i); document.getElementById('mines-grid').appendChild(b); }
+                for(let i=0; i<25; i++) { 
+                    let b = document.createElement('div'); 
+                    b.className = 'mine-btn'; 
+                    b.innerText = '💎'; 
+                    b.onclick = () => handleMineClick(b, i); 
+                    document.getElementById('mines-grid').appendChild(b); 
+                }
             } else {
                 if (safeSq === 0) { showToast("Reveal 1 first!", "error"); return; }
                 let win = minesBet * minesMult; userBalance += win; updateBalanceUI();
@@ -867,6 +970,7 @@
             }
         }
 
+        // --- GAME 3: DICE ---
         let dicePick = 1, isRolling = false;
         function setDicePick(num) { dicePick = num; showToast("Picked " + num, "default"); }
         function rollDice() {
@@ -878,13 +982,15 @@
             let rollInterval = setInterval(() => { document.getElementById('dice-display').innerText = faces[Math.floor(Math.random() * 6)]; }, 50);
             setTimeout(() => {
                 clearInterval(rollInterval);
-                let final = Math.floor(Math.random() * 6) + 1; document.getElementById('dice-display').innerText = faces[final-1];
+                let final = Math.floor(Math.random() * 6) + 1; 
+                document.getElementById('dice-display').innerText = faces[final-1];
                 if (final === dicePick) { let win = bet * 5; userBalance += win; updateBalanceUI(); showToast(`Rolled ${final}! WON $${win.toFixed(2)}!`, "success"); } 
                 else { showToast(`Rolled ${final}. Lost!`, "error"); }
                 isRolling = false;
             }, 2000);
         }
 
+        // --- GAME 4: PLINKO ---
         let isDropping = false;
         function playPlinko() {
             if(isDropping) return;
@@ -902,33 +1008,50 @@
             }, 1500);
         }
 
+        // --- GAMES 5-8: SLOTS ---
         let isSpinning = false;
-        const slotSymbols = { 1: ['🍒', '🍋', '🔔', '💎', '7️⃣'], 2: ['🍎', '🍌', '🍇', '🍓', '🍉'], 3: ['7️⃣', '7️⃣', '7️⃣', '💰', '⭐'], 4: ['💎', '💎', '💎', '👑', '💍'] };
+        const slotSymbols = {
+            1: ['🍒', '🍋', '🔔', '💎', '7️⃣'],
+            2: ['🍎', '🍌', '🍇', '🍓', '🍉'],
+            3: ['7️⃣', '7️⃣', '7️⃣', '💰', '⭐'],
+            4: ['💎', '💎', '💎', '👑', '💍']
+        };
         function playSlot(slotId) {
             if(isSpinning) return;
             let bet = parseFloat(document.getElementById(`slot${slotId}-bet`).value);
             if(isNaN(bet) || bet <= 0 || bet > userBalance) { showToast("Invalid bet", "error"); return; }
             userBalance -= bet; updateBalanceUI(); isSpinning = true;
+            
             let r1 = document.getElementById(`s${slotId}-r1`), r2 = document.getElementById(`s${slotId}-r2`), r3 = document.getElementById(`s${slotId}-r3`);
             let symbols = slotSymbols[slotId];
+            
             let spinInterval = setInterval(() => {
                 r1.innerText = symbols[Math.floor(Math.random() * symbols.length)];
                 r2.innerText = symbols[Math.floor(Math.random() * symbols.length)];
                 r3.innerText = symbols[Math.floor(Math.random() * symbols.length)];
             }, 50);
+
             setTimeout(() => {
                 clearInterval(spinInterval);
                 let f1 = symbols[Math.floor(Math.random() * symbols.length)];
                 let f2 = symbols[Math.floor(Math.random() * symbols.length)];
                 let f3 = symbols[Math.floor(Math.random() * symbols.length)];
                 r1.innerText = f1; r2.innerText = f2; r3.innerText = f3;
-                let win = (f1 === f2 && f2 === f3) ? bet * 5 : (f1 === f2 || f2 === f3 || f1 === f3) ? bet * 1.5 : 0;
-                if (win > 0) { userBalance += win; updateBalanceUI(); showToast(`YOU WON $${win.toFixed(2)}!`, "success"); } 
-                else { showToast("No match. Try again!", "error"); }
+                
+                let win = 0;
+                if (f1 === f2 && f2 === f3) { win = bet * 5; } 
+                else if (f1 === f2 || f2 === f3 || f1 === f3) { win = bet * 1.5; }
+                
+                if (win > 0) { 
+                    userBalance += win; 
+                    updateBalanceUI(); 
+                    showToast(`YOU WON $${win.toFixed(2)}!`, "success"); 
+                } else { 
+                    showToast("No match. Try again!", "error"); 
+                }
                 isSpinning = false;
             }, 2000);
         }
     </script>
 </body>
 </html>
-            
