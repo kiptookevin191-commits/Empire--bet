@@ -174,7 +174,7 @@
         .floating-chat { position: fixed; bottom: 90px; right: 20px; width: 60px; height: 60px; background: #4ade80; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; color: #000; box-shadow: 0 5px 15px rgba(74, 222, 128, 0.4); z-index: 99; cursor: pointer;}
     </style>
 </head>
-    <body>
+<body>
 
     <div id="toast">Message</div>
 
@@ -321,7 +321,7 @@
             </div>
         </div>
     </div>
-        <!-- PROFILE VIEW -->
+    <!-- PROFILE VIEW -->
 <div id="view-profile" class="view">
     <div class="account-header">
         <div style="background: var(--bg-card); width: 40px; height: 40px; border-radius: 12px; display: flex; justify-content: center; align-items: center; cursor: pointer;" onclick="switchView('view-sports')">‹</div>
@@ -418,7 +418,7 @@
     <div class="nav-item" onclick="switchView('view-casino')"><span class="nav-icon">🎰</span> Casino</div>
     <div class="nav-item" onclick="switchView('view-profile')"><span class="nav-icon">👤</span> Profile</div>
 </div>
-        <script>
+<script>
     const firebaseConfig = {
         apiKey: "AIzaSyDSvvOuSIahbt-pVhHMS-xPfgMWNdxHJcY",
         authDomain: "empire-bet-world.firebaseapp.com",
@@ -611,7 +611,7 @@
         if(screen) screen.style.display = 'flex'; 
     }
     function closeGameScreen() { document.querySelectorAll('.game-screen').forEach(s => s.style.display = 'none'); }
-                    // --- PROMOS ---
+            // --- PROMOS ---
         function startOTP() {
             if(!isLoggedIn) { showToast("Sign up first!", "error"); return; }
             if(task2) return;
@@ -888,11 +888,8 @@
         }
 
         let isSpinning = false;
-                   }, 2000);
+          }, 2000);
         }
     </script>
 </body>
 </html>
-     
-        
-        
