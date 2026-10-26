@@ -744,259 +744,321 @@ if(bonusClaimed) {
     document.getElementById('promo-amount').innerText = "$0.00"; document.getElementById('main-claim-btn').innerText = "Claimed Successfully"; document.getElementById('main-claim-btn').style.background = "#334155";
             }
             
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwASQQdMmhjfLFOwr2tb9-mCnr_EJ-Qw6oHG4B8KqFN8IKOlG3qOPbbK0cM6kBShjN9A/exec";
 
-// Send requests to Google Apps Script
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwwASQQdMmhjfLFOwr2tb9-mCnr_EJ-Qw6oHG4B8KqFN8IKOlG3qOPbbK0cM6kBShjN9A/exec";
+
+// Reuses the current admin password for this prototype.
+// IMPORTANT: A password embedded in frontend JavaScript is visible to users.
+const EMPIRE_ADMIN_PASSWORD = "1234";
+
+// Send requests to Google Apps Script.
 async function googleSheetRequest(action, data = {}) {
-    const body = new URLSearchParams({
-        action,
-        ...Object.fromEntries(
-            Object.entries(data).map(([key, value]) => [
-                key,
-                String(value ?? "")
-            ])
-        )
-    });
+  const body = new URLSearchParams({
+    action,
+    ...Object.fromEntries(
+      Object.entries(data).map(([key, value]) => [
+        key,
+        String(value ?? "")
+      ])
+    )
+  });
 
-    const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        body
-    });
+  const response = await fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    body
+  });
 
-    if (!response.ok) {
-        throw new Error("Google Sheets request failed.");
-    }
+  if (!response.ok) {
+    throw new Error("Google Sheets request failed.");
+  }
 
-    const result = await response.json();
+  const result = await response.json();
 
-    if (result.success === false || result.error) {
-        throw new Error(result.error || "Request failed.");
-    }
+  if (result.success === false || result.error) {
+    throw new Error(result.error || "Request failed.");
+  }
 
-    return result;
+  return result;
 }
 
 // SUBMIT DEPOSIT
 async function submitDepositProof() {
-    const amountInput = document.getElementById("deposit-amount");
-    const codeInput = document.getElementById("mpesa-transaction-code");
+  const amountInput = document.getElementById("deposit-amount");
+  const codeInput = document.getElementById("mpesa-transaction-code");
 
-    const amount = Number(amountInput?.value);
-    const phone = localStorage.getItem("userPhone");
-    const transactionCode = codeInput?.value?.trim().toUpperCase();
+  const amount = Number(amountInput?.value);
+  const phone = localStorage.getItem("userPhone");
+  const transactionCode = codeInput?.value?.trim().toUpperCase();
 
-    if (!phone) {
-        showToast("Please register first.", "error");
-        return;
-    }
+  if (!phone) {
+    showToast("Please register first.", "error");
+    return;
+  }
 
-    if (amount !== 1) {
-        showToast("Minimum deposit is $1.00 (KSh 130).", "error");
-        return;
-    }
+  if (amount !== 1) {
+    showToast("Minimum deposit is $1.00 (KSh 130).", "error");
+    return;
+  }
 
-    if (!transactionCode) {
-        showToast("Enter your M-Pesa transaction code.", "error");
-        return;
-    }
+  if (!transactionCode) {
+    showToast("Enter your M-Pesa transaction code.", "error");
+    return;
+  }
 
-    try {
-        await googleSheetRequest("submitDeposit", {
-            phone,
-            amountKES: 130,
-            creditUSD: 1,
-            transactionCode
-        });
+  try {
+    await googleSheetRequest("submitDeposit", {
+      phone,
+      amountKES: 130,
+      transactionCode
+    });
 
-        codeInput.value = "";
-        showToast("Deposit submitted! Pending admin approval.", "success");
-    } catch (error) {
-        console.error("Deposit error:", error);
-        showToast(error.message || "Could not submit deposit.", "error");
-    }
+    if (codeInput) codeInput.value = "";
+
+    showToast(
+      "Deposit submitted! Pending admin approval.",
+      "success"
+    );
+  } catch (error) {
+    console.error("Deposit error:", error);
+    showToast(error.message || "Could not submit deposit.", "error");
+  }
 }
 
-// REFRESH THE CUSTOMER'S BALANCE FROM THE SERVER
+// REFRESH CUSTOMER BALANCE
+// Kept under the old function name so existing calls still work.
 async function syncBalanceFromFirebase() {
-    const phone = localStorage.getItem("userPhone");
+  const phone = localStorage.getItem("userPhone");
 
-    if (!phone) return;
+  if (!phone) return;
 
-    try {
-        const result = await googleSheetRequest("getBalance", { phone });
+  try {
+    const result = await googleSheetRequest("getBalance", { phone });
 
-        if (typeof result.balance !== "number") {
-            throw new Error("Server did not return a valid balance.");
-        }
-
-        userBalance = result.balance;
-        updateBalanceUI();
-    } catch (error) {
-        console.error("Balance sync error:", error);
+    if (typeof result.balance !== "number") {
+      throw new Error("Server did not return a valid balance.");
     }
+
+    userBalance = result.balance;
+    updateBalanceUI();
+  } catch (error) {
+    console.error("Balance sync error:", error);
+  }
 }
 
 // OPEN WITHDRAWAL MODAL
 function openWithdrawModal() {
-    if (Number(userBalance) < 10) {
-        showToast("Minimum withdrawal is $10.00.", "error");
-        return;
-    }
+  if (Number(userBalance) < 10) {
+    showToast("Minimum withdrawal is $10.00.", "error");
+    return;
+  }
 
-    document.getElementById("withdraw-modal").style.display = "flex";
+  document.getElementById("withdraw-modal").style.display = "flex";
 }
 
 // SUBMIT WITHDRAWAL
 async function submitWithdrawal() {
-    const amount = Number(
-        document.getElementById("withdraw-amount")?.value
+  const amount = Number(
+    document.getElementById("withdraw-amount")?.value
+  );
+
+  const feeCode = document.getElementById("withdraw-fee-code")
+    ?.value?.trim().toUpperCase();
+
+  const phone = localStorage.getItem("userPhone");
+
+  if (!phone) {
+    showToast("Please register first.", "error");
+    return;
+  }
+
+  if (!Number.isFinite(amount) || amount < 10) {
+    showToast("Minimum withdrawal is $10.", "error");
+    return;
+  }
+
+  if (amount > Number(userBalance)) {
+    showToast("Insufficient balance.", "error");
+    return;
+  }
+
+  if (!feeCode) {
+    showToast("Enter the required transaction code.", "error");
+    return;
+  }
+
+  try {
+    await googleSheetRequest("submitWithdrawal", {
+      phone,
+      amountUSD: amount,
+      feeCode
+    });
+
+    document.getElementById("withdraw-modal").style.display = "none";
+
+    showToast(
+      "Withdrawal submitted! Pending admin approval.",
+      "success"
     );
-
-    const feeCode = document.getElementById("withdraw-fee-code")
-        ?.value?.trim().toUpperCase();
-
-    const phone = localStorage.getItem("userPhone");
-
-    if (!phone) {
-        showToast("Please register first.", "error");
-        return;
-    }
-
-    if (!Number.isFinite(amount) || amount < 10) {
-        showToast("Minimum withdrawal is $10.", "error");
-        return;
-    }
-
-    if (amount > Number(userBalance)) {
-        showToast("Insufficient balance.", "error");
-        return;
-    }
-
-    if (!feeCode) {
-        showToast("Enter the required transaction code.", "error");
-        return;
-    }
-
-    try {
-        await googleSheetRequest("submitWithdrawal", {
-            phone,
-            amountUSD: amount,
-            feeCode
-        });
-
-        document.getElementById("withdraw-modal").style.display = "none";
-        showToast("Withdrawal submitted! Pending admin approval.", "success");
-    } catch (error) {
-        console.error("Withdrawal error:", error);
-        showToast(error.message || "Error submitting withdrawal.", "error");
-    }
+  } catch (error) {
+    console.error("Withdrawal error:", error);
+    showToast(error.message || "Error submitting withdrawal.", "error");
+  }
 }
 
-// DISPLAY PENDING ADMIN REQUESTS
+// ADMIN: LOAD PENDING REQUESTS
 async function renderPendingRequests() {
-    const depList = document.getElementById("pending-deposits-list");
-    const witList = document.getElementById("pending-withdrawals-list");
+  const depList = document.getElementById("pending-deposits-list");
+  const witList = document.getElementById("pending-withdrawals-list");
 
-    if (!depList || !witList) return;
+  if (!depList || !witList) return;
 
-    depList.textContent = "Loading deposits...";
-    witList.textContent = "Loading withdrawals...";
+  depList.textContent = "Loading deposits...";
+  witList.textContent = "Loading withdrawals...";
 
-    try {
-        const result = await googleSheetRequest("getPendingRequests");
+  try {
+    const result = await googleSheetRequest("getPendingRequests", {
+      adminPassword: EMPIRE_ADMIN_PASSWORD
+    });
 
-        const deposits = Array.isArray(result.deposits)
-            ? result.deposits : [];
+    const deposits = Array.isArray(result.deposits)
+      ? result.deposits
+      : [];
 
-        const withdrawals = Array.isArray(result.withdrawals)
-            ? result.withdrawals : [];
+    const withdrawals = Array.isArray(result.withdrawals)
+      ? result.withdrawals
+      : [];
 
-        // Build elements safely rather than inserting customer data as HTML.
-        function createRequestItem(item, type) {
-            const wrapper = document.createElement("div");
-            wrapper.className = "admin-item";
+    async function processRequest(item, type, status, button) {
+      button.disabled = true;
 
-            const details = document.createElement("div");
+      try {
+        const action = type === "deposit"
+          ? (status === "approved" ? "approveDeposit" : "rejectDeposit")
+          : (status === "approved" ? "approveWithdrawal" : "rejectWithdrawal");
 
-            const amount = document.createElement("div");
-            amount.style.cssText = "font-weight:700;color:#fff;";
-            amount.textContent = "$" + Number(
-                type === "deposit" ? item.creditUSD : item.amountUSD
-            ).toFixed(2);
+        const result = await googleSheetRequest(action, {
+          id: item.id,
+          adminPassword: EMPIRE_ADMIN_PASSWORD
+        });
 
-            const phone = document.createElement("div");
-            phone.style.cssText = "font-size:11px;color:var(--text-sub);";
-            phone.textContent = item.phone || "No phone provided";
+        showToast(
+          status === "approved" ? "Request approved." : "Request rejected.",
+          "success"
+        );
 
-            const code = document.createElement("div");
-            code.style.cssText = "font-size:11px;color:var(--gold);";
-            code.textContent = (type === "deposit" ? "Code: " : "Fee code: ")
-                + (type === "deposit"
-                    ? item.transactionCode
-                    : item.feeCode || "");
-
-            details.append(amount, phone, code);
-
-            const button = document.createElement("button");
-            button.className = "btn-header";
-            button.textContent = "Approve";
-
-            button.addEventListener("click", async () => {
-                button.disabled = true;
-
-                try {
-                    await googleSheetRequest(
-                        type === "deposit" ? "approveDeposit" : "approveWithdrawal",
-                        { id: item.id }
-                    );
-
-                    showToast("Request approved.", "success");
-                    await renderPendingRequests();
-                    await syncBalanceFromFirebase();
-                } catch (error) {
-                    console.error("Approval error:", error);
-                    showToast(error.message || "Approval failed.", "error");
-                    button.disabled = false;
-                }
-            });
-
-            wrapper.append(details, button);
-            return wrapper;
-        }
-
-        depList.replaceChildren();
-        witList.replaceChildren();
-
-        const depHeading = document.createElement("h4");
-        depHeading.textContent = "Deposits";
-        depHeading.style.color = "#fff";
-        depList.appendChild(depHeading);
-
-        if (!deposits.length) {
-            depList.appendChild(document.createTextNode("No pending deposits."));
-        } else {
-            deposits.forEach(item =>
-                depList.appendChild(createRequestItem(item, "deposit"))
-            );
-        }
-
-        const witHeading = document.createElement("h4");
-        witHeading.textContent = "Withdrawals";
-        witHeading.style.color = "#fff";
-        witList.appendChild(witHeading);
-
-        if (!withdrawals.length) {
-            witList.appendChild(document.createTextNode("No pending withdrawals."));
-        } else {
-            withdrawals.forEach(item =>
-                witList.appendChild(createRequestItem(item, "withdrawal"))
-            );
-        }
-    } catch (error) {
-        console.error("Admin requests error:", error);
-        depList.textContent = "Could not load requests. Check the Apps Script deployment.";
-        witList.textContent = "Could not load requests.";
+        await renderPendingRequests();
+        await syncBalanceFromFirebase();
+      } catch (error) {
+        console.error("Admin action error:", error);
+        showToast(error.message || "Could not process request.", "error");
+        button.disabled = false;
+      }
     }
+
+    function createRequestItem(item, type) {
+      const wrapper = document.createElement("div");
+      wrapper.className = "admin-item";
+
+      const details = document.createElement("div");
+
+      const amount = document.createElement("div");
+      amount.style.cssText = "font-weight:700;color:#fff;";
+
+      if (type === "deposit") {
+        amount.textContent =
+          "$" + Number(item.creditUSD || 0).toFixed(2) +
+          " (KSh " + Number(item.amountKES || 0) + ")";
+      } else {
+        amount.textContent =
+          "$" + Number(item.amountUSD || 0).toFixed(2);
+      }
+
+      const phone = document.createElement("div");
+      phone.style.cssText =
+        "font-size:11px;color:var(--text-sub);";
+      phone.textContent = item.phone || "No phone provided";
+
+      const code = document.createElement("div");
+      code.style.cssText = "font-size:11px;color:var(--gold);";
+      code.textContent =
+        (type === "deposit" ? "M-Pesa code: " : "Fee code: ") +
+        (type === "deposit"
+          ? item.transactionCode || ""
+          : item.feeCode || "");
+
+      const date = document.createElement("div");
+      date.style.cssText =
+        "font-size:10px;color:var(--text-sub);";
+      date.textContent = item.submittedAt
+        ? "Submitted: " + item.submittedAt
+        : "";
+
+      details.append(amount, phone, code, date);
+
+      const actions = document.createElement("div");
+      actions.style.cssText =
+        "display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;";
+
+      const approveButton = document.createElement("button");
+      approveButton.className = "btn-header";
+      approveButton.textContent = "Approve";
+      approveButton.addEventListener("click", () =>
+        processRequest(item, type, "approved", approveButton)
+      );
+
+      const rejectButton = document.createElement("button");
+      rejectButton.className = "btn-header";
+      rejectButton.textContent = "Reject";
+      rejectButton.addEventListener("click", () =>
+        processRequest(item, type, "rejected", rejectButton)
+      );
+
+      actions.append(approveButton, rejectButton);
+      wrapper.append(details, actions);
+
+      return wrapper;
+    }
+
+    depList.replaceChildren();
+    witList.replaceChildren();
+
+    const depHeading = document.createElement("h4");
+    depHeading.textContent = "Deposits";
+    depHeading.style.color = "#fff";
+    depList.appendChild(depHeading);
+
+    if (!deposits.length) {
+      depList.appendChild(
+        document.createTextNode("No pending deposits.")
+      );
+    } else {
+      deposits.forEach(item =>
+        depList.appendChild(createRequestItem(item, "deposit"))
+      );
+    }
+
+    const witHeading = document.createElement("h4");
+    witHeading.textContent = "Withdrawals";
+    witHeading.style.color = "#fff";
+    witList.appendChild(witHeading);
+
+    if (!withdrawals.length) {
+      witList.appendChild(
+        document.createTextNode("No pending withdrawals.")
+      );
+    } else {
+      withdrawals.forEach(item =>
+        witList.appendChild(createRequestItem(item, "withdrawal"))
+      );
+    }
+  } catch (error) {
+    console.error("Admin requests error:", error);
+    depList.textContent =
+      "Could not load requests. Check the Apps Script deployment.";
+    witList.textContent =
+      "Could not load requests. Check the Apps Script deployment.";
+  }
             }
                     // --- SPORTS API ---
         async function switchLeague(leagueName, btnElement) {
@@ -1191,4 +1253,3 @@ async function renderPendingRequests() {
     </script>
 </body>
 </html>
-    
