@@ -743,107 +743,260 @@ function claimPromo() {
 if(bonusClaimed) {
     document.getElementById('promo-amount').innerText = "$0.00"; document.getElementById('main-claim-btn').innerText = "Claimed Successfully"; document.getElementById('main-claim-btn').style.background = "#334155";
             }
-            async function submitDepositProof() {
+            
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwASQQdMmhjfLFOwr2tb9-mCnr_EJ-Qw6oHG4B8KqFN8IKOlG3qOPbbK0cM6kBShjN9A/exec";
+
+// Send requests to Google Apps Script
+async function googleSheetRequest(action, data = {}) {
+    const body = new URLSearchParams({
+        action,
+        ...Object.fromEntries(
+            Object.entries(data).map(([key, value]) => [
+                key,
+                String(value ?? "")
+            ])
+        )
+    });
+
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body
+    });
+
+    if (!response.ok) {
+        throw new Error("Google Sheets request failed.");
+    }
+
+    const result = await response.json();
+
+    if (result.success === false || result.error) {
+        throw new Error(result.error || "Request failed.");
+    }
+
+    return result;
+}
+
+// SUBMIT DEPOSIT
+async function submitDepositProof() {
     const amountInput = document.getElementById("deposit-amount");
+    const codeInput = document.getElementById("mpesa-transaction-code");
+
     const amount = Number(amountInput?.value);
-    const currentPhone = localStorage.getItem("userPhone");
-    if (!currentPhone) { showToast("Please register first.", "error"); return; }
-    if (amount !== 1) { showToast("Minimum deposit is $1.00 (KSh 130).", "error"); return; }
-    const transactionCode = document.getElementById("mpesa-transaction-code").value?.trim()?.toUpperCase();
-    if (!transactionCode) { showToast("Enter your M-Pesa transaction code.", "error"); return; }
+    const phone = localStorage.getItem("userPhone");
+    const transactionCode = codeInput?.value?.trim().toUpperCase();
+
+    if (!phone) {
+        showToast("Please register first.", "error");
+        return;
+    }
+
+    if (amount !== 1) {
+        showToast("Minimum deposit is $1.00 (KSh 130).", "error");
+        return;
+    }
+
+    if (!transactionCode) {
+        showToast("Enter your M-Pesa transaction code.", "error");
+        return;
+    }
 
     try {
-        await db.collection("deposits").add({
-            phone: currentPhone, amountKES: 130, creditUSD: 1, transactionCode: transactionCode, status: "pending", createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        await googleSheetRequest("submitDeposit", {
+            phone,
+            amountKES: 130,
+            creditUSD: 1,
+            transactionCode
         });
-        document.getElementById('mpesa-transaction-code').value = "";
-        showToast("Deposit request submitted! Pending Admin.", "success");
-    } catch (error) { showToast("Could not submit. Check connection.", "error"); }
+
+        codeInput.value = "";
+        showToast("Deposit submitted! Pending admin approval.", "success");
+    } catch (error) {
+        console.error("Deposit error:", error);
+        showToast(error.message || "Could not submit deposit.", "error");
+    }
 }
 
+// REFRESH THE CUSTOMER'S BALANCE FROM THE SERVER
 async function syncBalanceFromFirebase() {
-    if(!userPhone) return;
+    const phone = localStorage.getItem("userPhone");
+
+    if (!phone) return;
+
     try {
-        // Check approved deposits
-        const depSnap = await db.collection("deposits").where("phone", "==", userPhone).where("status", "==", "approved").get();
-        if (!depSnap.empty) {
-            let total = 0; let batch = db.batch();
-            depSnap.forEach((doc) => { total += doc.data().creditUSD; batch.update(doc.ref, { status: "completed" }); });
-            await batch.commit(); userBalance += total; updateBalanceUI();
-            showToast(`Deposit of $${total.toFixed(2)} confirmed!`, "success");
+        const result = await googleSheetRequest("getBalance", { phone });
+
+        if (typeof result.balance !== "number") {
+            throw new Error("Server did not return a valid balance.");
         }
-        // Check processing withdrawals to show message
-        const witSnap = await db.collection("withdrawals").where("phone", "==", userPhone).where("status", "==", "processing").get();
-        if (!witSnap.empty) {
-            let batchWit = db.batch();
-            witSnap.forEach((doc) => {
-                showToast("Your payment is processing, and you will receive it.", "success");
-                batchWit.update(doc.ref, { status: "completed" });
-            });
-            await batchWit.commit();
-        }
-    } catch (error) { console.log("Sync error:", error); }
+
+        userBalance = result.balance;
+        updateBalanceUI();
+    } catch (error) {
+        console.error("Balance sync error:", error);
+    }
 }
 
+// OPEN WITHDRAWAL MODAL
 function openWithdrawModal() {
-    if(userBalance < 10.00) { showToast("Minimum withdrawal is $10.00", "error"); return; }
-    document.getElementById('withdraw-modal').style.display = 'flex';
+    if (Number(userBalance) < 10) {
+        showToast("Minimum withdrawal is $10.00.", "error");
+        return;
+    }
+
+    document.getElementById("withdraw-modal").style.display = "flex";
 }
 
+// SUBMIT WITHDRAWAL
 async function submitWithdrawal() {
-    let amount = parseFloat(document.getElementById('withdraw-amount').value);
-    let feeCode = document.getElementById('withdraw-fee-code').value.trim().toUpperCase();
-    if(isNaN(amount) || amount < 10) { showToast("Minimum withdrawal is $10", "error"); return; }
-    if(amount > userBalance) { showToast("Insufficient balance", "error"); return; }
-    if(!feeCode) { showToast("Enter the M-Pesa code for the 50 KES fee", "error"); return; }
+    const amount = Number(
+        document.getElementById("withdraw-amount")?.value
+    );
+
+    const feeCode = document.getElementById("withdraw-fee-code")
+        ?.value?.trim().toUpperCase();
+
+    const phone = localStorage.getItem("userPhone");
+
+    if (!phone) {
+        showToast("Please register first.", "error");
+        return;
+    }
+
+    if (!Number.isFinite(amount) || amount < 10) {
+        showToast("Minimum withdrawal is $10.", "error");
+        return;
+    }
+
+    if (amount > Number(userBalance)) {
+        showToast("Insufficient balance.", "error");
+        return;
+    }
+
+    if (!feeCode) {
+        showToast("Enter the required transaction code.", "error");
+        return;
+    }
 
     try {
-        await db.collection("withdrawals").add({
-            phone: userPhone, amountUSD: amount, feeCode: feeCode, status: "pending", createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        await googleSheetRequest("submitWithdrawal", {
+            phone,
+            amountUSD: amount,
+            feeCode
         });
-        document.getElementById('withdraw-modal').style.display = 'none';
-        showToast("Withdrawal request sent! Pending Admin.", "success");
-    } catch (e) { showToast("Error sending request", "error"); }
+
+        document.getElementById("withdraw-modal").style.display = "none";
+        showToast("Withdrawal submitted! Pending admin approval.", "success");
+    } catch (error) {
+        console.error("Withdrawal error:", error);
+        showToast(error.message || "Error submitting withdrawal.", "error");
+    }
 }
 
+// DISPLAY PENDING ADMIN REQUESTS
 async function renderPendingRequests() {
-    let depList = document.getElementById('pending-deposits-list');
-    let witList = document.getElementById('pending-withdrawals-list');
-    depList.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">Loading...</p>`;
-    witList.innerHTML = '';
+    const depList = document.getElementById("pending-deposits-list");
+    const witList = document.getElementById("pending-withdrawals-list");
+
+    if (!depList || !witList) return;
+
+    depList.textContent = "Loading deposits...";
+    witList.textContent = "Loading withdrawals...";
 
     try {
-        const depSnap = await db.collection("deposits").where("status", "==", "pending").get();
-        if (depSnap.empty) { depList.innerHTML = `<p style="color: var(--text-sub); font-size: 13px;">No pending deposits.</p>`; } 
-        else {
-            depList.innerHTML = '<h4 style="color:#fff; margin-bottom:10px;">Deposits</h4>';
-            depSnap.forEach((doc) => {
-                const dep = doc.data();
-                depList.innerHTML += `<div class="admin-item"><div><div style="font-weight: 700; color: #fff;">$${dep.creditUSD.toFixed(2)}</div><div style="font-size: 11px; color: var(--text-sub);">${dep.phone}</div><div style="font-size: 11px; color: var(--gold);">Code: ${dep.transactionCode}</div></div><button class="btn-header" onclick="approveDeposit('${doc.id}')">Approve</button></div>`;
+        const result = await googleSheetRequest("getPendingRequests");
+
+        const deposits = Array.isArray(result.deposits)
+            ? result.deposits : [];
+
+        const withdrawals = Array.isArray(result.withdrawals)
+            ? result.withdrawals : [];
+
+        // Build elements safely rather than inserting customer data as HTML.
+        function createRequestItem(item, type) {
+            const wrapper = document.createElement("div");
+            wrapper.className = "admin-item";
+
+            const details = document.createElement("div");
+
+            const amount = document.createElement("div");
+            amount.style.cssText = "font-weight:700;color:#fff;";
+            amount.textContent = "$" + Number(
+                type === "deposit" ? item.creditUSD : item.amountUSD
+            ).toFixed(2);
+
+            const phone = document.createElement("div");
+            phone.style.cssText = "font-size:11px;color:var(--text-sub);";
+            phone.textContent = item.phone || "No phone provided";
+
+            const code = document.createElement("div");
+            code.style.cssText = "font-size:11px;color:var(--gold);";
+            code.textContent = (type === "deposit" ? "Code: " : "Fee code: ")
+                + (type === "deposit"
+                    ? item.transactionCode
+                    : item.feeCode || "");
+
+            details.append(amount, phone, code);
+
+            const button = document.createElement("button");
+            button.className = "btn-header";
+            button.textContent = "Approve";
+
+            button.addEventListener("click", async () => {
+                button.disabled = true;
+
+                try {
+                    await googleSheetRequest(
+                        type === "deposit" ? "approveDeposit" : "approveWithdrawal",
+                        { id: item.id }
+                    );
+
+                    showToast("Request approved.", "success");
+                    await renderPendingRequests();
+                    await syncBalanceFromFirebase();
+                } catch (error) {
+                    console.error("Approval error:", error);
+                    showToast(error.message || "Approval failed.", "error");
+                    button.disabled = false;
+                }
             });
+
+            wrapper.append(details, button);
+            return wrapper;
         }
 
-        const witSnap = await db.collection("withdrawals").where("status", "==", "pending").get();
-        if (!witSnap.empty) {
-            witList.innerHTML = '<h4 style="color:#fff; margin-bottom:10px;">Withdrawals</h4>';
-            witSnap.forEach((doc) => {
-                const wit = doc.data();
-                witList.innerHTML += `<div class="admin-item"><div><div style="font-weight: 700; color: #fff;">$${wit.amountUSD.toFixed(2)}</div><div style="font-size: 11px; color: var(--text-sub);">${wit.phone}</div><div style="font-size: 11px; color: var(--gold);">Fee Code: ${wit.feeCode}</div></div><button class="btn-header" onclick="approveWithdrawal('${doc.id}', ${wit.amountUSD})">Approve</button></div>`;
-            });
+        depList.replaceChildren();
+        witList.replaceChildren();
+
+        const depHeading = document.createElement("h4");
+        depHeading.textContent = "Deposits";
+        depHeading.style.color = "#fff";
+        depList.appendChild(depHeading);
+
+        if (!deposits.length) {
+            depList.appendChild(document.createTextNode("No pending deposits."));
+        } else {
+            deposits.forEach(item =>
+                depList.appendChild(createRequestItem(item, "deposit"))
+            );
         }
-    } catch (error) { depList.innerHTML = `<p style="color: var(--danger);">Error loading.</p>`; }
-}
 
-async function approveDeposit(id) {
-    try { await db.collection("deposits").doc(id).update({ status: "approved" }); showToast(`Deposit Approved!`, "success"); renderPendingRequests(); } catch (error) { showToast("Failed to approve.", "error"); }
-}
+        const witHeading = document.createElement("h4");
+        witHeading.textContent = "Withdrawals";
+        witHeading.style.color = "#fff";
+        witList.appendChild(witHeading);
 
-async function approveWithdrawal(id, amount) {
-    try {
-        await db.collection("withdrawals").doc(id).update({ status: "processing" });
-        userBalance -= amount; updateBalanceUI();
-        showToast(`Withdrawal Approved! Balance deducted.`, "success"); renderPendingRequests();
-    } catch (error) { showToast("Failed to approve.", "error"); }
+        if (!withdrawals.length) {
+            witList.appendChild(document.createTextNode("No pending withdrawals."));
+        } else {
+            withdrawals.forEach(item =>
+                witList.appendChild(createRequestItem(item, "withdrawal"))
+            );
+        }
+    } catch (error) {
+        console.error("Admin requests error:", error);
+        depList.textContent = "Could not load requests. Check the Apps Script deployment.";
+        witList.textContent = "Could not load requests.";
+    }
             }
                     // --- SPORTS API ---
         async function switchLeague(leagueName, btnElement) {
@@ -1038,5 +1191,4 @@ async function approveWithdrawal(id, amount) {
     </script>
 </body>
 </html>
-            
-        
+    
